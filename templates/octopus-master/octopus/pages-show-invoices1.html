@@ -1,0 +1,401 @@
+
+{% extends "secproj/base.html" %}
+{% load static %}
+{% block Dash %}
+Upload Sheets
+{%endblock%}
+{% block headName %}
+Invoices
+{%endblock%}
+{% block Hname %}
+Invoices
+{%endblock%}
+{% block sty %}
+
+<link rel="stylesheet" href="{%static 'xc.css'%}">
+
+{%endblock%}
+
+
+{% block cont %}
+<section class="upcoming-meetings" id="meetings">
+  <div class="container">
+    <div class="row">
+      
+      <form method="post" data-val-VIN-url="{%url 'getFiles'%}" enctype="multipart/form-data" name="basic__form" class="formo">                             
+                            
+        {% csrf_token %}
+                  <!-- <input type="file" id="orderupload" name="Orderfiles" class="form-control"> -->
+                <div class="allinputs">
+                  <!-- <div class="inpu1 inputa2" id="inputa1">
+                    <div class="inpumiddiv">
+                      <h1 class="divhead">Upload pack QTY</h1>
+                      <input type="file" id="image8"  name="image8[]"  class="btn btn-primary mco" accept=".xlsx, .xls, .csv" />
+                      <button id="upload8" type="button" class="btn btn-success uplo"  >Upload</button>
+                    </div>
+                  </div> 
+                  <div class="inpu1 inputa2" id="inputa1">
+                    <div class="inpumiddiv">
+                      <h1 class="divhead">Upload temp</h1>
+                      <input type="file" id="image7"  name="image7[]"  class="btn btn-primary mco" accept=".xlsx, .xls, .csv" />
+                      <button id="upload7" type="button" class="btn btn-success uplo"  >Upload</button>
+                    </div>
+                  </div> 
+                  <div class="inpu1 inputa2" id="inputa1">
+                    <div class="inpumiddiv">
+                      <h1 class="divhead">Upload Comapnies Items</h1>
+                      <input type="file" id="image5"  name="image5[]"  class="btn btn-primary mco" accept=".xlsx, .xls, .csv" />
+                      <button id="upload5" type="button" class="btn btn-success uplo"  >Upload</button>
+                    </div>
+                  </div> 
+                  <div class="inpu1 inputa2" id="inputa1">
+                    <div class="inpumiddiv">
+                      <h1 class="divhead">Upload Reagent specifications</h1>
+                      <input type="file" id="image6"  name="image6[]"  class="btn btn-primary mco" accept=".xlsx, .xls, .csv" />
+                      <button id="upload6" type="button" class="btn btn-success uplo"  >Upload</button>
+                    </div>
+                  </div> -->
+                   <!-- <button type="submit" id="uplo" class="btn btn-success" >Upload New Order</button>  -->
+                   <div class="inpu1 inputa4" id="inputa1">
+                    <div class="inpumiddiv">
+                      <h1 class="divhead">Upload Invoices</h1>
+                      <input type="text" id="invnum1"  placeholder="Invoice Number"   class="btn btn invnum" />
+                      <input type="text" id="ordnum1"  placeholder="Order Number" disabled  class="btn btn invnum" />
+                      
+                      <input type="file" id="image1"  name="image1[]" multiple  class="btn btn-primary mco"  accept=".xlsx, .xls, .csv, .pdf" />
+                      <button id="upload1" type="button" class="btn btn-success uplo" disabled >Upload</button>
+                    </div>
+                  </div>
+        
+                  <!-- <div class="inpu1" id="inputa1">
+                    <div class="inpumiddiv">
+                      <h1 class="divhead">Upload Others</h1>
+                      <input type="text" id="invnum2"  placeholder="Order Number"  class="btn btn invnum" />
+                      <input type="file" id="image"  name="image[]" multiple class="btn btn-primary mco" />
+                      <button id="upload2" type="button" class="btn btn-success uplo" disabled >Upload</button>
+                    </div>
+                  </div> -->
+        
+                  <!-- /////////////////// order files //////////////////////////// --> 
+                  <div class="inpu1 inputa3" id="inputa1">
+                    <div class="inpumiddiv">
+                      <h1 class="divhead">Upload Confirmation</h1>
+                      <input type="text" id="invnum3"  placeholder="Order Number"  class="btn btn invnum" />
+                      <input type="file" id="image3" disabled  name="image3[]"  class="btn btn-primary mco"  accept=".xlsx, .xls, .csv"/>
+                      <button id="upload3" type="button" class="btn btn-success uplo" disabled >Upload</button>
+                    </div>
+                  </div>
+        
+                 <!-- /////////////////// order confirmation //////////////////////////// --> 
+                  <div class="inpu1 inputa2" id="inputa1">
+                    <div class="inpumiddiv">
+                      <h1 class="divhead">Upload Orders</h1>
+                      <input type="text" id="invnum4"  placeholder="Order Number"  class="btn btn invnum" />
+                      <input type="file" id="image4"  name="image4[]"  class="btn btn-primary mco" accept=".xlsx, .xls, .csv" />
+                      <button id="upload4" type="button" class="btn btn-success uplo" disabled >Upload</button>
+                    </div>
+                  </div>
+                  
+                  <!-- upload consuma-->
+                  
+                </div>
+                </form> 
+    </div>
+  </div>
+</section>
+
+
+{%endblock%}
+
+
+{% block script %}
+
+<script>
+  $('#upload8').click(function () {
+        var form_data5 = new FormData();
+        file_data5 = $("#image8").prop('files').length;        
+        for(var i = 0 ; i<=file_data5 ; i++){
+            file_data5 = $("#image8").prop('files')[i];
+            form_data5.append("file", file_data5);
+            }
+        $.ajax({
+          url: '/uploadItems8/',
+          dataType: 'text',  
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: form_data5,
+          type:'post',
+
+          success: function(message){
+            // $('#upload3').attr("disabled", true)
+            if(message == '"This File is Not Compatable"'){
+            alert(message)
+          }
+            // $(".inputa3").load(" .inputa3 > *");
+            location.reload();
+          },
+        });
+
+      });
+</script>
+
+<script>
+  $('#upload7').click(function () {
+        var form_data5 = new FormData();
+        file_data5 = $("#image7").prop('files').length;        
+        for(var i = 0 ; i<=file_data5 ; i++){
+            file_data5 = $("#image7").prop('files')[i];
+            form_data5.append("file", file_data5);
+            }
+        $.ajax({
+          url: '/uploadItems7/',
+          dataType: 'text',  
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: form_data5,
+          type:'post',
+
+          success: function(message){
+            // $('#upload3').attr("disabled", true)
+            if(message == '"This File is Not Compatable"'){
+            alert(message)
+          }
+            // $(".inputa3").load(" .inputa3 > *");
+            location.reload();
+          },
+        });
+
+      });
+</script>
+
+<script>
+  $('#upload6').click(function () {
+        var form_data5 = new FormData();
+        file_data5 = $("#image6").prop('files').length;        
+        for(var i = 0 ; i<=file_data5 ; i++){
+            file_data5 = $("#image6").prop('files')[i];
+            form_data5.append("file", file_data5);
+            }
+        $.ajax({
+          url: '/uploadItems6/',
+          dataType: 'text',  
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: form_data5,
+          type:'post',
+
+          success: function(message){
+            // $('#upload3').attr("disabled", true)
+            if(message == '"This File is Not Compatable"'){
+            alert(message)
+          }
+            // $(".inputa3").load(" .inputa3 > *");
+            location.reload();
+          },
+        });
+
+      });
+</script>
+
+<script>
+  $('#upload5').click(function () {
+        var form_data5 = new FormData();
+        file_data5 = $("#image5").prop('files').length;        
+        for(var i = 0 ; i<=file_data5 ; i++){
+            file_data5 = $("#image5").prop('files')[i];
+            form_data5.append("file", file_data5);
+            }
+        $.ajax({
+          url: '/uploadItems/',
+          dataType: 'text',  
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: form_data5,
+          type:'post',
+
+          success: function(message){
+            // $('#upload3').attr("disabled", true)
+            if(message == '"This File is Not Compatable"'){
+            alert(message)
+          }
+            // $(".inputa3").load(" .inputa3 > *");
+            location.reload();
+          },
+        });
+
+      });
+</script>
+
+<script>
+$('#invnum1').keyup("change",function(e){
+    searchVal = e.target.value
+    
+    $.ajax({
+        url: '/ckeckInvo/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        data:{
+            'innumber':searchVal,
+        },
+        success: function(invoNumber){
+            if (invoNumber){
+              $('#upload1').attr("disabled", false)
+              $('#ordnum1').attr("disabled", false)
+            }
+            else{
+              $('#upload1').attr("disabled", true)
+            }
+            },
+        });
+      });
+$('#ordnum1').change(function(){
+    searchVal = $("#ordnum1").val()
+    innumber = $("#invnum1").val()
+      $.ajax({
+          url: '/uploadexcelname/', // <-- point to server-side PHP script
+          dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+          data:{
+              'searchVal':searchVal,
+              'innumber':innumber,
+          },
+          success: function(arrayOfNames){
+              // location.reload();
+              },
+          });
+      });
+    
+
+    $('#upload1').click(function () {
+			var form_data = new FormData();
+			file_data1 = $("#image1").prop('files').length;
+			for(var i = 0 ; i<=file_data1 ; i++){
+					file_data = $("#image1").prop('files')[i];
+					form_data.append("file", file_data);
+
+					console.log(i);
+					}
+			$.ajax({
+				url: '/uploadInvoices/',
+				dataType: 'text',  
+				cache: false,
+				contentType: false,
+				processData: false,
+        data: form_data,
+				// data: form_data,searchVal,
+				type: 'post',
+        success: function(response){
+          console.log(response); // <-- display response from the PHP script, if any
+          $(".inputa4").load(" .inputa4 > *");
+        },
+			});
+
+		});
+</script>   <!-- /////////////////// order Invoices //////////////////////////// -->
+
+
+
+<script>
+  $('#invnum3').change(function(){
+    searchVal = $("#invnum3").val()        
+    $.ajax({
+          url: '/uploadexcelnamechick/', // <-- point to server-side PHP script
+          dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+          data:{
+              'searchVal':searchVal,
+          },
+          success: function(chickNumber){
+                if (chickNumber) {
+                    $('#upload3').attr("disabled", false)
+                    $('#image3').attr("disabled", false)
+                  }
+                else{
+                  $('#upload3').attr("disabled", true)
+                  $('#image3').attr("disabled", false)
+                }
+              },
+          });
+        });
+
+
+      $('#upload3').click(function () {
+        var form_data = new FormData();
+        file_data1 = $("#image3").prop('files').length;
+        for(var i = 0 ; i<=file_data1 ; i++){
+            file_data = $("#image3").prop('files')[i];
+            form_data.append("file", file_data);
+            }
+        $.ajax({
+          url: '/uploadexcel/',
+          dataType: 'text',  
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: form_data,
+          type: 'post',
+          success: function(message){
+            // $('#upload3').attr("disabled", true)
+            if(message == '"This File is Not Compatable"'){
+            alert(message)
+          }
+            // $(".inputa3").load(" .inputa3 > *");
+            location.reload();
+          },
+        });
+
+      });
+ 
+  </script>   <!-- /////////////////// order confirmation //////////////////////////// -->
+
+<script>
+  $('#invnum4').change(function(){
+    searchVal = $("#invnum4").val()
+    console.log(searchVal)
+    $.ajax({
+        url: '/uploadexcelname/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        data:{
+            'searchVal':searchVal,
+        },
+        success: function(arrayOfNames){
+          $('#upload4').attr("disabled", false)
+          
+            },
+        });
+    });
+
+    $('#upload4').click(function () {
+			var form_data = new FormData();
+			file_data1 = $("#image4").prop('files').length;
+			for(var i = 0 ; i<=file_data1 ; i++){
+					file_data = $("#image4").prop('files')[i];
+					form_data.append("file", file_data);
+
+					console.log(i);
+					}
+			$.ajax({
+				url: '/uploadOrder/',
+				dataType: 'text',  
+				cache: false,
+				contentType: false,
+				processData: false,
+        data: form_data,
+				type: 'post',
+        success: function(message){
+          console.log(message);
+          if(message == '"This File is Not Compatable"'){
+            alert(message)
+          }
+          location.reload();
+          // $(".inputa2").load(" .inputa2 > *");
+          // $(".invnum").load(" .invnum > *");
+        },
+			});
+
+		});
+</script>   <!-- /////////////////// order Inputs //////////////////////////// -->
+
+{% endblock %}
+

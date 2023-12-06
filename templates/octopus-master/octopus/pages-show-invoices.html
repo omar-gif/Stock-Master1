@@ -1,0 +1,55 @@
+
+{% extends "block2.html" %}
+{% load static %}
+{% block Dash %}
+Invoices
+{%endblock%}
+{% block headName %}
+Invoices
+{%endblock%}
+{% block Hname %}
+Invoices
+{%endblock%}
+{% block sty %}
+
+<link rel="stylesheet" href="{%static 'xc.css'%}">
+
+{%endblock%}
+
+
+{% block cont %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+ 
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Import Excel Data into Database</h2>           
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <div class="col-md-8 col-sm-12 col-xs-12 form-group">      
+              </div>
+                <form method="post" enctype="multipart/form-data">
+                    <input type="file" name="files" class="form-control">
+                    {% csrf_token %}
+                             <button type="submit" class="btn btn-success" >Upload data using Pandas</button> 
+                            </form>  
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+  </form> 
+
+{%endblock%}
+
+
+{% block script %}
+	
+
+
+{% endblock %}
+

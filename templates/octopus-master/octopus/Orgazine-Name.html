@@ -1,0 +1,32 @@
+{% extends "block2.html" %}
+{% block Dash %}
+Company Name
+{%endblock%}
+{% block headName %}
+Company Name
+{%endblock%}
+{% block Hname %}
+Company Name
+{%endblock%}
+{% block cont %}
+<div class="rowsh">
+	<div class="col-lg-9">
+		
+
+		<form method="post" data-val-VIN-url="{%url 'getFiles'%}" enctype="multipart/form-data" name="basic__form" class="formo"/>
+			{% csrf_token %}
+			<div class="form-group ico">
+				<label class="prag1" for="Company_name">Organize Name</label>
+				<input class="form-control" aria-placeholder="Organize Name" id="Organize_name" name="Organize_Item" >
+			</div>
+			
+			<button id="save2" type="submit" class="btn btn-success"  >S a v e</button>
+		</form>
+	</div>
+</div>
+{%endblock%}
+{% block script %}
+
+
+{% endblock %}
+

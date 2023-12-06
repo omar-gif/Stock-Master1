@@ -1,0 +1,129 @@
+{% extends "block.html" %}
+{% block Dash %}
+My Profile
+{%endblock%}
+{% block headName %}
+My Profile
+{%endblock%}
+{% block Hname %}
+My Profile
+{%endblock%}
+{% block cont %}
+<div class="tabo"></div>
+    <div class="mainUserProfile1">
+        <div class="form-group imagediv">
+            <div class="imgo"></div>
+            <input type="file" class="imgbtn" name="imgchanged" >
+        </div>
+        <div class="form-group ico">
+            <label class="prag1" for="username">Username</label>
+            <input  class="form-control" id="username" name="username_item" required autocomplete="off">
+        </div>
+        <div class="form-group ico">
+            <label class="prag1" for="emailUser">Email</label>
+            <input type="email" class="form-control" id="emailUser" name="emailUser_item" required autocomplete="off">
+        </div>
+        <div class="form-group ico">
+            <label class="prag1" for="mobile">Mobile</label>
+            <input type="number" class="form-control" id="mobile" name="mobile_item" required autocomplete="off">
+        </div>
+        <div class="form-group ico">
+            <label class="prag1" for="pass">Password</label>
+            <input type="password" class="form-control" id="pass" name="pass_item" required autocomplete="off">
+        </div>
+        <div class="form-group ico">
+            <label class="prag1" for="pass2">Repeat Password</label>
+            <input type="password" class="form-control" id="pass2" name="pass2_item" required autocomplete="off">
+        </div>
+        <div class="form-c">
+            <button  class="btn btn-secondary" id="edi" >Edit</button>
+        </div>
+
+    </div>
+
+    
+{%endblock%}
+{% block script %}
+
+<script>
+    $(document).ready(function () {
+    $('#example').DataTable();
+});
+</script>
+<script>
+    $.ajax({
+        url: '/userProfileajax/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anythin
+        success: function(response){
+            console.log(response)
+            $("#username").val(''+response.usery+'')
+            $('#username').attr("disabled", true)
+
+            $("#emailUser").val(''+response.emaily+'')
+            $('#emailUser').attr("disabled", true)
+
+            $("#mobile").val(''+response.mobiley+'')
+            $('#mobile').attr("disabled", true)
+            
+            $("#pass").val(''+response.passy+'')
+            $('#pass').attr("disabled", true)
+
+            $("#pass2").val(''+response.passy+'')
+            $('#pass2').attr("disabled", true)
+
+            $(".imgo").append('<img id="userimg" class="img-circle" src="'+response.imagey+'">')
+                 
+            },
+        });
+</script>   <!-- //////////////////// user Profile //////////////////////// -->
+<script>
+    $( document ).ready(function() {
+
+        $("#edi").click(function(){
+            $('#username').attr("disabled", false)
+            $('#emailUser').attr("disabled", false)
+            $('#mobile').attr("disabled", false)
+            $('#pass').attr("disabled", false)
+            $('#pass2').attr("disabled", false)
+            $('#edi').remove()
+            $('.form-c').append('<button type="submit" class="btn btn-primary" id="savo">Save</button>')
+            $('#pass').val("")
+            $('#pass2').val("")
+
+            $("#savo").click(function(){
+                var user1 =$('#username').val();
+                var email1 =$('#emailUser').val();
+                var mobile1 =$('#mobile').val();
+                var pass1 =$('#pass').val();
+                var pass2 =$('#pass2').val();
+               
+                if(pass1 == pass2){
+                    $.ajax({
+                        url: '/updateMyProfile/', // <-- point to server-side PHP script
+                        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                        data:{
+                            'user1':user1,
+                            'email1':email1,
+                            'mobile1':mobile1,
+                            'pass1':pass1,
+                            },
+
+                        success:function(message){
+                            alert(message)
+                            }
+                    });
+                }
+                else{
+                    alert("the passwords is different")
+							$("#pass").val("")
+							$("#pass2").val("")
+                }
+            });
+        });
+    });
+
+       
+</script>
+
+{% endblock %}
+

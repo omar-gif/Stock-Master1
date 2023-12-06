@@ -1,0 +1,99 @@
+{% extends "block.html" %}
+{% block Dash %}
+Invoice Number
+{%endblock%}
+{% block headName %}
+Invoice Number
+{%endblock%}
+{% block Hname %}
+Invoice Number
+{%endblock%}
+{% block cont %}
+	<div class="rowsh">
+		<div class="col-lg-9">
+			<form method="post" data-val-VIN-url="{%url 'getFiles'%}" enctype="multipart/form-data" name="basic__form" class="formo">
+				{% csrf_token %}
+				<div class="form-group ico">
+					<input id="ItemID" class="form-control" required readonly type="hidden" value="{{IDD}}"/>
+				</div>
+				<div class="form-group ico">
+					<label class="prag1" for="ItemName">Item Name</label>
+					<input id="ItemName" class="form-control" name="ItemName_item" required readonly value="{{namo}}"/>
+				</div>
+				<div class="form-group ico">
+					<label class="prag1" for="PartNumber">Part Number</label>
+					<input id="PartNumber" class="form-control" name="PartNumber_item" required readonly value="{{parto}}"/>
+				</div>
+				<div class="form-group ico">
+					<label class="prag1" for="HospitalName">Hospital Name</label>
+					<input id="HospitalName" class="form-control" name="HospitalName_item" required  readonly value="{{HosName}}" />
+				</div>
+				<div class="form-group ico">
+					<label class="prag1" for="InvoiceNum">Invoice Number</label>
+					<input id="InvoiceNum" class="form-control" name="InvoiceNum_item" required  placeholder="Invoice Number " />
+				</div>
+				
+				<button id="save2" type="submit" class="btn btn-success"  >S a v e</button>
+			</form>
+		</div>
+	</div>
+	<!-- <table id="example" class="display nowrap" style="width:100%">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Position</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{% for object in object_list %}
+			<tr>
+				<td>{{ object.pk}}</td>
+				<td>{{ object.companyName}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+		<tfoot>
+			<tr>
+				<th>Name</th>
+				<th>Position</th>
+
+			</tr>
+		</tfoot>
+	</table> -->
+{%endblock%}
+{% block script %}
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script>
+	$(document).ready( function () {
+    $('#example').DataTable();
+} );
+</script>
+<!-- <script>
+	
+	$.ajax({
+    'url': "/GetTypeOfAnalyzer/",
+    'method': "GET",
+    'contentType': 'application/json'
+}).done( function(arrayOfItemName) {
+	console.log(arrayOfItemName)
+	var myJsonString = JSON.stringify(arrayOfItemName);
+	console.log(myJsonString)
+
+    $('#example').DataTable({
+        ajax: 'myJsonString',
+    });
+})
+</script> -->
+
+<script type="text/javascript" language="javascript" class="init">
+	console.log({{object_list}})
+</script>
+
+
+{% endblock %}
+
+
+
+

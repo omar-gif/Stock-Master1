@@ -1,0 +1,512 @@
+{% extends "thirdPro/thirdBase.html" %}
+{% load static %}
+
+{% block thirdCont %}
+
+
+<body>
+    <!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <!-- <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5"> -->
+        <div class="m-0 text-primary hlogo">
+            <div class="logo">
+                <i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i>
+                <a href="/" class="text-decoration-none logoText">
+                    <h4 class="h5 h5logo">stock</h4>
+                    <h1 class="h1 hlogo2">Master</h1>
+                </a>
+            </div>
+        </div>
+    <!-- </a> -->
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <form  class="search nav-form heado">
+        <div class="input-group input-search searchoBtn">
+            <input type="text"   class="form-control" name="searchInput" id="searchInput" placeholder="Search By Name Or Part Number" autocomplete="off">
+            <div id="browsers">
+
+            </div>
+        </div>
+    </form>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="/" class="nav-item nav-link ">Home</a>
+            <a href="/InventoryPage" class="nav-item nav-link active">Stock</a>
+            <a href="/InvoicePage" class="nav-item nav-link">Invoices</a>
+            <a href="/InputPage" class="nav-item nav-link ">Inputs</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                <div class="dropdown-menu fade-down m-0">
+                    <a href="/Hospitals" class="dropdown-item">Hospitals</a>
+                    <a href="/pages-price-list.html" class="dropdown-item">Price List</a>
+                    <a href="/setupPage" class="dropdown-item">Setup</a>
+                </div>
+            </div>
+        </div>
+        <a href="/signout" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Logout<i class="fa fa-arrow-right ms-3"></i></a>    </div>
+    </div>
+</nav>
+<!-- Navbar End -->
+
+
+    <div class="contair"></div>
+    <div class="tableDiv"></div>
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header Inputs">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <h1 class="display-3 text-white animated slideInDown">Stock</h1>
+                            <!-- <li class="breadcrumb-item"><a class="text-white" href="/index">Home</a></li> -->
+                            <!-- <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Testimonial</li> -->
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp vitroBtn" data-wow-delay="0.1s">
+                    <div class="service-item text-center pt-3 vitros350">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4 analyzerIcon"></i>
+                            <h5 class="mb-3">Vitros 350</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp resBtn" data-wow-delay="0.3s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-globe text-primary mb-4 analyzerIcon"></i>
+                            <h5 class="mb-3">R920</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp resBtn910" data-wow-delay="0.5s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-home text-primary mb-4 analyzerIcon"></i>
+                            <h5 class="mb-3">R910</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp resBtn15" data-wow-delay="0.7s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-book-open text-primary mb-4 analyzerIcon"></i>
+                            <h5 class="mb-3">MC15</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+    
+
+
+    <!-- Team Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Stcok</h6>
+                <h1 class="mb-5">Inventory</h1>
+            </div>
+            <div class="row g-4 stockDiv">
+                
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+        
+
+   
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    {% endblock%}
+    {% block thirdScript %}
+
+    <!---------------------------------------   Book Store  --------------------------->
+
+    <!-- Vitros 350 Div -->
+    <script>			
+        $(".vitroBtn").click(function(){	
+            $(".stockDiv").html("")
+            $.ajax({
+                url: '/GetVitros350/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                success: function(arrayOfItemName){
+                    j=0
+                    for(i=0 ; i<arrayOfItemName.length/7 ; i++){
+                        if(arrayOfItemName[j+5] < 2){
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDivDanger"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtns px-1">     <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>   <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="itemNamo">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            j = j+7
+                        }
+                        else{
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDiv"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtnsnormal px-1">       <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'" ><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>    <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="mb-0">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                        j = j+7
+                        }
+                    }
+                    $(".shape").click(function(){
+                        itemId = $(this).val()
+                        
+                        bookStoreFun(itemId)
+                    })
+
+                    $(".ItemHos").click(function(){
+                        itemId = $(this).val()
+                        GetHopitals(itemId)
+                    })
+
+                    $(".undertest").click(function(){
+                        itemId = $(this).val()
+                        GetUnderTest(itemId)
+                    })
+                },
+            });
+        });
+
+                
+    </script>
+
+    <!-- Response 920 Div -->
+    <script>
+        $(".resBtn").click(function(){
+            $(".stockDiv").html("")
+            $.ajax({
+                url: '/GetItem/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                success: function(arrayOfItemName){
+                    lengthOfArray = arrayOfItemName.length/5
+                    j=0
+                    for(i=0 ; i<arrayOfItemName.length/7 ; i++){
+                        if(arrayOfItemName[j+5] < 2){
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDivDanger"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtns px-1">     <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>   <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="itemNamo">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            j = j+7
+                        }
+                        else{
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDiv"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtnsnormal px-1">       <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'" ><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>    <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="mb-0">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            j = j+7
+                        }
+                    }
+
+                    $(".shape").click(function(){
+                        itemId = $(this).val()
+                        
+                        bookStoreFun(itemId)
+                    })
+
+                    $(".ItemHos").click(function(){
+                        itemId = $(this).val()
+                        GetHopitals(itemId)
+                    })
+
+                    $(".undertest").click(function(){
+                        itemId = $(this).val()
+                        GetUnderTest(itemId)
+                    })
+                },
+            });
+        })
+    </script>
+
+    <!-- Response Mc15 Div -->
+    <script>
+        $(".resBtn15").click(function(){
+            $(".stockDiv").html("")
+            $.ajax({
+                url: '/GetItemmc15/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                success: function(arrayOfItemName){
+                    lengthOfArray = arrayOfItemName.length/5
+                    j=0
+                    for(i=0 ; i<arrayOfItemName.length/7 ; i++){
+                        if(arrayOfItemName[j+5] < 2){
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDivDanger"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtns px-1">     <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>   <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="itemNamo">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            j = j+7
+                        }
+                        else{
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDiv"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtnsnormal px-1">       <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'" ><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>    <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="mb-0">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            j = j+7
+                        }
+                    }
+
+                    $(".shape").click(function(){
+                        itemId = $(this).val()
+                        
+                        bookStoreFun(itemId)
+                    })
+
+                    $(".ItemHos").click(function(){
+                        itemId = $(this).val()
+                        GetHopitals(itemId)
+                    })
+
+                    $(".undertest").click(function(){
+                        itemId = $(this).val()
+                        GetUnderTest(itemId)
+                    })
+                },
+            });
+        })
+    </script>
+
+    <!-- Response R910 Div -->
+    <script>
+        $(".resBtn910").click(function(){
+            $(".stockDiv").html("")
+            $.ajax({
+                url: '/GetItemr910/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                success: function(arrayOfItemName){
+                    lengthOfArray = arrayOfItemName.length/5
+                    j=0
+                    for(i=0 ; i<arrayOfItemName.length/7 ; i++){
+                        if(arrayOfItemName[j+5] < 2){
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDivDanger"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtns px-1">     <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>   <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="itemNamo">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            j = j+7
+                        }
+                        else{
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDiv"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtnsnormal px-1">       <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'" ><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>    <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="mb-0">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            j = j+7
+                        }
+                    }
+
+                    $(".shape").click(function(){
+                        itemId = $(this).val()
+                        
+                        bookStoreFun(itemId)
+                    })
+
+                    $(".ItemHos").click(function(){
+                        itemId = $(this).val()
+                        GetHopitals(itemId)
+                    })
+
+                    $(".undertest").click(function(){
+                        itemId = $(this).val()
+                        GetUnderTest(itemId)
+                    })
+                },
+            });
+        })
+    </script>
+
+    
+
+        <!---------------------------------------   Item Hospitals  --------------------------->
+    
+    <script>
+            function GetHopitals(itemId){
+                $(".tableDiv").append('<div class="outerFOCDiv animate__animated animate__fadeInUp"> <div class="tableHead"> <div class="m-0 text-primary hlogo"><div class="logo"><i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i><a href="/" class="text-decoration-none logoText"><h4 class="h5 h5logo">stock</h4><h1 class="h1 hlogo2">Master</h1></a></div></div>    <div class="GoBack">  <button type="button" class="btn btn-danger BackBtn" id="GoBackBtninter">Go Back</button>    </div>         </div>               <div class="innerFOCDiv">      <div class="innerinFOCDiv"></div>      </div>               </div>')
+                $(".innerinFOCDiv").append('<table id="example" class="table table-striped FOCTable" style="width:100%;    font-size: 14px;" ><thead ><tr><tr><th>ID</th><th>Invoice Number</th><th>Date</th>        <th>Company Name</th>  <th>Item Name</th><th>Part Number</th>                    <th>Lot Number</th><th>QTY</th></tr></tr></thead>         <tbody class="jj"></tbody>              <tfoot><tr><th>ID</th><th>Invoice Number</th><th>Date</th>        <th>Company Name</th>  <th>Item Name</th><th>Part Number</th>                    <th>Lot Number</th><th>QTY</th></tr></tfoot></table>')
+                
+    
+                $("#GoBackBtninter").click(function(){
+                    close()
+                })
+                
+                $('#example').DataTable( {
+                    dom: 'Bfrtip',
+                    order: [0, 'desc'],
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                        
+                    ]
+                    
+                });
+                
+                $.ajax({
+                    type: 'GET',
+                    url: '/ItemHopitals/',
+                    contentType: "text/plain",
+                    data:{
+                        'itemId':itemId
+                    },
+                    success: function (response) {
+                        myJsonData = response;
+                    
+                        populateDataTableInter(myJsonData);
+                    },  
+                });
+            }
+            function populateDataTableInter(response) {
+    
+                $("#example").DataTable().clear();
+                var length = Object.keys(response.data).length;
+                var table = $('#example').DataTable();
+                
+                for(var i = 0; i < length; i++) {
+                    var customer = response.data[i];
+                    // You could also use an ajax property on the data table initialization
+                    $('#example').dataTable().fnAddData( [
+                        customer.id,
+                        customer.outInvoiceNumber,
+                        customer.Datao,
+                        customer.CompaniesNAme,
+                        customer.ItemName,
+                        customer.ItemPartNumber,
+                        customer.Lots,
+                        customer.LtQTY,
+                    ]);
+                }
+                $('#example tbody').on('click', 'tr', function () {
+                    if ($(this).hasClass('selected')) {
+                        $(this).removeClass('selected');
+                    } else {
+                        table.$('tr.selected').removeClass('selected');
+                        $(this).addClass('selected');
+                    }
+                });
+            }  
+            
+    </script>
+        
+    <!-- close International  -->
+    <script>
+            function close(){
+                $(".outerFOCDiv").removeClass('animate__fadeInUp')
+                $(".outerFOCDiv").addClass('animate__fadeOutDown')
+                setTimeout(function () {
+                    $(".outerFOCDiv").remove()
+                    $(".outerFOCDiv").load(" .outerFOCDiv > *");
+                },500)
+            }
+    </script>
+
+        <!---------------------------------------   Undertest div  --------------------------->
+    <script>
+        function GetUnderTest(itemId){
+                $(".tableDiv").append('<div class="outerFOCDiv animate__animated animate__fadeInUp"> <div class="tableHead"> <div class="m-0 text-primary hlogo"><div class="logo"><i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i><a href="/" class="text-decoration-none logoText"><h4 class="h5 h5logo">stock</h4><h1 class="h1 hlogo2">Master</h1></a></div></div>    <div class="GoBack">  <button type="button" class="btn btn-danger BackBtn" id="GoBackBtninter">Go Back</button>    </div>         </div>               <div class="innerUndertestDiv">      <div class="innerUndertest"></div>      </div>               </div>')
+                
+                $.ajax({
+                url: '/ShowUndertest/', // <-- point to server-side PHP script
+                data:{
+                    'itemId':itemId
+                },
+                success: function(response){
+                    console.log(response.arrayOfItems)
+                    console.log(response.arr)
+                    var j=0;
+                    var k=0;
+                    len = response.arrayOfItems.length
+                    len2 = response.arr.length
+                    for(i=0 ; i<len/9 ; i++){
+                        $(".innerUndertest").append('<div id="cardo" class="card  bg-success"   ><div class="card-body"><h5   class="card-title">'+response.arrayOfItems[j+1]+'</h5><p id="cardh" class="card-text">'+response.arrayOfItems[j+7]+'</p></div><ul class="list-group list-group-flush"><li id="cardli" class="list-group-item">'+response.arrayOfItems[j+2]+'</li><li id="cardli" class="list-group-item">'+response.arrayOfItems[j+3]+'</li><li id="cardli" class="list-group-item">'+response.arrayOfItems[j+4]+'</li><li id="cardli" class="list-group-item">'+response.arrayOfItems[j+5]+'</li><li id="cardli" class="list-group-item">'+response.arrayOfItems[j+6]+'</li><li id="cardli" class="list-group-item">'+response.arrayOfItems[j+8]+'</li></ul><div id="btndiv" class="card-body"><button data-value="'+response.arrayOfItems[j]+'"   type="button" class="btn btn-success undertestbtn">Book</button></div></div>')
+                        
+                        // $(".undero").append('<div class="undertestdiv" data-value="'+response.arrayOfItems[j]+'">  <p id="underfont1"  class="idval" >'+response.arrayOfItems[j+1]+'</p> <p id="underfont">'+response.arrayOfItems[j+2]+'</p> <p id="underfont">'+response.arrayOfItems[j+3]+'</p> <p id="underfont">'+response.arrayOfItems[j+4]+'</p> <p id="underfont">'+response.arrayOfItems[j+5]+'</p> <p id="underfont">'+response.arrayOfItems[j+6]+'</p> <p id="underfont1">'+response.arrayOfItems[j+7]+'</p> </div>')
+                        j = j+9
+                    }
+                    for(i=0 ; i<len2/9 ; i++){
+                        $(".innerUndertest").append('<div id="cardo" class="card  bg-warning"   ><div class="card-body"><h5   class="card-title">'+response.arr[k+1]+'</h5><p id="cardh" class="card-text">'+response.arr[k+7]+'</p></div><ul class="list-group list-group-flush"><li id="cardli" class="list-group-item">'+response.arr[k+2]+'</li><li id="cardli" class="list-group-item">'+response.arr[k+3]+'</li><li id="cardli" class="list-group-item">'+response.arr[k+4]+'</li><li id="cardli" class="list-group-item">'+response.arr[k+5]+'</li><li id="cardli" class="list-group-item">'+response.arr[k+6]+'</li><li id="cardli" class="list-group-item">'+response.arr[k+8]+'</li></ul><div id="btndiv" class="card-body"><button data-value="'+response.arr[k]+'" type="button" class="btn btn-warning undertestbtn">Book</button></div></div>')
+                        k = k+9
+                    }
+                    $(".undertestbtn").click(function(){
+
+                        console.log(this.getAttribute("data-value"))
+                        itemId = this.getAttribute("data-value")
+                        $(".tableDiv").append('<div class="allpage animate__animated animate__fadeIn"> <div class="popcontainer"> <div> <p class="containerp">Do You Want To Book This Item </p></div> <div class="divbtns" ><button type="submit" id="dan" class="btn btn-danger">Cancel</button>  <button type="submit" id="suc" class="btn btn-success">Continue</button> </div>  </div> </div>')
+                        
+                        $("#dan").click(function(){
+                            $(".allpage").addClass('animate__animated animate__fadeOut');
+                            $(".allpage").remove()
+                        });
+                        $("#suc").click(function(){
+                            valv = $(this).val()
+                            console.log(valv)
+                            $.ajax({
+                                url: '/BookUndertest/',
+                                dataType:  'json',
+                                data:{
+                                    'itemId':itemId,
+                                    
+                                },
+                                success: function(response){
+                                    
+                                    $(".allpage").addClass('animate__animated animate__fadeOut');
+                                    setTimeout("location.reload();",500);
+                                    
+                                    }
+                                });
+                        });
+                    });
+                    
+                    },
+                
+            });
+    
+                $("#GoBackBtninter").click(function(){
+                    close()
+                })
+                
+                
+                // $.ajax({
+                //     type: 'GET',
+                //     url: '/ItemHopitals/',
+                //     contentType: "text/plain",
+                //     data:{
+                //         'itemId':itemId
+                //     },
+                //     success: function (response) {
+                //         myJsonData = response;
+                //                         },  
+                // });
+            }
+    </script>
+    
+    <!-- Search Input -->
+    <script>
+        $('#searchInput').keyup("change",function(e){
+                searchVal = e.target.value
+                console.log(searchVal);
+                $("#browsers").html("")
+                $.ajax({
+                url: '/seclive/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anythin
+                data:{
+                    'searchVal':searchVal,
+                },
+                beforeSend:function(xmlHttpRequest){
+                                $("#browsers").append('<div id="contdiv"> <div class="loader"></div></div>');
+                            },
+                success: function(AllArrayOfNames){
+                    $("#browsers").html("")
+                    $("#contdiv").remove();
+                    var j = 0;
+                    for(var i=0;i<AllArrayOfNames.length/5;i++){
+                        $("#browsers").append(' <button type="button" value="'+AllArrayOfNames[j+1]+'" class="SearchBtn" id="imgdiv"><div id="smallo"><option id="searchOption"> '+AllArrayOfNames[j]+'</option><div id="smalldiv"><big> QTY : '+AllArrayOfNames[j+3]+'</big><big> AllQTY : '+AllArrayOfNames[j+4]+'</big></div></div> <img id="itemphoto" src="'+AllArrayOfNames[j+2]+'">  </button>');
+                        j = j+5;
+                    }
+                    console.log("MOH5")
+                    $(".SearchBtn").click(function(){
+                        itemId = $(this).val()
+                        bookStoreFun(itemId)
+                    })
+
+                    $(".bodya").click(function(){
+                            $("#browsers").css("display", "none");
+                        });
+
+                    $("#searchInput").wrapInner(function(){
+                        $("#browsers").css("display", "inline");
+                    });
+                    },
+                });
+        });
+    </script>
+    {% endblock%}
+
+   
+</body>
+
+</html>

@@ -1,0 +1,605 @@
+{% extends "block2.html" %}
+{% block Dash %}
+Price Input 
+{%endblock%}
+{% block headName %}
+Price Input
+{%endblock%}
+{% block Hname %}
+Price Input
+{%endblock%}
+{% block cont %}
+
+<div class="rowsh">
+    <div class="tabss">
+        <a  class="VitroChem orderbtns ordinp" id="ordinp" href="#VitrosV" data-toggle="tab">Order Input</a>
+        <a  class="VitroChem orderbtns eleinp" id="eleinp" href="#VitrosX" data-toggle="tab">Element Input</a>
+        <a  class="VitroChem orderbtns confinp" id="confinp" href="#recent" data-toggle="tab">Confermation Input</a>
+        
+    </div>
+    <div class="col-lg-9">
+        
+
+        
+        <div class="tabs"  >
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tab-content">
+
+                        <div id="VitrosV" class="tab-pane">
+                            <div class="col-lg-12" >
+                                <form method="post" data-val-VIN-url="{%url 'getFiles'%}" enctype="multipart/form-data" name="basic__form" class="formo"/>
+                                    {% csrf_token %}
+                                    <div class="form-group ico">
+                                        <label class="prag1" for="analyzerName">Organize Name</label>
+                                        <select class="form-control" id="OrganizeName" name="OrganizeName_Item" required >
+                                            <option id="analyzerNameOpt" >--Please choose an option--</option>
+                                        </select>
+                                    </div>	
+                                    <div class="form-group ico">
+                                        <label class="prag1" for="companyName">Company Name</label>
+                                        <select class="form-control" id="companyName" name="companyName_Item" required >
+                                            <option id="companyNameOpt" >--Please choose an option--</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group ico">
+                                        <label class="prag1" for="typeOfAnalyzer">Type Of Analyzer</label>
+                                        <select class="form-control" id="typeOfAnalyzer" name="typeOfAnalyzer_Item" required >
+                                            <option id="typeOfAnalyzerOpt" >--Please choose an option--</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group ico">
+                                        <label class="prag1" for="Dato">Order Number</label>
+                                        <input  class="form-control"  name="orderNumber_item" id="orderNumber" required />
+                                    </div>
+                                    <div class="form-group ico">
+                                        <label class="prag1" for="Dato">Date</label>
+                                        <input  class="form-control"  name="Dato_item" id="Dato1" required readonly/>
+                                    </div>
+                                    <div class="form-group ico">
+                                        <label class="prag1" for="Dato">Note</label>
+                                        <input  class="form-control"  name="Note_item" id="Note" />
+                                    </div>
+                                    <button id="OrderInput" type="button" class="btn btn-success"  >S a v e</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="VitrosX" class="tab-pane icoc">
+                            <div class="row mg-files vitimmu">
+                                <div class="col-lg-12" >
+                                    <form method="post" data-val-VIN-url="{%url 'getFiles'%}" enctype="multipart/form-data" name="basic__form" class="formo"/>
+                                        {% csrf_token %}
+                                        <div class="form-group ico">
+                                            <label class="prag1" for="companyName">Company Name</label>
+                                            <select class="form-control" id="companyName1" name="companyName_Item" required >
+                                                <option id="companyNameOpt" >--Please choose an option--</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag1" for="typeOfAnalyzer">Type Of Analyzer</label>
+                                            <select class="form-control" id="typeOfAnalyzer1" name="typeOfAnalyzer_Item" required >
+                                                <option id="typeOfAnalyzerOpt" >--Please choose an option--</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag1" for="companyName">Element Name</label>
+                                            <select class="form-control" id="ElementName" name="ElementName_Item" required >
+                                                <option id="companyNameOpt" >--Please choose an option--</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag1" for="Dato">Order Number</label>
+                                            <input  class="form-control"  name="orderNumber_item" id="orderNumber1" required />
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag1" for="Dato">QTY</label>
+                                            <input  class="form-control"  name="QTY_item" id="QTY" required />
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag1" for="Dato">Date</label>
+                                            <input  class="form-control"  name="Dato_item" id="Dato2" required readonly/>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag1" for="Dato">Note</label>
+                                            <input  class="form-control"  name="Note_item" id="Note1" />
+                                        </div>
+                                        <button id="save2" type="button" class="btn btn-success"  >S a v e</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="recent" class="tab-pane">
+                            <div class="row mg-files Dia">
+                                <div class="col-lg-12" >
+                                    <form method="post" data-val-VIN-url="{%url 'getFiles'%}" enctype="multipart/form-data" name="basic__form" class="formo"/>
+                                        {% csrf_token %}
+                                        
+                                        <div class="form-group ico">
+                                            <label class="prag1" for="companyName">Company Name</label>
+                                            <select class="form-control" id="companyName2" name="companyName_Item" required >
+                                                <option id="companyNameOpt" >--Please choose an option--</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag1" for="typeOfAnalyzer">Type Of Analyzer</label>
+                                            <select class="form-control" id="typeOfAnalyzer2" name="typeOfAnalyzer_Item" required >
+                                                <option id="typeOfAnalyzerOpt" >--Please choose an option--</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag1" for="Dato">Order Number</label>
+                                            <input  class="form-control"  name="orderNumber_item" id="orderNumber2" required />
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag1" for="companyName">Element Name</label>
+                                            <select class="form-control" id="ElementName2" name="ElementName_Item" required >
+                                                <option id="companyNameOpt" >--Please choose an option--</option>
+                                            </select>
+                                            <div id="Avlq"><h1 id="AVLQTY1"></h1></div>
+                                        </div>
+                                        
+                                        <div class="form-group ico">
+                                            <label class="prag1" for="Dato">QTY</label>
+                                            <input  class="form-control"  name="QTY_item" id="QTY2" required />
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag1" for="Dato">Date</label>
+                                            <input  class="form-control"  name="Dato_item" id="Dato3" required readonly/>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag1" for="Dato">Note</label>
+                                            <input  class="form-control"  name="Note_item" id="Note2" />
+                                        </div>
+                                        <button id="save3" type="submit" class="btn btn-success"  >S a v e</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
+{% block script %}
+
+<script>
+    $('#orderNumber').keyup("change",function(e){
+        searchVal = e.target.value
+        console.log(searchVal);
+
+        $.ajax({
+        url: '/CheckOrderNum/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        data:{
+            'searchVal':searchVal
+        },
+        success: function(message){
+            if(message){
+            alert(message)
+            $("#orderNumber").val("")
+        }
+            },
+        });
+    });
+</script>  <!-- ////////////////// Check Order Number //////////////////////////////  -->
+
+<script>
+    $('#orderNumber2').keyup("change",function(e){
+        searchVal = e.target.value
+        console.log(searchVal);
+
+        $.ajax({
+        url: '/CheckOrderNum2/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        data:{
+            'searchVal':searchVal
+        },
+        success: function(arr){
+            console.log(arr)
+            var j=0;
+            for(i=0 ; i<arr.length ; i++){
+                y = arr[j]
+                $("#ElementName2").append('<option id="companyNameOpt" >'+y+'</option>')
+                j++
+            }
+        },
+        });
+    });
+</script>  <!-- ////////////////// Check elements //////////////////////////////  -->
+
+<script>
+    $("#ElementName2").change(function(){
+            eleNam = $("#ElementName2").val()
+            ordNum = $("#orderNumber2").val()
+            $.ajax({
+            url: '/CheckelementNum2/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                    'eleNam':eleNam,
+                    'ordNum':ordNum,
+                },
+            success: function(number){
+                console.log(number)
+                if(number >= 1){
+                    $("#AVLQTY1").css("border", "3px solid green");
+                    $("#AVLQTY1").append(number)
+                }
+                $('#QTY2').keyup("change",function(e){
+                    searchVal = e.target.value
+                    console.log(eleNam)
+                    if(searchVal>number){
+                    alert("Check Element Number")
+                    $('#QTY2').val("")
+                    }
+                });
+                },
+            
+            });
+        });
+</script><!-- ////////////////// Check elements Numbers//////////////////////////////  -->
+
+<script>
+    $("#confinp").click(function(){
+        $("#save3").click(function(){
+            eleNam = $("#ElementName2").val()
+            compNam = $("#companyName2").val()
+            typAna = $("#typeOfAnalyzer2").val()
+            ordNum = $("#orderNumber2").val()
+            ordDat = $("#Dato3").val()
+            ordNot = $("#Note2").val()
+            ordqty = $("#QTY2").val()
+            $.ajax({
+            url: '/SavconnfOrder/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                    'eleNam':eleNam,
+                    'compNam':compNam,
+                    'typAna':typAna,
+                    'ordNum':ordNum,
+                    'ordDat':ordDat,
+                    'ordNot':ordNot,
+                    'ordqty':ordqty,
+                    
+                },
+            success: function(){
+                $(".tabs").load(window.location.href + " .tabs" );
+                
+                },
+            
+            });
+        });
+    });
+</script>  <!-- ////////////////// save element //////////////////////////////  -->
+
+<script>
+    $("#confinp").click(function(){
+        $("#companyName2").html("<option>--Please choose an option--</option>")
+        $.ajax({
+        url: '/companiesName/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        success: function(arrayOfNames){
+            var j=0;
+            for(i=0 ; i<arrayOfNames.length ; i++){
+                y = arrayOfNames[j]
+                $("#companyName2").append('<option id="companyNameOpt" >'+y+'</option>')
+                j++
+            }
+            },
+        });
+    });
+</script> <!-- ////////////////// company name //////////////////////////////  -->
+
+<script>
+    $("#confinp").click(function(){
+        $("#typeOfAnalyzer2").val("")
+        $("#typeOfAnalyzer2").html("<option>--Please choose an option--</option>")
+        $("#companyName2").click(function(){
+            $("#typeOfAnalyzer2").html("<option>--Please choose an option--</option>")
+            max = $("#companyName2").val()
+            console.log(max)
+            $.ajax({
+            url: '/analyzerTypes/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                'max':max
+            },
+            success: function(arrayOfNames){
+                console.log(arrayOfNames)
+                var j=0;
+                for(i=0 ; i<arrayOfNames.length ; i++){
+                    y = arrayOfNames[j]
+                    $("#typeOfAnalyzer2").append('<option id="companyNameOpt" >'+y+'</option>')
+                    j++
+                }
+                },
+            });
+        });
+    });	
+</script> <!-- ////////////////// type of analyzer //////////////////////////////  -->
+
+<script>
+    $("#confinp").click(function(){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = today.getFullYear();
+
+        today =yyyy + '-' + mm + '-' + dd ;
+        $("#Dato3").val(''+today+'')
+    });
+</script>   <!-- ////////////////// date //////////////////////////////  -->
+
+<script>
+    $('#QTY2').change(function(){
+        $("#save3").click(function(){
+            searchVal = $('#QTY2').val()
+            ordNum = $('#orderNumber2').val()
+            eleNum = $('#ElementName2').val()
+
+            console.log(searchVal)
+            $.ajax({
+            url: '/UpdateOrderQTy/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                'searchVal':searchVal,
+                'ordNum':ordNum,
+                'eleNum':eleNum,
+            },
+            success: function(arr){
+                console.log(arr)
+                
+            },
+            });
+    });
+});
+</script>  <!-- ////////////////// Check Order Number //////////////////////////////  -->
+
+<script>
+
+    
+</script>  <!-- ////////////////// Check QTY Errors //////////////////////////////  -->
+
+
+
+<script>
+    $("#eleinp").click(function(){
+        $("#companyName1").html("<option>--Please choose an option--</option>")
+        $.ajax({
+        url: '/companiesName/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        success: function(arrayOfNames){
+            var j=0;
+            for(i=0 ; i<arrayOfNames.length ; i++){
+                y = arrayOfNames[j]
+                $("#companyName1").append('<option id="companyNameOpt" >'+y+'</option>')
+                j++
+            }
+            },
+        });
+    });
+</script> <!-- ////////////////// company name //////////////////////////////  -->
+<script>
+    $("#eleinp").click(function(){
+        
+        $("#typeOfAnalyzer1").html("<option>--Please choose an option--</option>")
+        $("#companyName1").click(function(){
+            $("#typeOfAnalyzer1").html("<option>--Please choose an option--</option>")
+            max = $("#companyName1").val()
+            console.log(max)
+            $.ajax({
+            url: '/analyzerTypes/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                'max':max
+            },
+            success: function(arrayOfNames){
+                console.log(arrayOfNames)
+                var j=0;
+                for(i=0 ; i<arrayOfNames.length ; i++){
+                    y = arrayOfNames[j]
+                    $("#typeOfAnalyzer1").append('<option id="companyNameOpt" >'+y+'</option>')
+                    j++
+                }
+                },
+            });
+        });
+    });	
+</script> <!-- ////////////////// type of analyzer //////////////////////////////  -->
+
+<script>
+    $("#eleinp").click(function(){
+        $("#typeOfAnalyzer1").change(function(){
+            compname = $("#companyName1").val()
+            unit = $("#typeOfAnalyzer1").val()
+            $.ajax({
+            url: '/getParameter/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                    'compname':compname,
+                    'unit':unit,
+                },
+            success: function(arrayOfNames){
+                var j=0;
+                for(i=0 ; i<arrayOfNames.length ; i++){
+                    y = arrayOfNames[j]
+                    $("#ElementName").append('<option id="companyNameOpt" >'+y+'</option>')
+                    j++
+                }
+                },
+            
+            });
+        });
+    });
+</script><!-- ////////////////// element //////////////////////////////  -->
+
+<script>
+    $("#eleinp").click(function(){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = today.getFullYear();
+
+        today =yyyy + '-' + mm + '-' + dd ;
+        $("#Dato2").val(''+today+'')
+    });
+</script>   <!-- ////////////////// date //////////////////////////////  -->
+
+<script>
+    $("#eleinp").click(function(){
+        $("#save2").click(function(){
+            eleNam = $("#ElementName").val()
+            compNam = $("#companyName1").val()
+            typAna = $("#typeOfAnalyzer1").val()
+            ordNum = $("#orderNumber1").val()
+            ordDat = $("#Dato2").val()
+            ordNot = $("#Note1").val()
+            ordqty = $("#QTY").val()
+            $.ajax({
+            url: '/SavelementOrder/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                    'eleNam':eleNam,
+                    'compNam':compNam,
+                    'typAna':typAna,
+                    'ordNum':ordNum,
+                    'ordDat':ordDat,
+                    'ordNot':ordNot,
+                    'ordqty':ordqty,
+                    
+                },
+            success: function(){
+                $(".tabs").load(window.location.href + " .tabs" );
+                
+                },
+            
+            });
+        });
+    });
+</script>  <!-- ////////////////// save element //////////////////////////////  -->
+
+
+
+
+
+
+
+<script>
+    $("#ordinp").click(function(){
+        $("#OrderInput").click(function(){
+            orgNam = $("#OrganizeName").val()
+            compNam = $("#companyName").val()
+            typAna = $("#typeOfAnalyzer").val()
+            ordNum = $("#orderNumber").val()
+            ordDat = $("#Dato1").val()
+            ordNot = $("#Note").val()
+            $.ajax({
+            url: '/SaveOrders/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                    'orgNam':orgNam,
+                    'compNam':compNam,
+                    'typAna':typAna,
+                    'ordNum':ordNum,
+                    'ordDat':ordDat,
+                    'ordNot':ordNot,
+                    
+                },
+            success: function(ordNum){
+                if(ordNum)
+                $(".tabs").load(window.location.href + " .tabs" );
+                
+                },
+            
+            });
+        });
+    });
+</script>  <!-- ////////////////// save orders //////////////////////////////  -->
+<script>
+    $("#ordinp").click(function(){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = today.getFullYear();
+
+        today =yyyy + '-' + mm + '-' + dd ;
+        $("#Dato1").val(''+today+'')
+    });
+</script>   <!-- ////////////////// date //////////////////////////////  -->
+
+
+<script>
+    $("#ordinp").click(function(){
+        $("#OrganizeName").html("<option>--Please choose an option--</option>")
+        $.ajax({
+        url: '/getOrganize/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        success: function(arrayOfNames){
+            var j=0;
+            for(i=0 ; i<arrayOfNames.length ; i++){
+                y = arrayOfNames[j]
+                $("#OrganizeName").append('<option id="companyNameOpt" >'+y+'</option>')
+                j++
+            }
+            },
+        
+        });
+    });
+</script> <!-- ////////////////// organize name //////////////////////////////  -->
+
+<script>
+    $("#ordinp").click(function(){
+        $("#companyName").html("<option>--Please choose an option--</option>")
+        $.ajax({
+        url: '/companiesName/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        success: function(arrayOfNames){
+            var j=0;
+            for(i=0 ; i<arrayOfNames.length ; i++){
+                y = arrayOfNames[j]
+                $("#companyName").append('<option id="companyNameOpt" >'+y+'</option>')
+                j++
+            }
+            },
+        });
+    });
+</script> <!-- ////////////////// company name //////////////////////////////  -->
+<script>
+    $("#ordinp").click(function(){
+        $("#typeOfAnalyzer").html("<option>--Please choose an option--</option>")
+        $("#companyName").click(function(){
+            $("#typeOfAnalyzer").html("<option>--Please choose an option--</option>")
+            max = $("#companyName").val()
+            console.log(max)
+            $.ajax({
+            url: '/analyzerTypes/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                'max':max
+            },
+            success: function(arrayOfNames){
+                console.log(arrayOfNames)
+                var j=0;
+                for(i=0 ; i<arrayOfNames.length ; i++){
+                    y = arrayOfNames[j]
+                    $("#typeOfAnalyzer").append('<option id="companyNameOpt" >'+y+'</option>')
+                    j++
+                }
+                },
+            });
+        });
+    });	
+</script> <!-- ////////////////// type of analyzer //////////////////////////////  -->
+
+
+
+
+
+
+
+{% endblock %}
+

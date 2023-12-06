@@ -1,0 +1,783 @@
+{% extends "thirdPro/thirdBase.html" %}
+{% load static %}
+
+{% block thirdCont %}
+    <!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <!-- <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5"> -->
+        <div class="m-0 text-primary hlogo">
+            <div class="logo">
+                <i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i>
+                <a href="/" class="text-decoration-none logoText">
+                    <h4 class="h5 h5logo">stock</h4>
+                    <h1 class="h1 hlogo2">Master</h1>
+                </a>
+            </div>
+        </div>
+    <!-- </a> -->
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <form  class="search nav-form heado">
+        <div class="input-group input-search searchoBtn">
+            <input type="text"   class="form-control" name="searchInput" id="searchInput" placeholder="Search By Name Or Part Number" autocomplete="off">
+            <div id="browsers">
+
+            </div>
+        </div>
+    </form>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="/" class="nav-item nav-link ">Home</a>
+            <a href="/InventoryPage" class="nav-item nav-link">Stock</a>
+            <a href="/InvoicePage" class="nav-item nav-link">Invoices</a>
+            <a href="/InputPage" class="nav-item nav-link ">Inputs</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                <div class="dropdown-menu fade-down m-0">
+                    <a href="/Hospitals" class="dropdown-item">Hospitals</a>
+                    <a href="/pages-price-list.html" class="dropdown-item">Price List</a>
+                    <a href="/setupPage" class="dropdown-item active">Setup</a>
+                </div>
+            </div>
+        </div>
+        <a href="/signout" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Logout<i class="fa fa-arrow-right ms-3"></i></a>    </div>
+</nav>
+<!-- Navbar End -->
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header invoices">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <h1 class="display-3 text-white animated slideInDown">Setup</h1>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <div class="tableDiv"></div>
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">Setup Page</h6>
+                <h1 class="mb-5">Optimize The Setup</h1>
+            </div>
+            <div class="allInvo">
+                <div class="testimonial-item text-center invDiv">
+                    <i class="fa-regular fa-hospital invico"></i>
+                    <h5 class="mb-0 mapa">Hopitals</h5>
+                    <p class="mapa">Enter New Hospitals</p>
+                    <div class="testimonial-text bg-light text-center p-4 btnAcpt">
+                        <button type="button" class="btn btn-success invBtn" id="HosBtn">Open</button>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center invDiv">
+                    <i class="fa-regular fa-building invico"></i>
+                    <h5 class="mb-0 mapa">Companies</h5>
+                    <p class="mapa">Enter New Companies</p>
+                    <div class="testimonial-text bg-light text-center p-4 btnAcpt">
+                        <button type="button" class="btn btn-success invBtn" id="CompBtn">Open</button>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center invDiv">
+                    <i class="fa-regular fa-user invico"></i>
+                    <h5 class="mb-0 mapa">Users</h5>
+                    <p class="mapa">Create NeW Account</p>
+                    <div class="testimonial-text bg-light text-center p-4 btnAcpt">
+                        <button type="button" class="btn btn-success invBtn" id="UserBtn">Open</button>
+                    </div>
+                </div>
+                
+            </div>
+
+
+
+            
+        </div>
+    </div>
+    <!-- Testimonial End -->
+        
+
+    
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    {% endblock%}
+    {% block thirdScript %}
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+<!--     **************************      Hospitals       *****************************       -->
+    <script>
+        $("#HosBtn").click(function(){
+            $(".container-xxl").append('<div class="outerItemPrice animate__animated animate__fadeInUp">   <div class="inrItemPrice">       <div class="rowsh"><div class="col-lg-12"><div class="formo"/><div class="form-group"><label class="prag1" for="Company_name">Hospital Name</label>     <input class="form-control ico" aria-placeholder="Company Name" placeholder=" Hospital Name" id="Hos_name" name="HospitalName_Item" >        </div> <div class="form-group ico"><label class="prag1" for="companyName">Company Name</label><select class="form-control ico" id="companyName" name="companyName_Item" required ><option id="companyNameOpt" >--Please choose an option--</option></select></div><div class="form-group ico"><label class="prag1" for="AnalyzerType">Analyzer Type</label><select class="form-control ico" id="AnalyzerType1" name="AnalyzerType_Item" required ><option id="companyNameOpt" >--Please choose an option--</option></select></div><div class="form-group ico"><label class="prag1" for="AnalyzerName">Analyzer Name</label><select class="form-control ico" id="AnalyzerName1" name="AnalyzerName_Item" required ><option id="companyNameOpt" >--Please choose an option--</option></select></div><div class="form-group ico"><label class="prag1" for="Serial_Number">Serial Number</label><input class="form-control ico" placeholder="Serial Number" id="Serial_Number" name="SerialNumber_Item" ></div>     <div class="form-group ItemPricebtns">   <button id="Cancel2" type="submit" class="btn btn-danger btnico"  >Cancel</button>   <button id="save2" type="submit" disabled class="btn btn-success btnico"  >Save</button>    </div></div></div></div>      </div>       </div>')
+
+            $("#Cancel2").click(function(){
+                $(".outerItemPrice").removeClass('animate__animated')
+                $(".outerItemPrice").removeClass('animate__fadeInUp')
+                $(".outerItemPrice").addClass('animate__animated animate__fadeOutDown')
+                setTimeout(function(){
+                    $(".outerItemPrice").remove()
+                },500)
+            })
+            
+            GetCompName()
+            GetCompModule()
+            GetCompAnalyzers()
+            ValidateInputs1()
+            $("#save2").click(function(){
+                submitHosName()
+            })
+        })
+    </script>
+
+    <!-- Get Company Name -->
+    <script>
+        function GetCompName(){
+            $.ajax({
+                url: '/GetTypeOfAnalyzer/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                success: function(arrayOfItemName){
+                    console.log(arrayOfItemName)
+                    var j = 0;
+                    for(var i=0 ; i <arrayOfItemName.length ; i++){
+                        y = arrayOfItemName[j]
+                        $("#companyName").append('<option id="teamLeaderOpt" >'+y+'</option>')
+                        j++
+                    }
+                },
+            });
+        }
+        
+    </script>
+
+    <!-- Get Company Modules -->
+    <script>
+        function GetCompModule(){
+            $("#companyName").change(function(){
+            var maxi = $("#companyName").val()
+            $("#AnalyzerName1").html("<option >--Please choose an option--</option>")
+            $("#AnalyzerType1").html("<option >--Please choose an option--</option>")
+            $.ajax({
+                    url: '/GetTypelikechem/', // <-- point to server-side PHP script
+                    dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                    data:{
+                        'maxi':maxi	
+                    },
+                    success: function(arrayOfItemName){
+                        console.log(arrayOfItemName)
+                        console.log(arrayOfItemName)
+                        var j = 0;
+                        for(var i=0 ; i <arrayOfItemName.length ; i++){
+                            y = arrayOfItemName[j]
+                            console.log(y)
+                            $("#AnalyzerType1").append('<option id="teamLeaderOpt" >'+arrayOfItemName[j]+'</option>')
+                            j++
+                        }
+                    },
+                });
+            });
+        }
+        
+    </script>
+
+    <!-- Get Company Analyzers -->
+    <script>
+        function GetCompAnalyzers(){
+            $("#AnalyzerType1").change(function(){
+            $("#AnalyzerName1").html("<option >--Please choose an option--</option>")
+            max = $("#AnalyzerType1").val()
+            max1 = $("#companyName").val()
+            console.log(max)
+            $.ajax({
+                url: '/nameOfItem/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                data:{
+                    'max':max,
+                    'max1':max1,
+                },
+                success: function(arrayOfNames){
+                    console.log(arrayOfNames)
+                    var j=0;
+                    for(i=0 ; i<arrayOfNames.length ; i++){
+                        y = arrayOfNames[j]
+                        $("#AnalyzerName1").append('<option id="companyNameOpt" >'+y+'</option>')
+                        j++
+                    }
+                    },
+                });
+            });
+        }
+        	
+    </script>
+
+    <!-- Validate Inputs -->
+    <script>
+        function ValidateInputs1(){
+            $("#Serial_Number").change(function(){
+                compAnalyzers = $("#AnalyzerName1").val()
+                HosNam = $("#Hos_name").val()
+                Serial_Number = $("#Serial_Number").val()
+                if(compAnalyzers == "--Please choose an option--" ||  HosNam == "" ||  Serial_Number == ""  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+        
+            $("#AnalyzerName1").change(function(){
+                compAnalyzers = $("#AnalyzerName1").val()
+                HosNam = $("#Hos_name").val()
+                Serial_Number = $("#Serial_Number").val()
+                if(compAnalyzers == "--Please choose an option--" ||  HosNam == "" ||  Serial_Number == ""  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+        
+            $("#Hos_name").change(function(){
+                compAnalyzers = $("#AnalyzerName1").val()
+                HosNam = $("#Hos_name").val()
+                Serial_Number = $("#Serial_Number").val()
+                if(compAnalyzers == "--Please choose an option--" ||  HosNam == "" ||  Serial_Number == ""  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+            
+            $("#Hos_name").change(function(){
+                HosNam = $("#Hos_name").val()
+                $.ajax({
+                    url: '/ValHosName/',
+                    data:{
+                        'HosNam':HosNam,
+                    },
+                    success: function(response){
+                        if(response){
+                            $("#save2").attr("disabled", true)
+                            alert("This name is Already taken")
+                            $("#Hos_name").val("")
+                        }
+                        
+                },
+                });
+            })
+
+            $("#Serial_Number").change(function(){
+                serialNum = $("#Serial_Number").val()
+                $.ajax({
+                    url: '/ValSerialNum/',
+                    data:{
+                        'serialNum':serialNum,
+                    },
+                    success: function(response){
+                        if(response){
+                            $("#save2").attr("disabled", true)
+                            alert("This Serial is Already taken")
+                            $("#Serial_Number").val("")
+                        }
+                        
+                },
+                });
+            })
+
+            $("#companyName").change(function(){
+                compAnalyzers = $("#AnalyzerName1").val()
+                HosNam = $("#Hos_name").val()
+                Serial_Number = $("#Serial_Number").val()
+                if(compAnalyzers == "--Please choose an option--" ||  HosNam == "" ||  Serial_Number == ""  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+
+            $("#AnalyzerType1").change(function(){
+                compAnalyzers = $("#AnalyzerName1").val()
+                HosNam = $("#Hos_name").val()
+                Serial_Number = $("#Serial_Number").val()
+                if(compAnalyzers == "--Please choose an option--" ||  HosNam == "" ||  Serial_Number == ""  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+            
+
+        }
+    </script>
+
+    <!-- Function Submit Hospitals Entry -->
+    <script>
+        function submitHosName(){
+            HosName = $("#Hos_name").val()
+            compName = $("#companyName").val()
+            compMudules = $("#AnalyzerType1").val()
+            compAnalyzers = $("#AnalyzerName1").val()
+            Serial_Number = $("#Serial_Number").val()
+            $.ajax({
+                url: '/GetHosName/',
+                data:{
+                    'HosName':HosName,
+                    'compName':compName,
+                    'compMudules':compMudules,
+                    'compAnalyzers':compAnalyzers,
+                    'Serial_Number':Serial_Number,
+                },
+                success: function(arrayOfItemName){
+                    $(".outerItemPrice").removeClass('animate__animated')
+                    $(".outerItemPrice").removeClass('animate__fadeInUp')
+                    $(".outerItemPrice").addClass('animate__animated animate__fadeOutDown')
+                    setTimeout(function(){
+                        $(".outerItemPrice").remove()
+                    },500)
+                },
+            });
+        }
+    
+    </script>
+
+<!--     **************************      Companies Entry       *****************************       -->
+    <script>
+        $("#CompBtn").click(function(){
+            $(".container-xxl").append('<div class="outerItemPrice animate__animated animate__fadeInUp">   <div class="inrItemPrice">       <div class="rowsh"><div class="col-lg-12"><div class="formo"/><div class="form-group"><label class="prag1" for="Company_name">Company Name</label>     <input class="form-control ico" placeholder="Company Name" id="Company_name" name="companyName_Item" >       </div> <div class="form-group ico"><label class="prag1" for="companyName">Company Name</label><select class="form-control ico"  id="typeOfANalyzer" name="typeOfANalyzer_Item" ><option id="teamLeaderOpt" >--Please choose an option--</option><option id="teamLeaderOpt" >Chimestry</option><option id="teamLeaderOpt" >Immunodiagnostics</option><option id="teamLeaderOpt" >Immunohematology</option><option id="teamLeaderOpt" >Spectro photometer</option><option id="teamLeaderOpt" >POCT</option></select></div>            <div class="form-group ico"><label class="prag1" for="AnalyzerName">Analyzer Name</label><select class="form-control ico" aria-placeholder="Work Flow" id="workOfANalyzer" name="workOfANalyzer_Item" ><option id="teamLeaderOpt" >--Please choose an option--</option><option id="teamLeaderOpt" >V7600</option><option id="teamLeaderOpt" >V5600</option><option id="teamLeaderOpt" >V4600</option><option id="teamLeaderOpt" >V3600</option><option id="teamLeaderOpt" >V3400</option><option id="teamLeaderOpt" >V350</option><option id="teamLeaderOpt" >Vision/Max</option><option id="teamLeaderOpt" >Biomajesty</option><option id="teamLeaderOpt" >R940</option><option id="teamLeaderOpt" >R920</option><option id="teamLeaderOpt" >R910</option><option id="teamLeaderOpt" >MC15</option><option id="teamLeaderOpt" >FC</option></select></div><div class="form-group ico">     <div class="form-group ItemPricebtns">   <button id="Cancel2" type="submit" class="btn btn-danger btnico"  >Cancel</button>   <button id="save2" type="submit" disabled class="btn btn-success btnico"  >Save</button>    </div></div></div></div>      </div>       </div>')
+
+            $("#Cancel2").click(function(){
+                $(".outerItemPrice").removeClass('animate__animated')
+                $(".outerItemPrice").removeClass('animate__fadeInUp')
+                $(".outerItemPrice").addClass('animate__animated animate__fadeOutDown')
+                setTimeout(function(){
+                    $(".outerItemPrice").remove()
+                },500)
+            })
+            
+            ValidateUserInputs()
+            
+            $("#save2").click(function(){
+                submitCompForm()
+            })
+        })
+    </script>
+
+    <!-- Validate Inputs -->
+    <script>
+        function ValidateInputs(){
+            $("#Company_name").change(function(){
+                CompName = $("#Company_name").val()
+                typeOfANa = $("#typeOfANalyzer").val()
+                AnalyzerName = $("#workOfANalyzer").val()
+                if(typeOfANa == "--Please choose an option--" ||  CompName == "" ||  AnalyzerName == "--Please choose an option--"  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+        
+            $("#typeOfANalyzer").change(function(){
+                CompName = $("#Company_name").val()
+                typeOfANa = $("#typeOfANalyzer").val()
+                AnalyzerName = $("#workOfANalyzer").val()
+                if(typeOfANa == "--Please choose an option--" ||  CompName == "" ||  AnalyzerName == "--Please choose an option--"  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+        
+            $("#workOfANalyzer").change(function(){
+                CompName = $("#Company_name").val()
+                typeOfANa = $("#typeOfANalyzer").val()
+                AnalyzerName = $("#workOfANalyzer").val()
+                if(typeOfANa == "--Please choose an option--" ||  CompName == "" ||  AnalyzerName == "--Please choose an option--"  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+            
+            
+            
+
+        }
+    </script>
+
+    <!-- submit Comapien Form -->
+    <script>
+        function submitCompForm(){
+            CompName = $("#Company_name").val()
+            typeOfANa = $("#typeOfANalyzer").val()
+            AnalyzerName = $("#workOfANalyzer").val()
+            $.ajax({
+                url: '/SubCompForm/',
+                data:{
+                    'CompName':CompName,
+                    'typeOfANa':typeOfANa,
+                    'AnalyzerName':AnalyzerName,
+                },
+                success: function(arrayOfItemName){
+                    $(".outerItemPrice").removeClass('animate__animated')
+                    $(".outerItemPrice").removeClass('animate__fadeInUp')
+                    $(".outerItemPrice").addClass('animate__animated animate__fadeOutDown')
+                    setTimeout(function(){
+                        $(".outerItemPrice").remove()
+                    },500)
+                },
+            });
+        }
+    </script>
+
+    <!--     **************************      SignuP      *****************************       -->
+    <script>
+        $("#UserBtn").click(function(){
+            $(".container-xxl").append('<div class="outerItemPrice animate__animated animate__fadeInUp">   <div class="inrItemPrice">       <div class="rowsh"><div class="col-lg-12"><div class="formo" id="formo"><div class="form-group mb-lg"><label>Username</label><input name="username" type="text" onkeypress="return /[0-9a-zA-Z]/i.test(event.key)" id="username" placeholder="Enter Your username " class="form-control input-lg ico" required /></div><div class="form-group mb-lg"><label for="fname">Frist Name</label><input type="text" id="fname" name="fname" onkeypress="return /[0-9a-zA-Z]/i.test(event.key)" placeholder="Enter Your fristname " class="form-control input-lg ico" required /></div><div class="form-group mb-lg"><label for="lname">Second name</label><input type="text" id="lname" name="lname" onkeypress="return /[0-9a-zA-Z]/i.test(event.key)" placeholder="Enter Your lastdname " class="form-control input-lg ico" required /></div><div class="form-group mb-lg"><label for="email">Email address</label><input type="text" id="email" name="email" onkeypress="return /[0-9a-zA-Z@.]/i.test(event.key)" placeholder="Enter Your E-Mail " class="form-control input-lg ico" required /></div><div class="form-group mb-lg"><label for="cond_shippo">Condition Number</label><input type="text" id="cond_shippo" name="cond_shippo" onkeypress="return /[0-9a-zA-Z]/i.test(event.key)" placeholder="Enter The Condition Number " class="form-control input-lg ico" required /></div><div class="form-group mb-lg"></div><div class="form-group mb-none"><div class="row"><div class="col-sm-6 mb-lg"><label for="cond_shippo">Mobile Number</label><input type="Number"  onkeypress="return /[0-9a-zA-Z]/i.test(event.key)" placeholder="Mobile Number " id="monileNum" name="mobile_shippo" class="form-control input-lg ico" required></div><div class="col-sm-6 mb-lg"><label for="Img">Image</label>   <div class="ImmDiv" >     <input name="image_shippo" id="Img" type="file"  class="form-control input-lg ico" placeholder="Enter Your Image " required />  <button type="button" id="imgbtn">Upload</button> </div>   </div></div></div><div class="form-group mb-none"><div class="row"><div class="col-sm-6 mb-lg"><label for="pass1">Password</label><input name="pass1" id="pass1"  type="password"  placeholder="Enter Your username " class="form-control input-lg ico" required /></div><div class="col-sm-6 mb-lg"><label for="pass2">Password Confirmation</label><input name="pass2" id="pass2" type="password"  class="form-control input-lg ico" placeholder="Enter Your username " required /></div></div></div><div class="form-group ItemPricebtns"><button id="Cancel2" type="submit" class="btn btn-danger btnico"  >Cancel</button>   <button id="save2" type="submit"  class="btn btn-success btnico"  >Save</button>    </div></div></div></div></div>      </div>       </div>')
+
+            $("#Cancel2").click(function(){
+                $(".outerItemPrice").removeClass('animate__animated')
+                $(".outerItemPrice").removeClass('animate__fadeInUp')
+                $(".outerItemPrice").addClass('animate__animated animate__fadeOutDown')
+                setTimeout(function(){
+                    $(".outerItemPrice").remove()
+                },500)
+            })
+            
+            checkNam()
+            checkPass()
+
+
+            ValidateInputs()
+            
+            $("#imgbtn").click(function(){
+                imgFun()
+            })
+            $("#save2").click(function(){
+                submitUserForm()
+            })
+        })
+    </script>
+
+    <!-- Check Passwords -->
+    <script>
+        function checkPass(){
+            $( document ).ready(function() {
+                $('#pass1').change(function(){
+                    x = $("#pass1").val()
+                });
+                $('#pass2').change(function(){
+                    y = $("#pass2").val()
+                    if(x!=y){
+                        alert("the passwords is different")
+                        $("#pass1").val("")
+                        $("#pass2").val("")
+                    }
+                });
+            });
+        }
+
+    </script>
+
+    <!-- check UserName -->
+    <script>
+        function checkNam(){
+            $('#username').change(function(){
+                takenusername = $("#username").val()
+                $.ajax({
+                    url: '/uservald/', // <-- point to server-side PHP script
+                    dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                    data:{
+                        'takenusername':takenusername,
+                        },
+
+                    success:function(data){	
+                        if(data.is_taken){
+                            alert("this username is already taken")
+                            $("#username").val("")
+                        }
+                    }
+                });
+            });
+        }
+
+    </script>
+
+    <!-- Validate Inputs -->
+    <script>
+        function ValidateUserInputs(){
+            $("#username").change(function(){
+                UsrName = $("#username").val()
+                fname = $("#fname").val()
+                lname = $("#lname").val()
+                email = $("#email").val()
+                cond_shippo = $("#cond_shippo").val()
+                monileNum = $("#monileNum").val()
+                Img = $("#Img").val()
+                pass1 = $("#pass1").val()
+                pass2 = $("#pass2").val()
+                if(UsrName == "" ||  fname == "" ||  lname == "" ||  email == "" ||  cond_shippo == "" ||  monileNum == "" ||  pass1 == "" || pass2 == ""  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+        
+            $("#fname").change(function(){
+                UsrName = $("#username").val()
+                fname = $("#fname").val()
+                lname = $("#lname").val()
+                email = $("#email").val()
+                cond_shippo = $("#cond_shippo").val()
+                monileNum = $("#monileNum").val()
+                Img = $("#Img").val()
+                pass1 = $("#pass1").val()
+                pass2 = $("#pass2").val()
+                if(UsrName == "" ||  fname == "" ||  lname == "" ||  email == "" ||  cond_shippo == "" ||  monileNum == "" ||  pass1 == "" || pass2 == ""  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+
+            $("#lname").change(function(){
+                UsrName = $("#username").val()
+                fname = $("#fname").val()
+                lname = $("#lname").val()
+                email = $("#email").val()
+                cond_shippo = $("#cond_shippo").val()
+                monileNum = $("#monileNum").val()
+                Img = $("#Img").val()
+                pass1 = $("#pass1").val()
+                pass2 = $("#pass2").val()
+                if(UsrName == "" ||  fname == "" ||  lname == "" ||  email == "" ||  cond_shippo == "" ||  monileNum == "" ||  pass1 == "" || pass2 == ""  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+
+            $("#email").change(function(){
+                UsrName = $("#username").val()
+                fname = $("#fname").val()
+                lname = $("#lname").val()
+                email = $("#email").val()
+                cond_shippo = $("#cond_shippo").val()
+                monileNum = $("#monileNum").val()
+                Img = $("#Img").val()
+                pass1 = $("#pass1").val()
+                pass2 = $("#pass2").val()
+                if(UsrName == "" ||  fname == "" ||  lname == "" ||  email == "" ||  cond_shippo == "" ||  monileNum == "" ||  pass1 == "" || pass2 == ""  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+
+            $("#cond_shippo").change(function(){
+                UsrName = $("#username").val()
+                fname = $("#fname").val()
+                lname = $("#lname").val()
+                email = $("#email").val()
+                cond_shippo = $("#cond_shippo").val()
+                monileNum = $("#monileNum").val()
+                Img = $("#Img").val()
+                pass1 = $("#pass1").val()
+                pass2 = $("#pass2").val()
+                if(UsrName == "" ||  fname == "" ||  lname == "" ||  email == "" ||  cond_shippo == "" ||  monileNum == "" ||  pass1 == "" || pass2 == ""  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+
+            $("#monileNum").change(function(){
+                UsrName = $("#username").val()
+                fname = $("#fname").val()
+                lname = $("#lname").val()
+                email = $("#email").val()
+                cond_shippo = $("#cond_shippo").val()
+                monileNum = $("#monileNum").val()
+                Img = $("#Img").val()
+                pass1 = $("#pass1").val()
+                pass2 = $("#pass2").val()
+                if(UsrName == "" ||  fname == "" ||  lname == "" ||  email == "" ||  cond_shippo == "" ||  monileNum == "" ||  pass1 == "" || pass2 == ""  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+
+            $("#pass1").change(function(){
+                UsrName = $("#username").val()
+                fname = $("#fname").val()
+                lname = $("#lname").val()
+                email = $("#email").val()
+                cond_shippo = $("#cond_shippo").val()
+                monileNum = $("#monileNum").val()
+                Img = $("#Img").val()
+                pass1 = $("#pass1").val()
+                pass2 = $("#pass2").val()
+                if(UsrName == "" ||  fname == "" ||  lname == "" ||  email == "" ||  cond_shippo == "" ||  monileNum == "" ||  pass1 == "" || pass2 == ""  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+
+            $("#pass2").change(function(){
+                UsrName = $("#username").val()
+                fname = $("#fname").val()
+                lname = $("#lname").val()
+                email = $("#email").val()
+                cond_shippo = $("#cond_shippo").val()
+                monileNum = $("#monileNum").val()
+                Img = $("#Img").val()
+                pass1 = $("#pass1").val()
+                pass2 = $("#pass2").val()
+                if(UsrName == "" ||  fname == "" ||  lname == "" ||  email == "" ||  cond_shippo == "" ||  monileNum == "" ||  pass1 == "" || pass2 == ""  ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+            })
+
+        }
+    </script>
+
+    <!------   upload Images -------- -->
+    <script>
+        function imgFun(){            
+            var form_data = new FormData();
+            file_data1 = $("#Img").prop('files').length;
+            for(var i = 0 ; i<=file_data1 ; i++){
+                    file_data = $("#Img").prop('files')[i];
+                    form_data.append("file", file_data);
+                    }
+            $.ajax({
+                url: '/uploadFilesSignup/', // <-- point to server-side PHP script
+                dataType: 'text',  // <-- what to expect back from the PHP script, if anything
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: 'post',
+
+                success: function(response){
+                    console.log(response);
+                },
+            });
+		    
+        }
+		
+    </script>
+
+    <!-- submit user Form  -->
+    <script>
+        function submitUserForm(){
+            UsrName = $("#username").val()
+            fname = $("#fname").val()
+            lname = $("#lname").val()
+            email = $("#email").val()
+            cond_shippo = $("#cond_shippo").val()
+            monileNum = $("#monileNum").val()
+            Img = $("#Img").val()
+            pass1 = $("#pass1").val()
+            pass2 = $("#pass2").val()
+
+            $.ajax({
+                url: '/SubUserForm/',
+                data:{
+                    'UsrName':UsrName,
+                    'fname':fname,
+                    'lname':lname,
+                    'email':email,
+                    'cond_shippo':cond_shippo,
+                    'monileNum':monileNum,
+                    'pass1':pass1,
+                    'pass2':pass2,
+                },
+                success: function(arrayOfItemName){
+                    $(".outerItemPrice").removeClass('animate__animated')
+                    $(".outerItemPrice").removeClass('animate__fadeInUp')
+                    $(".outerItemPrice").addClass('animate__animated animate__fadeOutDown')
+                    setTimeout(function(){
+                        $(".outerItemPrice").remove()
+                    },500)
+                },
+            });
+
+        }
+    </script>
+
+    <!-- Search Input -->
+    <script>
+        $('#searchInput').keyup("change",function(e){
+                searchVal = e.target.value
+                console.log(searchVal);
+                $("#browsers").html("")
+                $.ajax({
+                url: '/seclive/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anythin
+                data:{
+                    'searchVal':searchVal,
+                },
+                beforeSend:function(xmlHttpRequest){
+                                $("#browsers").append('<div id="contdiv"> <div class="loader"></div></div>');
+                            },
+                success: function(AllArrayOfNames){
+                    $("#browsers").html("")
+                    $("#contdiv").remove();
+                    var j = 0;
+                    for(var i=0;i<AllArrayOfNames.length/5;i++){
+                        $("#browsers").append(' <button type="button" value="'+AllArrayOfNames[j+1]+'" class="SearchBtn" id="imgdiv"><div id="smallo"><option id="searchOption"> '+AllArrayOfNames[j]+'</option><div id="smalldiv"><big> QTY : '+AllArrayOfNames[j+3]+'</big><big> AllQTY : '+AllArrayOfNames[j+4]+'</big></div></div> <img id="itemphoto" src="'+AllArrayOfNames[j+2]+'">  </button>');
+                        j = j+5;
+                    }
+                    console.log("MOH5")
+                    $(".SearchBtn").click(function(){
+                        itemId = $(this).val()
+                        bookStoreFun(itemId)
+                    })
+
+                    $(".bodya").click(function(){
+                            $("#browsers").css("display", "none");
+                        });
+
+                    $("#searchInput").wrapInner(function(){
+                        $("#browsers").css("display", "inline");
+                    });
+                    },
+                });
+        });
+    </script>
+    {% endblock %}
+
+</body>
+
+</html>

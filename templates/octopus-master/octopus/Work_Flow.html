@@ -1,0 +1,95 @@
+{% extends "block.html" %}
+{% block Dash %}
+Company Analyzers Type
+{%endblock%}
+{% block headName %}
+Company Analyzers Type
+{%endblock%}
+{% block Hname %}
+Company Analyzers Type
+{%endblock%}
+{% block cont %}
+<div class="rowsh">
+							<div class="col-lg-9">
+								
+
+								<form method="post" data-val-VIN-url="{%url 'getFiles'%}" enctype="multipart/form-data" name="basic__form" class="formo"/>
+								{% csrf_token %}
+									<div class="form-group ico">
+										<label class="prag1" for="Company_name">Company Name</label>
+										<select class="form-control" aria-placeholder="Analyzer Role" id="Company_name" name="companyName_Item" >
+											<option id="teamLeaderOpt" >--Please choose an option--</option>
+										</select>
+									</div>
+									<div class="form-group ico">
+										<label class="prag1" for="typeOfANalyzer">Type Of ANalyzer</label>
+										<select class="form-control" aria-placeholder="Type Of ANalyzer" id="typeOfANalyzer" name="typeOfANalyzer_Item" >
+										<option id="teamLeaderOpt" >--Please choose an option--</option>
+										</select>
+									</div>
+									<div class="form-group ico">
+										<label class="prag1" for="workOfANalyzer">Work Flow</label>
+										<select class="form-control ico" aria-placeholder="Work Flow" id="workOfANalyzer" name="workOfANalyzer_Item" >
+										<option id="teamLeaderOpt" >--Please choose an option--</option>
+										<option id="teamLeaderOpt" >V7600</option>
+										<option id="teamLeaderOpt" >V5600</option>
+										<option id="teamLeaderOpt" >V4600</option>
+										<option id="teamLeaderOpt" >V3600</option>
+										<option id="teamLeaderOpt" >V3400</option>
+										<option id="teamLeaderOpt" >V350</option>
+										<option id="teamLeaderOpt" >Vision/Max</option>
+										<option id="teamLeaderOpt" >Biomajesty</option>
+										<option id="teamLeaderOpt" >R940</option>
+										<option id="teamLeaderOpt" >R920</option>
+										<option id="teamLeaderOpt" >R910</option>
+										<option id="teamLeaderOpt" >MC15</option>
+										<option id="teamLeaderOpt" >FC</option>
+										</select>
+									</div>
+									<button id="save2" type="submit" class="btn btn-success"  >S a v e</button>
+								</form>
+							</div>
+						</div>
+{%endblock%}
+{% block script %}
+<script>
+	$.ajax({
+				url: '/GetTypeOfAnalyzer/', // <-- point to server-side PHP script
+				dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+				success: function(arrayOfItemName){
+					console.log(arrayOfItemName)
+					var j = 0;
+					for(var i=0 ; i <arrayOfItemName.length ; i++){
+						y = arrayOfItemName[j]
+						$("#Company_name").append('<option id="teamLeaderOpt" >'+y+'</option>')
+						j++
+					}
+				},
+			});
+</script>
+<script>
+	
+	$("#Company_name").change(function(){
+		var maxi = $("#Company_name").val()
+		$("#typeOfANalyzer").html("")
+		$.ajax({
+				url: '/GetTypelikechem/', // <-- point to server-side PHP script
+				dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+				data:{
+					'maxi':maxi	
+				},
+				success: function(arrayOfItemName){
+					console.log(arrayOfItemName)
+					var j = 0;
+					for(var i=0 ; i <arrayOfItemName.length ; i++){
+						y = arrayOfItemName[j]
+						$("#typeOfANalyzer").append('<option id="teamLeaderOpt" >'+y+'</option>')
+						j++
+					}
+				},
+			});
+		});
+</script>
+
+{% endblock %}
+

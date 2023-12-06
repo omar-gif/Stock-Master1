@@ -1,0 +1,140 @@
+{% extends "block2.html" %}
+{% block Dash %}
+Company Name
+{%endblock%}
+{% block headName %}
+Company Name
+{%endblock%}
+{% block Hname %}
+Company Name
+{%endblock%}
+{% block cont %}
+<div class="rowsh">
+	<div class="col-lg-9">
+		
+
+		<form method="post" data-val-VIN-url="{%url 'getFiles'%}" enctype="multipart/form-data" name="basic__form" class="formo"/>
+			{% csrf_token %}
+			<div class="form-group ico">
+                <label class="prag1" for="companyName">Company Name</label>
+                <select class="form-control" id="companyName" name="companyName_Item" required >
+                    <option id="companyNameOpt" >--Please choose an option--</option>
+                </select>
+            </div>
+            <div class="form-group ico">
+                <label class="prag1" for="typeOfAnalyzer">Type Of Analyzer</label>
+                <select class="form-control" id="typeOfAnalyzer" name="typeOfAnalyzer_Item" required >
+                    <option id="typeOfAnalyzerOpt" >--Please choose an option--</option>
+                </select>
+            </div>
+            <div class="form-group ico">
+                <label class="prag1" for="typeOfAnalyzer">Element Name</label>
+                <select class="form-control" id="Parameter_name" name="Parameter_Item" required >
+                    <option id="typeOfAnalyzerOpt" >--Please choose an option--</option>
+                </select>
+            </div>
+            <div class="form-group ico">
+				<label class="prag1" for="Company_name">Cataloge Number</label>
+				<input class="form-control" placeholder="Cataloge Number" id="Cataloge_Number" name="catNumber_Item" >
+			</div>
+            <div class="form-group ico">
+				<label class="prag1" for="Company_name">Number Of Slides</label>
+				<input class="form-control" placeholder="Number Of Slides" id="slide_Number" name="slide_Item" >
+			</div>
+            <div class="form-group ico">
+                <label class="prag1" for="Calibrator">Calibrator Kit</label>
+                <select class="form-control" id="Calibrator" name="Calibrator_Item" required >
+                    <option id="typeOfAnalyzerOpt" >--Please choose an option--</option>
+                    <option id="typeOfAnalyzerOpt" >Kit1</option>
+                    <option id="typeOfAnalyzerOpt" >Kit2</option>
+                    <option id="typeOfAnalyzerOpt" >Kit3</option>
+                    <option id="typeOfAnalyzerOpt" >Kit4</option>
+                    <option id="typeOfAnalyzerOpt" >Kit7</option>
+                </select>
+            </div>
+            <div class="form-group ico">
+                <label class="prag1" for="Calibrator">Shipping Condition</label>
+                <select class="form-control" id="shipping" name="shipping_Item" required >
+                    <option id="typeOfAnalyzerOpt" >--Please choose an option--</option>
+                    <option id="typeOfAnalyzerOpt" >Normal Temperture</option>
+                    <option id="typeOfAnalyzerOpt" >0 - 18</option>
+                    <option id="typeOfAnalyzerOpt" >-23 - 0</option>
+                </select>
+            </div>
+			<div class="form-group ico">
+				<label class="prag1" for="Company_name">Price</label>
+				<input class="form-control" placeholder="Number Of Slides" id="Price" name="Price_Item" >
+			</div>
+			<button id="save2" type="submit" class="btn btn-success"  >S a v e</button>
+		</form>
+	</div>
+</div>
+{%endblock%}
+{% block script %}
+<script>
+    $.ajax({
+    url: '/companiesName/', // <-- point to server-side PHP script
+    dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+    success: function(arrayOfNames){
+        var j=0;
+        for(i=0 ; i<arrayOfNames.length ; i++){
+            y = arrayOfNames[j]
+            $("#companyName").append('<option id="companyNameOpt" >'+y+'</option>')
+            j++
+        }
+        },
+    
+});
+</script>
+<script>
+$("#companyName").change(function(){
+    $("#typeOfAnalyzer").html("<option>--Please choose an option--</option>")
+    max = $("#companyName").val()
+    
+    $.ajax({
+    url: '/analyzerTypes/', // <-- point to server-side PHP script
+    dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+    data:{
+        'max':max,
+        
+    },
+    success: function(arrayOfNames){
+        console.log(arrayOfNames)
+        var j=0;
+        for(i=0 ; i<arrayOfNames.length ; i++){
+            y = arrayOfNames[j]
+            $("#typeOfAnalyzer").append('<option id="companyNameOpt" >'+y+'</option>')
+            j++
+        }
+        },
+    });
+});	
+</script>
+<script>
+    $("#typeOfAnalyzer").change(function(){
+        $("#Parameter_name").html("<option>--Please choose an option--</option>")
+        max = $("#companyName").val()
+        typana = $("#typeOfAnalyzer").val()
+        console.log(max)
+        $.ajax({
+        url: '/getcatNo/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        data:{
+            'max':max,
+            'typana':typana,
+        },
+        success: function(arrayOfNames){
+            console.log(arrayOfNames)
+            var j=0;
+            arrayOfNames.sort()
+            for(i=0 ; i<arrayOfNames.length ; i++){
+                y = arrayOfNames[j]
+                $("#Parameter_name").append('<option id="companyNameOpt" >'+y+'</option>')
+                j++
+            }
+            },
+        });
+    });	
+    </script>
+{% endblock %}
+

@@ -1,0 +1,639 @@
+{% extends "thirdPro/thirdBase.html" %}
+{% load static %}
+
+{% block thirdCont %}
+    <!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <!-- <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5"> -->
+        <div class="m-0 text-primary hlogo">
+            <div class="logo">
+                <i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i>
+                <a href="/" class="text-decoration-none logoText">
+                    <h4 class="h5 h5logo">stock</h4>
+                    <h1 class="h1 hlogo2">Master</h1>
+                </a>
+            </div>
+        </div>
+    <!-- </a> -->
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <form  class="search nav-form heado">
+        <div class="input-group input-search searchoBtn">
+            <input type="text"   class="form-control" name="searchInput" id="searchInput" placeholder="Search By Name Or Part Number" autocomplete="off">
+            <div id="browsers">
+
+            </div>
+        </div>
+    </form>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="/" class="nav-item nav-link ">Home</a>
+            <a href="/InventoryPage" class="nav-item nav-link">Stock</a>
+            <a href="/InvoicePage" class="nav-item nav-link active">Invoices</a>
+            <a href="/InputPage" class="nav-item nav-link ">Inputs</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                <div class="dropdown-menu fade-down m-0">
+                    <a href="/Hospitals" class="dropdown-item">Hospitals</a>
+                    <a href="/pages-price-list.html" class="dropdown-item">Price List</a>
+                    <a href="/setupPage" class="dropdown-item">Setup</a>
+                </div>
+            </div>
+        </div>
+        <a href="/signout" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Logout<i class="fa fa-arrow-right ms-3"></i></a>    </div>
+</nav>
+<!-- Navbar End -->
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header invoices">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <h1 class="display-3 text-white animated slideInDown">Invoices</h1>
+                            <!-- <li class="breadcrumb-item"><a class="text-white" href="/index">Home</a></li> -->
+                            <!-- <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Testimonial</li> -->
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <div class="tableDiv"></div>
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">Invoices</h6>
+                <h1 class="mb-5">Choose which kind</h1>
+            </div>
+            <div class="allInvo">
+                <div class="testimonial-item text-center invDiv">
+                    <i class="fa-solid fa-file-invoice invico"></i>
+                    <h5 class="mb-0 mapa">FOC</h5>
+                    <p class="mapa">Free Of Charge</p>
+                    <div class="testimonial-text bg-light text-center p-4 btnAcpt">
+                        <button type="button" class="btn btn-success invBtn" id="focBtn">Open</button>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center invDiv">
+                    <i class="fa-solid fa-bars-progress invico"></i>
+                    <h5 class="mb-0 mapa">Pending</h5>
+                    <p class="mapa">Pending Invoices</p>
+                    <div class="testimonial-text bg-light text-center p-4 btnAcpt">
+                        <button type="button" class="btn btn-success invBtn" id="PendingBtn">Open</button>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center invDiv">
+                    <i class="fa-solid fa-check invico"></i>
+                    <h5 class="mb-0 mapa">Confirmed</h5>
+                    <p class="mapa">Confirmed Invoices</p>
+                    <div class="testimonial-text bg-light text-center p-4 btnAcpt">
+                        <button type="button" class="btn btn-success invBtn" id="confBtn1">Open</button>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center invDiv">
+                    <i class="fa-solid fa-globe invico"></i>
+                    <h5 class="mb-0 mapa">International</h5>
+                    <p class="mapa">International Invoices</p>
+                    <div class="testimonial-text bg-light text-center p-4 btnAcpt">
+                        <button type="button" class="btn btn-success invBtn confo" id="interBtn">Open</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            
+        </div>
+    </div>
+    <!-- Testimonial End -->
+        
+
+    
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    {% endblock%}
+    {% block thirdScript %}
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+<!--     **************************            FOc     *****************************       -->
+    <!-- FOC table btn -->
+    <script>
+        $("#focBtn").click(function(){
+            $(".tableDiv").append('<div class="outerFOCDiv animate__animated animate__fadeIn"> <div class="tableHead"> <div class="m-0 text-primary hlogo"><div class="logo"><i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i><a href="/" class="text-decoration-none logoText"><h4 class="h5 h5logo">stock</h4><h1 class="h1 hlogo2">Master</h1></a></div></div>    <div class="GoBack">  <button type="button" class="btn btn-danger BackBtn" id="GoBackBtn">Go Back</button>    </div>         </div>               <div class="innerFOCDiv">       <div class="innerinFOCDiv"></div>     </div>               </div>')
+            $(".innerinFOCDiv").append('<table id="example" class="table table-striped FOCTable" style="width:100%;    font-size: 14px;" ><thead ><tr><tr><th>ID</th><th>Name Of User</th><th>Hospital Name</th> <th>Serial Number</th> <th>Date</th>       <th>Analyzer Name</th>                    <th>Item Name</th><th>Part Number</th><th>Price</th><th>Lot Number</th></tr></tr></thead>         <tbody class="jj"></tbody>              <tfoot><tr><th>ID</th><th>Name Of User</th><th>Hospital Name</th> <th>Serial Number</th> <th>Date</th>       <th>Analyzer Name</th>                    <th>Item Name</th><th>Part Number</th><th>Price</th><th>Lot Number</th></tr></tfoot></table>')
+            loadData()
+            $("#GoBackBtn").click(function(){
+                close()
+            })
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                order: [0, 'desc'],
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                    
+                ]
+                
+            });
+        })
+    </script>
+    <!-- close FOC  -->
+    <script>
+        function close(){
+            $(".outerFOCDiv").removeClass('animate__fadeIn')
+            $(".outerFOCDiv").addClass('animate__fadeOut')
+            setTimeout(function () {
+                $(".outerFOCDiv").remove()
+                $(".outerFOCDiv").load(" .outerFOCDiv > *");
+            },500)
+        }
+    </script>
+    <!-- bulid the FOC Table  -->
+    <script>
+            function loadData() {
+                $.ajax({
+                type: 'GET',
+                url: '/assemJson1/',
+                contentType: "text/plain",
+                dataType: 'json',
+                success: function (response) {
+                    myJsonData = response;
+                    populateDataTable(myJsonData);
+                    console.log(response)
+                    
+                },
+                });
+            }
+        
+            // populate the data table with JSON data
+            function populateDataTable(response) {
+        
+                $("#example").DataTable().clear();
+                var length = Object.keys(response.data).length;
+                var table = $('#example').DataTable();
+                
+                for(var i = 0; i < length; i++) {
+                    var customer = response.data[i];
+                    $('#example').dataTable().fnAddData( [
+                        customer.id,
+                        customer.nameOfUser,
+                        customer.HosName,
+                        customer.Serial,
+                        customer.Dato,
+                        customer.Item_Model_workFlow,
+                        customer.ItemName,
+                        customer.partNumber,
+                        customer.Price,
+                        customer.LotNum,
+                    ]);
+                }
+                $('#example tbody').on('click', 'tr', function () {
+                    if ($(this).hasClass('selected')) {
+                        $(this).removeClass('selected');
+                    } else {
+                        table.$('tr.selected').removeClass('selected');
+                        $(this).addClass('selected');
+                    }
+                });
+            }                        
+        
+    </script>
+<!--     **************************            Confirmed     *****************************       -->
+    <!-- Confirmed table btn  -->
+    <script>
+        $("#confBtn1").click(function(){
+            console.log("MOH")
+            $(".tableDiv").append('<div class="outerFOCDiv animate__animated animate__fadeIn"> <div class="tableHead"> <div class="m-0 text-primary hlogo"><div class="logo"><i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i><a href="/" class="text-decoration-none logoText"><h4 class="h5 h5logo">stock</h4><h1 class="h1 hlogo2">Master</h1></a></div></div>    <div class="GoBack">  <button type="button" class="btn btn-danger BackBtn" id="GoBackBtnConf">Go Back</button>    </div>         </div>               <div class="innerFOCDiv">      <div class="innerinFOCDiv"></div>      </div>               </div>')
+            $(".innerinFOCDiv").append('<table id="example" class="table table-striped FOCTable" style="width:100%;    font-size: 14px;" ><thead ><tr><tr><th>Hospital Name</th> <th>Item Name</th>       <th>Part Number</th><th>Lot Number</th><th>Date</th>                    <th>Invoice Number</th></tr></tr></thead>         <tbody class="jj"></tbody>              <tfoot><tr><th>Hospital Name</th> <th>Item Name</th>       <th>Part Number</th><th>Lot Number</th><th>Date</th>                    <th>Invoice Number</th></tr></tfoot></table>')
+            loadConfData()
+            $("#GoBackBtnConf").click(function(){
+                close()
+            })
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                order: [0, 'desc'],
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                    
+                ]
+                
+            });
+        })
+    </script>
+
+    <!-- close Confirmed  -->
+    <script>
+        function close(){
+            $(".outerFOCDiv").removeClass('animate__fadeIn')
+            $(".outerFOCDiv").addClass('animate__fadeOut')
+            setTimeout(function () {
+                $(".outerFOCDiv").remove()
+                $(".outerFOCDiv").load(" .outerFOCDiv > *");
+            },500)
+        }
+    </script>
+    
+    <!-- bulid the Confirmed Table  -->
+    <script>
+        function loadConfData() {
+            $.ajax({
+            type: 'GET',
+            url: '/HospitalsInvoices/',
+            contentType: "text/plain",
+            dataType: 'json',
+            success: function (response) {
+                myJsonData = response;
+                populateDataTableConfirmed(myJsonData);
+                console.log(response)
+            },  
+            });
+        }
+
+        function populateDataTableConfirmed(response) {
+
+            $("#example").DataTable().clear();
+            var length = Object.keys(response.data).length;
+            var table = $('#example').DataTable();
+            
+            for(var i = 0; i < length; i++) {
+                var customer = response.data[i];
+
+                $('#example').dataTable().fnAddData( [
+                    customer.HosName,
+                    customer.ItemName,
+                    customer.PartNumber,
+                    customer.ItemLot,
+                    customer.Datee,
+                    customer.InvoiceNumber1,
+                    
+                    
+                ]);
+            }
+            $('#example tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                } else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+        }                        
+
+    </script>
+
+<!--     **************************            Pending     *****************************       -->
+    <!-- Pending table btn  -->
+    <script>
+        $("#PendingBtn").click(function(){
+            
+            loadPendingData()
+           
+        })
+    </script>
+
+    <!-- close Pending  -->
+    <script>
+        function close(){
+            $(".outerFOCDiv").removeClass('animate__fadeIn')
+            $(".outerFOCDiv").addClass('animate__fadeOut')
+            setTimeout(function () {
+                $(".outerFOCDiv").remove()
+                $(".outerFOCDiv").load(" .outerFOCDiv > *");
+            },500)
+        }
+    </script>
+    
+    <!-- bulid the Pending Table  -->
+    <script>
+        function loadPendingData() {
+
+            $(".outerFOCDiv").remove()
+
+            $(".tableDiv").append('<div class="outerFOCDiv animate__animated animate__fadeIn"> <div class="tableHead"> <div class="m-0 text-primary hlogo"><div class="logo"><i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i><a href="/" class="text-decoration-none logoText"><h4 class="h5 h5logo">stock</h4><h1 class="h1 hlogo2">Master</h1></a></div></div>    <div class="GoBack">  <button type="button" class="btn btn-danger BackBtn" id="GoBackBtnPending">Go Back</button>    </div>         </div>               <div class="innerFOCDiv">      <div class="innerinFOCDiv"></div>      </div>               </div>')
+            $(".innerinFOCDiv").append('<table id="example" class="table table-striped FOCTable" style="width:100%;    font-size: 14px;" ><thead ><tr><tr><th>ID</th><th>Name Of User</th><th>Hospital Name</th> <th>Date</th>       <th>Serial Number</th><th>Analyzer Name</th>                    <th>Item Name</th><th>Part Number</th><th>Price</th><th>Lot Number</th><th>Quotation Status</th><th>Invoice Status</th></tr></tr></thead>         <tbody class="jj"></tbody>              <tfoot><tr><th>ID</th><th>Name Of User</th><th>Hospital Name</th><th>Date</th>        <th>Serial Number</th><th>Analyzer Name</th>                <th>Item Name</th><th>Part Number</th><th>Price</th><th>Lot Number</th><th>Quotation Status</th><th>Invoice Status</th></tr></tfoot></table>')
+
+            $("#GoBackBtnPending").click(function(){
+                close()
+            })
+
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                order: [0, 'desc'],
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                    
+                ]
+                
+            });
+            
+            $.ajax({
+            type: 'GET',
+            url: '/assemJsonPending/',
+            contentType: "text/plain",
+            dataType: 'json',
+            success: function (response) {
+                myJsonData = response;
+               
+                populateDataTablePending(myJsonData);
+            },  
+            });
+        }
+
+        function populateDataTablePending(response) {
+           
+            // $("#example").DataTable().clear();
+            var length = Object.keys(response.data).length;
+            var table = $('#example').DataTable();
+            
+            for(var i = 0; i < length; i++) {
+                var customer = response.data[i];
+                // You could also use an ajax property on the data table initialization
+                $('#example').dataTable().fnAddData( [
+                    customer.id,
+                    customer.nameOfUser,
+                    customer.HosName,
+                    customer.Dato,
+                    customer.Serial,
+                    customer.Item_Model_workFlow,                    
+                    customer.ItemName,
+                    customer.partNumber,
+                    customer.Price,
+                    customer.LotNum,
+                    customer.Cot,
+                    customer.Invo,                    
+                ]);
+            }
+            $('#example tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                    var dat = table.row(this).data();
+                    console.log(dat[11])
+                    itemId = dat[0]
+                    if(dat[10]=="Submitting"){
+                        PartNum = dat[8]
+                        HosName = dat[2]
+                        LotNum = dat[10]
+                        ItemDate = dat[3]
+                        ItemName = dat[7]
+                        itemId = dat[0]
+                        sendQuotationNumber(itemId,ItemName,HosName,LotNum,ItemDate,PartNum)
+                    }
+                    else if(dat[11]=="Pending"){
+                        PartNum = dat[8]
+                        HosName = dat[2]
+                        LotNum = dat[10]
+                        ItemDate = dat[3]
+                        ItemName = dat[7]
+                        itemId = dat[0]
+                        CotNumber = dat[11]
+                        sendInvoiceNumber(itemId,ItemName,HosName,LotNum,ItemDate,PartNum,CotNumber)
+                    }
+                    
+                } else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+        }                        
+
+    </script>
+    
+    <!-- Send Quotation Number  -->
+    <script>
+        function sendQuotationNumber(itemId,ItemName,HosName,LotNum,ItemDate,PartNum){
+            
+            $(".innerinFOCDiv").append('<div class="outerQuoDiv animate__animated animate__fadeIn">   <div class="innerQuoDiv"> <h2 class="QuoH2">Enter The Quotation Number</h2> <input type="number" placeholder="Quotation Number" class=QuoInput>  <div class="QuotBtnDiv"><button type="button" class="btn btn-danger BackBtn" id="CloseQuotNum">Close</button> <button type="button" class="btn btn-success BackBtn" id="subQuotNum">Submit</button> </div> </div>         </div>')
+            
+            // closing the Input Div
+            $("#CloseQuotNum").click(function(){
+                $(".outerQuoDiv").removeClass('animate__fadeIn')
+                $(".outerQuoDiv").addClass('animate__fadeOut')
+                setTimeout(function(){
+                    $(".outerQuoDiv").remove()
+                },500)
+            })
+            
+            // sending Quotation Number 
+            $(".QuoInput").change(function(){
+                QuotNumber = $(".QuoInput").val()
+                $("#subQuotNum").click(function(){
+                    $.ajax({
+                        url: '/sendingQuotNum/',
+                        data:{
+                            'QuotNumber':QuotNumber,
+                            'ItemName':ItemName,
+                            'HosName':HosName,
+                            'LotNum':LotNum,
+                            'ItemDate':ItemDate,
+                            'PartNum':PartNum,
+                            'itemId':itemId,
+                        },
+                        success: function (response) {
+                            $(".outerQuoDiv").removeClass('animate__fadeIn')
+                            $(".outerQuoDiv").addClass('animate__fadeOut')
+                            setTimeout(function(){
+                                $(".outerQuoDiv").remove()
+                            },500)
+
+                            loadPendingData()
+                            
+                        },  
+                    });
+                });
+            })
+        }
+    </script>
+
+
+    <!-- Send Invoice Number  -->
+    <script>
+        function sendInvoiceNumber(itemId,ItemName,HosName,LotNum,ItemDate,PartNum,CotNumber){
+            
+            $(".innerinFOCDiv").append('<div class="outerQuoDiv animate__animated animate__fadeIn">   <div class="innerQuoDiv"> <h2 class="QuoH2">Enter The Invoice Number</h2> <input type="number" placeholder="Quotation Number" class=QuoInput>  <div class="QuotBtnDiv"><button type="button" class="btn btn-danger BackBtn" id="CloseQuotNum">Close</button> <button type="button" class="btn btn-success BackBtn" id="subInvotNum">Submit</button> </div> </div>         </div>')
+            
+            // closing the Input Div
+            $("#CloseQuotNum").click(function(){
+                $(".outerQuoDiv").removeClass('animate__fadeIn')
+                $(".outerQuoDiv").addClass('animate__fadeOut')
+                setTimeout(function(){
+                    $(".outerQuoDiv").remove()
+                },500)
+            })
+            
+            // sending Invoice Number 
+            $(".QuoInput").change(function(){
+                QuotNumber = $(".QuoInput").val()
+                $("#subInvotNum").click(function(){
+
+                    $.ajax({
+                        url: '/sendingInvoiceNum/',
+                        data:{
+                            'QuotNumber':QuotNumber,
+                            'ItemName':ItemName,
+                            'HosName':HosName,
+                            'LotNum':LotNum,
+                            'ItemDate':ItemDate,
+                            'PartNum':PartNum,
+                            'itemId':itemId,
+                            'CotNumber':CotNumber,
+                        },
+                        success: function (response) {
+
+                            setTimeout(function(){
+                                $(".outerQuoDiv").remove()
+                            },500)
+
+                            loadPendingData()
+                            $("#GoBackBtnPending").click(function(){
+                                close()
+                            })
+
+                        
+                        },  
+                    }); 
+                })
+            })
+        }
+    </script>
+
+
+<!--     **************************            International     *****************************       -->
+    <!-- International table btn  -->
+    <script>
+        $("#interBtn").click(function(){
+            $(".tableDiv").append('<div class="outerFOCDiv animate__animated animate__fadeIn"> <div class="tableHead"> <div class="m-0 text-primary hlogo"><div class="logo"><i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i><a href="/" class="text-decoration-none logoText"><h4 class="h5 h5logo">stock</h4><h1 class="h1 hlogo2">Master</h1></a></div></div>    <div class="GoBack">  <button type="button" class="btn btn-danger BackBtn" id="GoBackBtninter">Go Back</button>    </div>         </div>               <div class="innerFOCDiv">      <div class="innerinFOCDiv"></div>      </div>               </div>')
+            $(".innerinFOCDiv").append('<table id="example" class="table table-striped FOCTable" style="width:100%;    font-size: 14px;" ><thead ><tr><tr><th>ID</th><th>Invoice Number</th><th>Date</th>        <th>Company Name</th>  <th>Item Name</th><th>Part Number</th>                    <th>Lot Number</th><th>QTY</th></tr></tr></thead>         <tbody class="jj"></tbody>              <tfoot><tr><th>ID</th><th>Invoice Number</th><th>Date</th>        <th>Company Name</th>  <th>Item Name</th><th>Part Number</th>                    <th>Lot Number</th><th>QTY</th></tr></tfoot></table>')
+            loadInterData()
+            $("#GoBackBtninter").click(function(){
+                close()
+            })
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                order: [0, 'desc'],
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                    
+                ]
+                
+            });
+        })
+    </script>
+
+    <!-- close International  -->
+    <script>
+        function close(){
+            $(".outerFOCDiv").removeClass('animate__fadeIn')
+            $(".outerFOCDiv").addClass('animate__fadeOut')
+            setTimeout(function () {
+                $(".outerFOCDiv").remove()
+                $(".outerFOCDiv").load(" .outerFOCDiv > *");
+            },500)
+        }
+    </script>
+    
+    <!-- bulid the International Table  -->
+    <script>
+        function loadInterData() {
+            $.ajax({
+            type: 'GET',
+            url: '/InternationalInvoices/',
+            contentType: "text/plain",
+            dataType: 'json',
+            success: function (response) {
+                myJsonData = response;
+                populateDataTableInter(myJsonData);
+                console.log(response)
+            },  
+            });
+        }
+
+        function populateDataTableInter(response) {
+
+            $("#example").DataTable().clear();
+            var length = Object.keys(response.data).length;
+            var table = $('#example').DataTable();
+            
+            for(var i = 0; i < length; i++) {
+                var customer = response.data[i];
+                // You could also use an ajax property on the data table initialization
+                $('#example').dataTable().fnAddData( [
+                    customer.id,
+                    customer.outInvoiceNumber,
+                    customer.Datao,
+                    customer.CompaniesNAme,
+                    customer.ItemName,
+                    customer.ItemPartNumber,
+                    customer.Lots,
+                    customer.LtQTY,
+                ]);
+            }
+            $('#example tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                } else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+        }                        
+
+    </script>
+
+    <!-- Search Input -->
+    <script>
+        $('#searchInput').keyup("change",function(e){
+                searchVal = e.target.value
+                console.log(searchVal);
+                $("#browsers").html("")
+                $.ajax({
+                url: '/seclive/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anythin
+                data:{
+                    'searchVal':searchVal,
+                },
+                beforeSend:function(xmlHttpRequest){
+                                $("#browsers").append('<div id="contdiv"> <div class="loader"></div></div>');
+                            },
+                success: function(AllArrayOfNames){
+                    $("#browsers").html("")
+                    $("#contdiv").remove();
+                    var j = 0;
+                    for(var i=0;i<AllArrayOfNames.length/5;i++){
+                        $("#browsers").append(' <button type="button" value="'+AllArrayOfNames[j+1]+'" class="SearchBtn" id="imgdiv"><div id="smallo"><option id="searchOption"> '+AllArrayOfNames[j]+'</option><div id="smalldiv"><big> QTY : '+AllArrayOfNames[j+3]+'</big><big> AllQTY : '+AllArrayOfNames[j+4]+'</big></div></div> <img id="itemphoto" src="'+AllArrayOfNames[j+2]+'">  </button>');
+                        j = j+5;
+                    }
+                    console.log("MOH5")
+                    $(".SearchBtn").click(function(){
+                        itemId = $(this).val()
+                        bookStoreFun(itemId)
+                    })
+
+                    $(".bodya").click(function(){
+                            $("#browsers").css("display", "none");
+                        });
+
+                    $("#searchInput").wrapInner(function(){
+                        $("#browsers").css("display", "inline");
+                    });
+                    },
+                });
+        });
+    </script>
+    {% endblock %}
+
+</body>
+
+</html>

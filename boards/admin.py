@@ -1,0 +1,53 @@
+from django.contrib import admin
+
+# Register your models here.
+from boards.models import Shipper, Profile, Role, ShipperList, VendorList, FollowerList,QuotationStatus,OrganizeName,ParameterName,OraderCreation, \
+      ExcelFileOrderCrea,ExcelFileInvoice,AutoElementCreation,ExcelFile,AutoOrderInvoice,Autoconfdata,Calibrator,Shipping,OrderInvoice,ReagentQTY,Undertest,ElementConfermation,Price,ItemInput, Engineer, TeamLeader, Imag3, BookStore ,CompanyUnits,WorkFlow,CompanyName,Hospitals,AssembledStore,InvoiceStatus,InvoiceNumbero,OutInvoice,HospitalsAnalyzers,Lot,CotNumber,ElementCreation,\
+      JobSheet , JobSheetImg ,WorkFlowLine,Governorate
+
+
+
+admin.site.register(Governorate)
+admin.site.register(WorkFlowLine)
+admin.site.register(JobSheetImg)
+admin.site.register(JobSheet)
+admin.site.register(ExcelFileOrderCrea)
+admin.site.register(ExcelFileInvoice)
+admin.site.register(AutoElementCreation)
+admin.site.register(ExcelFile)
+admin.site.register(AutoOrderInvoice)
+admin.site.register(Autoconfdata)
+admin.site.register(Calibrator)
+admin.site.register(Shipping)
+admin.site.register(OrderInvoice)
+admin.site.register(ReagentQTY)
+admin.site.register(ElementConfermation)
+admin.site.register(ElementCreation)
+admin.site.register(OraderCreation)
+admin.site.register(ParameterName)
+admin.site.register(OrganizeName)
+admin.site.register(QuotationStatus)
+admin.site.register(Undertest)
+admin.site.register(CotNumber)
+admin.site.register(Lot)
+admin.site.register(Price)
+admin.site.register(HospitalsAnalyzers)
+admin.site.register(OutInvoice)
+admin.site.register(InvoiceNumbero)
+admin.site.register(InvoiceStatus)
+admin.site.register(AssembledStore)
+admin.site.register(Hospitals)
+admin.site.register(WorkFlow)
+admin.site.register(CompanyName)
+admin.site.register(CompanyUnits)
+admin.site.register(Shipper)
+admin.site.register(Profile)
+admin.site.register(Role)
+admin.site.register(ShipperList)
+admin.site.register(VendorList)
+admin.site.register(FollowerList)
+admin.site.register(Imag3)
+admin.site.register(TeamLeader)
+admin.site.register(Engineer)
+admin.site.register(ItemInput)
+admin.site.register(BookStore)

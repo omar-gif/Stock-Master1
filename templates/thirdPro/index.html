@@ -1,0 +1,1238 @@
+{% extends "thirdPro/thirdBase.html" %}
+{% load static %}
+
+
+
+
+
+
+   
+    {% block thirdCont %}
+    <!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <!-- <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5"> -->
+        <div class="m-0 text-primary hlogo">
+            <div class="logo">
+                <i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i>
+                <a href="/" class="text-decoration-none logoText">
+                    <h4 class="h5 h5logo">stock</h4>
+                    <h1 class="h1 hlogo2">Master</h1>
+                </a>
+            </div>
+        </div>
+        
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <form  class="search nav-form heado">
+        <div class="input-group input-search searchoBtn">
+            <input type="text"   class="form-control" name="searchInput" id="searchInput" placeholder="Search By Name Or Part Number" autocomplete="off">
+            <div id="browsers">
+
+            </div>
+            <!-- <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+            </span> -->
+        </div>
+    </form>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="/" class="nav-item nav-link active">Home</a>
+            <a href="/InventoryPage" class="nav-item nav-link">Stock</a>
+            <a href="/InvoicePage" class="nav-item nav-link">Invoices</a>
+            <a href="/InputPage" class="nav-item nav-link ">Inputs</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                <div class="dropdown-menu fade-down m-0">
+                    <a href="/Hospitals" class="dropdown-item">Hospitals</a>
+                    <a href="/pages-price-list.html" class="dropdown-item">Price List</a>
+                    <a href="/setupPage" class="dropdown-item">Setup</a>
+                </div>
+            </div>
+        </div>
+        <a href="/signout" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Logout<i class="fa fa-arrow-right ms-3"></i></a>    </div>
+</nav>
+<!-- Navbar End -->
+    <div class="jobSheetDiv"></div>
+    
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5">
+        <div class="position-relative carose">
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid imgo" src="../static/thirdPro/img/stock.jpg" alt="">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgb(0 0 0 / 54%);">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                                <h1 class="display-3 text-white animated slideInDown">Stock System</h1>
+                                <h3 class="fs-5 text-white mb-4 pb-2 pannerTxt"><pre>  Upload Your Job Sheets  <br>      Review Vistited Sites     </pre>  </h3>
+                                
+                                <div class="motiv"> 
+                                    <button class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft UploadsJobSheet">Upload Job Sheets</button>
+                                    <div class="btnsSearch"> <input class="btn-light py-md-3 px-md-5 animated slideInRight serialInpu" placeholder="Analyzer serial Number" /> <button class="acpt animated slideInRight" id="anaSN"><i class="fa-brands fa-searchengin" style="color: #fff;font-size:20px"></i></button> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Stock Table -->
+    
+    <div class="allTable">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Stock</h6>
+            <h1 class="mb-5">Car Stock</h1>
+        </div>
+    <div class="mainItemStore8 wow fadeInUp">
+        <div class="kk"></div>
+        <button id="buttonNames"></button>
+        <table id="example"  class="table table-striped animate__animated animate__fadeIn" style="width:100%">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Name Of Item</th>
+                    <th>Name Of User</th>
+                    <th>Company Name</th>
+                    <th>Analyzer Name</th>
+                    <th>Part Number</th>
+                    <th>Lot Number</th>
+                    <th>Booked QTY</th>
+                    <th>Status</th>
+                    <th>Remaining QTY</th>
+                    
+                </tr>
+            </thead>
+
+
+            <tbody class="jj">
+            
+
+
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>id</th>
+                    <th>Name Of Item</th>
+                    <th>Name Of User</th>
+                    <th>Company Name</th>
+                    <th>Analyzer Name</th>
+                    <th>Part Number</th>
+                    <th>Lot Number</th>
+                    <th>Booked QTY</th>
+                    <th>Status</th>
+                    <th>Remaining QTY</th>
+                </tr>
+            </tfoot>
+        </table>
+        <button id="btnallshow">Show All results</button>
+    </div>
+    </div>
+
+    <!-- Thongs To DO  -->
+
+    <div class="allTable1"></div>
+
+    <!-- Things to do end -->
+
+    <!-- Testimonial Start -->
+    <!-- <div class="caroDiv"></div> -->
+    <div id="outslider" >
+        
+    </div>
+    
+    <!-- Testimonial End -->
+    
+        
+
+   
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    {% endblock%}
+    
+    
+    {% block thirdScript %}
+
+    <!-- Hospital search  -->
+    <script>
+        $("#anaSN").click(function(){
+            console.log("SN")
+            SN = $(".serialInpu").val()
+            console.log(SN)
+            $.ajax({
+                type: 'GET',
+                url: '/searchSN/',
+                contentType: "text/plain",
+                data:{
+                    'SN':SN
+                },
+                dataType: 'json',
+                success: function (arr) {
+                    if(arr.length >0){
+                        j=0
+                        for(i=0 ; i<arr.length/2 ; i++){
+                            $(".jobSheetDiv").append('<div class="OuterSearechDiv animate__animated animate__fadeIn">   <div class="MidSearchDiv">  <button type="button" class="btn btn-danger BackBtn" id="GoBackBtn">Go Back</button>    <h1 class="searchDate">Last Pm : '+arr[j]+'</h1>   <h1 class="searchLamp">Last Lamp : '+arr[j+1]+'</h1>      </div>        </div>')
+                            j =j +2
+                        }
+                        
+                    }
+                    else{
+                        $(".jobSheetDiv").append('<div class="OuterSearechDiv animate__animated animate__fadeIn">   <div class="MidSearchDiv">  <button type="button" class="btn btn-danger BackBtn" id="GoBackBtn">Go Back</button>    <h1 class="searchDate">Wrong Serial Number </h1>        </div>        </div>')
+
+                    }
+                    $("#GoBackBtn").click(function(){
+                        close()
+                        })
+                    
+                },  
+            });
+        })
+    </script>
+
+    <!-- close FOC  -->
+    <script>
+        function close(){
+            $(".OuterSearechDiv").removeClass('animate__fadeIn')
+            $(".OuterSearechDiv").removeClass('animate__animated')
+            $(".OuterSearechDiv").addClass('animate__animated animate__fadeOut')
+            setTimeout(function () {
+                $(".OuterSearechDiv").remove()
+            },500)
+        }
+    </script>
+
+
+    <script>
+        var myCarousel = document.querySelector('#carouselExampleIndicators')
+    var carousel = new bootstrap.Carousel(myCarousel, {interval: 2500, wrap: false})
+    
+    
+    var myCarousel = document.querySelector('#carouselExampleIndicators1')
+    var carousel = new bootstrap.Carousel(myCarousel, {interval: 2500, wrap: false})
+    
+    
+    </script>
+    <!-- Invoices Div -->
+
+    <script>
+        $.ajax({
+                type: 'GET',
+                url: '/GetAllInvoices/',
+                contentType: "text/plain",
+                dataType: 'json',
+                success: function (response) {
+                    if (response.arrlen.length != 0){
+                        $("#outslider").append('<div class="text-center wow fadeInUp" data-wow-delay="0.1s"><h6 class="section-title bg-white text-center text-primary px-3">Invoices</h6><h1 class="mb-5">Pending Invoices</h1></div><div id="inslider" class="lists wow fadeInUp"> </div>')
+                    }
+
+                    j=0
+                    p=0
+                    newId=0
+                    
+                    for(l=0;l<response.arrNam.length;l++){
+                        
+                        $(".lists").append('<div class="outo"><div class="testimonial-item text-center BigTesto"><div id="sd" class="BottomDivCir col">    <div class="allimgs">     <img class="border rounded-circle p-2 mx-auto mb-3" src="'+response.arrHos[j+1]+'" style="width: 80px; height: 80px;">  <div  class="BottomDivCir">  <button value="'+response.arrHos[j+7]+'" class="testimonial-text bg-light text-center p-3 innerPendDiv">    <h5 class="mb-0">'+response.arrNam[l]+'</h5><p class="pipo">'+response.arrHos[j+2]+'</p><p class="pipo">'+response.arrHos[j+3]+'</p>        <div class="inrLeft"> <p>'+response.arrHos[j+5]+'</p><p>'+response.arrHos[j]+'</p></div><div class="inrMid">'+response.arrHos[j+6]+'</div><div class="inrRight">'+response.arrHos[j+4]+'       <p class="Invo">'+response.arrHos[j+9]+'</p> </div>        </button></div></div></div></div></div>')
+                        var newId = $("#sd").attr("id","sd"+newId);
+                       
+                        
+                        for(y=1;y<response.arrlen[p];y++){
+                            j=j+10
+                            $(newId).append('<div class="allimgs"><img class="border rounded-circle p-2 mx-auto mb-3" src="'+response.arrHos[j+1]+'" style="width: 80px; height: 80px;"><button value="'+response.arrHos[j+7]+'" class="testimonial-text bg-light text-center p-3 innerPendDiv">  <h5 class="mb-0 HosNamo" id="HosNamo">'+response.arrNam[l]+'</h5><p class="pipo ItemNumo">'+response.arrHos[j+2]+'</p><p class="pipo PartoNumo">'+response.arrHos[j+3]+'</p>     <div class="inrLeft"> <p>'+response.arrHos[j+5]+'</p><p class="PartoDato">'+response.arrHos[j]+'</p></div><div class="inrMid AnaNamo">'+response.arrHos[j+6]+'</div><div class="inrRight ItemPrico">'+response.arrHos[j+4]+'      <p class="Invo">'+response.arrHos[j+9]+'</p></div>        </button></div>')
+                            
+                            
+                        }
+                        j=j+10
+                        p = p+1
+                        newId = newId+1
+                    }
+                    
+                    $(".innerPendDiv").click(function(){
+                        ItemId = $(this).val()
+                        $(".innerPendDiv").attr("disabled", true)
+                        $(this).append('  <div class="allBigInvo animate__animated animate__fadeInUp"><div class="form-group"><label class="prag1" for="Company_name">Invoice Number</label>     <input class="form-control ico InvNumber" placeholder="Invoice Number" id="InvNumber" name="companyName_Item" >       </div> <div class="saveBtns"> <button id="Cancel2" type="submit" class="btn btn-danger btnico"  >Cancel</button> <button id="savebtn" type="submit"  class="btn btn-success btnico"  >Save</button>  </div> </div>')
+                       
+                        $("#savebtn").click(function(){
+                            IvnNumbro = $(".InvNumber").val()
+                            PendingInvo(IvnNumbro,ItemId)
+                        })
+                        $("#Cancel2").click(function(){
+                            close12()
+                        })
+                        
+                    })
+                },  
+            });
+    </script>
+
+    <!-- close Hospitals Div  -->
+    <script>
+        function close12(){
+            $(".allBigInvo").removeClass('animate__animated')
+            $(".allBigInvo").removeClass('animate__fadeInUp')
+            $(".allBigInvo").addClass('animate__animated animate__fadeOutDown')
+            setTimeout(function () {
+                $(".allBigInvo").remove()
+                $(".allBigInvo").load(" .outerFOCDiv > *");
+            },500)
+            $(".innerPendDiv").attr("disabled", false)
+        }
+    </script>
+
+    <!-- Pending Invoices -->
+    <script>
+        function PendingInvo(IvnNumbro,ItemId){
+            $.ajax({
+                type: 'GET',
+                url: '/AddPendingInvo/',
+                data:{
+                    'ItemId':ItemId,
+                    'IvnNumbro':IvnNumbro,
+                },
+                success: function (response) {
+                    $(".innerPendDiv").attr("disabled", false)
+                    $(".allBigInvo").removeClass('animate__animated')
+                    $(".allBigInvo").removeClass('animate__fadeInUp')
+                    $(".allBigInvo").addClass('animate__animated animate__fadeOutDown')
+                    setTimeout(function () {
+                        $(".allBigInvo").remove()
+                        $(".allBigInvo").load(" .outerFOCDiv > *");
+                    },500)
+                        },  
+            });
+        }
+    </script>
+
+    <!-- To Do Hospitals -->
+    <script>
+        $.ajax({
+                type: 'GET',
+                url: '/GetAllHos/',
+                contentType: "text/plain",
+                dataType: 'json',
+                success: function (arr) {
+                    if (arr.length != 0){
+                        $(".allTable1").append('<div class="text-center wow fadeInUp" data-wow-delay="0.1s"><h6 class="section-title bg-white text-center text-primary px-3">Hospitals</h6><h1 class="mb-5">Hospitals Need Pm </h1></div><div class="toDoHos wow fadeInUp"><div class="innerToDoGos wow fadeInUp"></div></div>')
+                    
+                        var today = new Date();
+                        var dd = String(today.getDate()).padStart(2, '0');
+                        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                        var yyyy = today.getFullYear();
+
+                        today = mm + '-' + dd + '-' + yyyy;
+                        j=0;
+                        for(i=0 ; i<arr.length/7 ; i++){
+                        dato = arr[j+5]
+                        if(dato != null){
+                            diff = mm - arr[j+5].slice(5,7)
+                            if(diff > 5){
+                                
+                                 $(".innerToDoGos").append('<div class="testimonial-item text-center Hoso2 "> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-solid fa-solid fa-xmark invico2"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    </div>')
+                                j = j+7
+                            }
+
+                            else if (diff > 3){
+                                
+                                $(".innerToDoGos").append('<div class="testimonial-item text-center Hoso1 "> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-solid fa-screwdriver-wrench invico5"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>   </div>')
+                                j = j+7
+                            }
+                            else{
+                                j = j+7
+                            }
+                            
+                        }
+                        else{
+                            j = j+7 
+                        }
+                        
+                    }
+                    }
+                },  
+            });
+    </script>
+
+    
+    <!----------------------- Spare Part Data table --------------------------->
+    <script>
+        {% if userStaff %}
+    var newId = 0;
+
+    $.ajax({
+        url: '/namesjson/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anythin
+        success: function(arrayOfNames){
+            // console.log(arrayOfNames)
+                for(var i=0 ; i<arrayOfNames.length ; i++){
+                    $("#buttonNames").append('<button class="allbtns animate__animated animate__fadeIn" id="loadData" value="'+arrayOfNames[i]+'">'+arrayOfNames[i]+'</button>')
+                    
+                    $("#loadData").each(function (){
+                        newId = newId + 1 ;
+                        var x = $(this).attr("id","loadData"+newId);
+                            
+                            $(x).click(function () {     
+                                // $("#example").DataTable().clear();  
+                                           
+                                actName = $(x).val()
+                                // $("#nameOfUser").append(''+actName+'')
+                                if(actName == "Marwa"){
+                                    loadAllData();
+                                }
+                                else{
+                                   
+						        loadData();
+                                
+                                }
+					        });
+                            tab = $("#example").DataTable();
+                            // Premade test data, you can also use your own
+                            function loadData() {
+                                var table = $('#example').DataTable();
+                                table
+                                    .clear()
+                                    .draw();
+                                $.ajax({
+                                type: 'GET',
+                                url: '/adminjson/',
+                                contentType: "text/plain",
+                                dataType: 'json',
+                                data:{
+                                    'actName':actName
+                                },
+                                beforeSend:function(xmlHttpRequest){
+                                    // $(".jj").css("display", "none");
+                                    // $("#example").css("visibility", "hidden");
+                                    // $(".kk").append('<div id="contdiv"> <div class="loader"></div></div>');
+                                    
+                                },
+                                success: function (response) {
+                                    // $("#contdiv").remove()
+                                    // $("#example").css("visibility", "show");
+                                    myJsonData = response;
+                                    populateDataTable(myJsonData);
+                                    
+                                },
+                                error: function (e) {
+                                    console.log("There was an error with your request...");
+                                    console.log("error: " + JSON.stringify(e));
+                                }
+                                });
+                            }
+                            function loadAllData() {
+                                $.ajax({
+                                type: 'GET',
+                                url: '/json/',
+                                contentType: "text/plain",
+                                dataType: 'json',
+                                // beforeSend:function(xmlHttpRequest){
+                                //     // $(".jj").css("display", "none");
+                                //     $("#example").css("visibility", "hidden");
+                                //     $(".kk").append('<div id="contdiv"> <div class="loader"></div></div>');
+                                    
+                                // },
+                                success: function (response) {
+                                    // $("#contdiv").remove()
+                                    // $("#example").css("visibility", "show");
+                                    myJsonData = response;
+                                    populateDataTable(myJsonData);
+                                    // console.log(response)
+                                },
+                                error: function (e) {
+                                    // console.log("There was an error with your request...");
+                                    // console.log("error: " + JSON.stringify(e));
+                                }
+                                });
+                            }
+
+                            // populate the data table with JSON data
+                            function populateDataTable(response) {
+
+                                $("#example").DataTable().clear();
+                                var length = Object.keys(response.data).length;
+                                var table = $('#example').DataTable();
+
+                                for(var i = 0; i < length; i++) {
+                                    var customer = response.data[i];
+                                    if(customer.RemainingQTY !=0){
+                                    $('#example').dataTable().fnAddData( [
+                                        customer.id,
+                                        customer.NameOfItem,
+                                        customer.nameOfUser,
+                                        customer.CampNam,
+                                        customer.AnaNam,
+                                        customer.ParNum,
+                                        customer.BookedLot,
+                                        customer.QTYOfItem,
+                                        customer.StatusOfItem,
+                                        customer.RemainingQTY,
+                                        customer.CampNam,
+                                        customer.AnaNam,
+                                        customer.ParNum,
+                                        
+                                    ]);
+                                }
+                                }
+
+                                $("#btnallshow").click(function(){
+                                    $("#example").DataTable().clear();
+                                    for(var i = 0; i < length; i++) {
+                                        var customer = response.data[i];
+                                        $('#example').dataTable().fnAddData( [
+                                            customer.id,
+                                            customer.NameOfItem,
+                                            customer.nameOfUser,
+                                            customer.CampNam,
+                                            customer.AnaNam,
+                                            customer.ParNum,
+                                            customer.BookedLot,
+                                            customer.QTYOfItem,
+                                            customer.StatusOfItem,
+                                            customer.RemainingQTY,
+                                            customer.CampNam,
+                                            customer.AnaNam,
+                                            customer.ParNum,
+                                        ]);
+                                    }
+                                });
+
+                                $('#example tbody').on('click', 'tr', function () {
+                                    if ($(this).hasClass('selected')) {
+                                        $(this).removeClass('selected');
+                                        var dat = table.row(this).data();
+                                        ItemId = dat[0]
+                                        parto = dat[5]
+                                        loto = dat[6]
+                                        AllQty = dat[7]
+                                        RemainingQTY = dat[9]
+                                        stat = dat[8]
+
+                                        if(stat == "Undertest"){
+                                            $(".bodya").append('<div class="removeItems"> <div class="innrremoveitem"> <h3 class="removH3">Do you want to return this Item</h3>  <div class="form-group vivo"><label class="prag1" for="statsu">Status</label><select class="form-control ico" id="statsu" name="status_Item" required ><option id="companyNameOpt" >--Please choose an option--</option><option id="analyzerNameOpt" >Tested Ok</option><option id="analyzerNameOpt" >Undertest</option></select></div>    <div class="form-group vivo"><label class="prag1" for="Note">Note</label> <input class="form-control ico" id="Note" placeholder="Enter Your Note">  </div>       <div class="innrRemov">  <button id="Cancel2" type="submit" class="btn btn-danger btnico"  >Cancel</button>   <button disabled id="save8" type="submit"  class="btn btn-success btnico"   >Save</button>      </div> </div>   </div>')
+
+                                            // cancel form
+                                            $("#Cancel2").click(function(){
+                                                $(".removeItems").remove()
+                                            })
+                                            
+                                            // Get Status
+                                            $("#statsu").change(function(){
+                                                undro = $("#statsu").val()
+                                                $("#save8").attr("disabled", false)
+                                            })
+                                            
+                                            // Get Note
+                                            $("#Note").change(function(){
+                                                InputNote = $("#Note").val()
+                                            })
+                                            // Save Btn
+                                            $("#save8").click(function(){
+                                                
+                                                returnFunc(ItemId,RemainingQTY,AllQty,parto,loto,stat,undro,InputNote)
+                                            })
+                                        }
+                                        else{
+                                            $(".bodya").append('<div class="removeItems"> <h3 class="removH3">Do you want to return this Item</h3>  <div class="innrRemov">  <button id="Cancel2" type="submit" class="btn btn-danger btnico"  >Cancel</button>   <button id="save8" type="submit"  class="btn btn-success btnico"   >Save</button>      </div>    </div>')
+                                        
+                                            // cancel form
+                                            $("#Cancel2").click(function(){
+                                                $(".removeItems").remove()
+                                            })
+                                            
+                                            $("#save8").click(function(){
+                                                
+                                                returnFunc(ItemId,RemainingQTY,AllQty,parto,loto,stat)
+                                            })
+                                        }
+                                        
+                                        
+                                    } else {
+                                        table.$('tr.selected').removeClass('selected');
+                                        $(this).addClass('selected');
+                                        
+                                        
+                                    }
+                                });
+                                // $('#example tbody').on('click', 'tr', function () {
+                                //         if ($(this).hasClass('selected')) {
+                                //             $(this).removeClass('selected');
+                                //         } else {
+                                //             table.$('tr.selected').removeClass('selected');
+                                //             $(this).addClass('selected');
+                                //         }
+                                //     });
+                                    
+                                
+                            }                        
+                    });
+                 }   
+            },
+        });
+        {% else %}
+        $(function() {
+  $("#example").DataTable();
+
+    loadData();
+
+  // Premade test data, you can also use your own
+  function loadData() {
+    $.ajax({
+      type: 'GET',
+      url: '/json/',
+      contentType: "text/plain",
+      dataType: 'json',
+      
+      success: function (response) {
+        console.log(response)
+        myJsonData = response;
+        populateDataTable(myJsonData);
+        
+      },
+      error: function (e) {
+        console.log("There was an error with your request...");
+        console.log("error: " + JSON.stringify(e));
+      }
+    });
+  }
+
+  // populate the data table with JSON data
+  function populateDataTable(response) {
+
+    $("#example").DataTable().clear();
+    var length = Object.keys(response.data).length;
+    var table = $('#example').DataTable();
+    $('#example tbody').on('click', 'tr', function () {
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+                var dat = table.row(this).data();
+                ItemId = dat[0]
+                parto = dat[5]
+                loto = dat[6]
+                AllQty = dat[7]
+                RemainingQTY = dat[9]
+                stat = dat[8]
+
+                if(stat == "Undertest"){
+                    $(".bodya").append('<div class="removeItems"> <div class="innrremoveitem"> <h3 class="removH3">Do you want to return this Item</h3>  <div class="form-group vivo"><label class="prag1" for="statsu">Status</label><select class="form-control ico" id="statsu" name="status_Item" required ><option id="companyNameOpt" >--Please choose an option--</option><option id="analyzerNameOpt" >Tested Ok</option><option id="analyzerNameOpt" >Undertest</option></select></div>    <div class="form-group vivo"><label class="prag1" for="Note">Note</label> <input class="form-control ico" id="Note" placeholder="Enter Your Note">  </div>       <div class="innrRemov">  <button id="Cancel2" type="submit" class="btn btn-danger btnico"  >Cancel</button>   <button disabled id="save8" type="submit"  class="btn btn-success btnico"   >Save</button>      </div> </div>   </div>')
+
+                    // cancel form
+                    $("#Cancel2").click(function(){
+                        $(".removeItems").remove()
+                    })
+                    
+                    // Get Status
+                    $("#statsu").change(function(){
+                        undro = $("#statsu").val()
+                        $("#save8").attr("disabled", false)
+                    })
+                    
+                    // Get Note
+                    $("#Note").change(function(){
+                        InputNote = $("#Note").val()
+                    })
+                    // Save Btn
+                    $("#save8").click(function(){
+                        
+                        returnFunc(ItemId,RemainingQTY,AllQty,parto,loto,stat,undro,InputNote)
+                    })
+                }
+                else{
+                    $(".bodya").append('<div class="removeItems"> <h3 class="removH3">Do you want to return this Item</h3>  <div class="innrRemov">  <button id="Cancel2" type="submit" class="btn btn-danger btnico"  >Cancel</button>   <button id="save8" type="submit"  class="btn btn-success btnico"   >Save</button>      </div>    </div>')
+                
+                    // cancel form
+                    $("#Cancel2").click(function(){
+                        $(".removeItems").remove()
+                    })
+                    
+                    $("#save8").click(function(){
+                        
+                        returnFunc(ItemId,RemainingQTY,AllQty,parto,loto,stat)
+                    })
+                }
+            } else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+        });
+        
+    for(var i = 0; i < length; i++) {
+        var customer = response.data[i];
+        if(customer.RemainingQTY !=0){
+        // You could also use an ajax property on the data table initialization
+        $('#example').dataTable().fnAddData( [
+            // <a id="linko"  >zz</a>,
+            customer.id,
+            customer.NameOfItem,
+            customer.nameOfUser,
+            customer.CampNam,
+            customer.AnaNam,
+            customer.ParNum,
+            customer.BookedLot,
+            customer.QTYOfItem,
+            customer.StatusOfItem,
+            customer.RemainingQTY,
+            customer.CampNam,
+            customer.AnaNam,
+            customer.ParNum,
+            
+        ]);
+        }
+    }
+    $("#btnallshow").click(function(){
+        $("#example").DataTable().clear();
+        for(var i = 0; i < length; i++) {
+            var customer = response.data[i];
+            $('#example').dataTable().fnAddData( [
+                customer.id,
+                customer.NameOfItem,
+                customer.nameOfUser,
+                customer.CampNam,
+                customer.AnaNam,
+                customer.ParNum,
+                customer.BookedLot,
+                customer.QTYOfItem,
+                customer.StatusOfItem,
+                customer.RemainingQTY,
+                customer.CampNam,
+                customer.AnaNam,
+                customer.ParNum,
+            ]);
+        }
+        
+    });
+  }
+});
+        {% endif %}
+    </script>
+
+    <!-- Return Function -->
+    <script>
+        function returnFunc(ItemId,RemainingQTY,AllQty,parto,loto,stat,undro,InputNote){
+            $.ajax({
+                type: 'GET',
+                url: '/returnFun/',
+                contentType: "text/plain",
+                dataType: 'json',
+                data:{
+                    'ItemId':ItemId,
+                    'parto':parto,
+                    'loto':loto,
+                    'RemainingQTY':RemainingQTY,
+                    'AllQty':AllQty,
+                    'stat':stat,
+                    'undro':undro,
+                    'InputNote':InputNote,
+                },
+                success: function () {
+                    $(".removeItems").remove()
+                },
+            });
+        }
+    </script>
+    
+    <!-- Upload Job Sheets -->
+    <script>
+        $(".UploadsJobSheet").click(function(){
+            $(".jobSheetDiv").append('<div class="outerItemPrice animate__animated animate__fadeInUp">   <div class="inrItemPrice">       <div class="rowsh"><div class="col-lg-12"><div class="formo" id="formo"><div class="form-group mb-lg"><label>Hospital Name</label><input id="search" class="form-control ico Searcho"  placeholder="Hospitals Search" autocomplete="off" /><select class="form-control ico" id="HosName"  >        <option>--Please choose an option--</option>      </select>   </div>  <div class="form-group mb-lg"><label for="cond_shippo">Date</label> <div class="dateDiv">  <input type="date" id="HosDate"  placeholder="Date " class="form-control input-lg ico"  /><button class="Tod">Today</button> </div>    </div>   <div class="form-group mb-lg"><label for="cond_shippo">Spare Parts</label> <div class="AddedSpare"> <div class="allDateDiv"> <div class="AddSpaDiv">      </div>  </div> <button class="AddSpare"><i class="fa-solid fa-plus invico1"></i></button>        </div> </div>  <div class="form-group ico"><input id="Cot" hidden class="form-control ico" name="Cot_item" required readonly /></div><div class="form-group mb-none">            <div class="col-sm-12 mb-lg"><label for="Img">Image</label>   <div class="ImmDiv" >     <input  id="HosImg" type="file"  class="form-control input-lg ico" placeholder="Enter Your Image " required />  <button type="button" id="Hosimgbtn">Upload</button> </div><div id="loadingbar"></div>   </div>  <div class="collection">   <div class="CheckBoxs">    <div class="form-group mb-lg checko"><label for="cond_shippo">PM</label><input type="checkbox" id="CheckPm"     />      </div>       <div class="form-group mb-lg checko"><label for="cond_shippo">Ups</label><input type="checkbox" id="CheckUps"     />      </div>  <div class="form-group mb-lg checko"><label for="cond_shippo">Stablizer</label><input type="checkbox" id="CheckStab"     />      </div>  <div class="form-group mb-lg checko"><label for="cond_shippo">Earth</label><input type="checkbox" id="CheckEarth"     />      </div> </div>  <div class="SoftVersion">  <div class="form-group mb-lg "><label for="cond_shippo">Counter</label><input type="text" id="AnaCounter"  placeholder="Counter " class="form-control input-lg ico"  />     </div>        <div class="form-group mb-lg"><label for="cond_shippo">Software</label><input type="text" id="AnaSoftware"  placeholder="Software Version " class="form-control input-lg ico"  />     </div>          </div>         </div>       </div></div>    <div class="form-group mb-lg"><label for="cond_shippo">Note</label><input type="text" id="HosNote"  placeholder="Note " class="form-control input-lg ico"  />     </div>      <div class="form-group ItemPricebtns"><button id="Cancel2" type="submit" class="btn btn-danger btnico"  >Cancel</button>   <button id="save2" type="submit"  class="btn btn-success btnico" disabled  >Save</button>    </div></div></div></div></div>      </div>       </div>')
+                
+            $("#Cancel2").click(function(){
+                $(".outerItemPrice").removeClass('animate__animated')
+                $(".outerItemPrice").removeClass('animate__fadeInUp')
+                $(".outerItemPrice").addClass('animate__animated animate__fadeOutDown')
+                setTimeout(function(){
+                    $(".outerItemPrice").remove()
+                },500)
+            })
+            
+            // check Box 
+            $("#CheckPm").click(function(){
+                if($(this).hasClass('selcted')){
+                    $(this).removeClass('selcted')
+                }
+                else{
+                    $(this).addClass('selcted')
+                }
+            })
+
+            // Check Ups
+            $("#CheckUps").click(function(){
+                if($(this).hasClass('selctedUps')){
+                    $(this).removeClass('selctedUps')
+                }
+                else{
+                    $(this).addClass('selctedUps')
+                }
+            })
+
+            // Check Stablizer
+            $("#CheckStab").click(function(){
+                if($(this).hasClass('selctedStab')){
+                    $(this).removeClass('selctedStab')
+                }
+                else{
+                    $(this).addClass('selctedStab')
+                }
+            })
+
+            // Check Earth  
+            $("#CheckEarth").click(function(){
+                if($(this).hasClass('selctedEarth')){
+                    $(this).removeClass('selctedEarth')
+                }
+                else{
+                    $(this).addClass('selctedEarth')
+                }
+            })
+
+            // Today Func
+            $(".Tod").click(function(){
+                var d = new Date();
+
+            var month = d.getMonth()+1;
+            var day = d.getDate();
+
+            var output = d.getFullYear() + '-' +
+                (month<10 ? '0' : '') + month + '-' +
+                (day<10 ? '0' : '') + day;
+                $("#HosDate").val(output)
+
+            })
+
+
+            // Add New Spare Part Input 
+            newId = 0
+            newxId = 0
+            newInv = 0
+            $(".AddSpare").click(function(){
+                $(".allDateDiv").append('<div class="AddSpaDiv" ><input type="text" id="HosSparePart"  placeholder="Spare Part " class="form-control input-lg ico Sparodiv Sparo"  /> <h5 hidden id="sparLot" class="Lot"></h5><select id="Invoico" class="form-control ico Invoico5" name="Invoico_item"  ><option id="companyNameOpt" >--Please choose an option--</option><option id="companyNameOpt" >FOC</option><option id="companyNameOpt" >Pending</option></select> </div>')
+                $(".AddSpare").attr("disabled", true)
+                $("#HosSparePart").click(function(){
+                    $(".jobSheetDiv").append('<div class="shadow15"> </div>')
+                    newId = newId + 1 ;
+                    newxId = newxId + 1 ;
+					var newSparo = $("#HosSparePart").attr("id","HosSparePart"+newId);
+                    var newSparoLot = $("#sparLot").attr("id","sparLot"+newxId);
+                    var newInvoice = $("#Invoico").attr("id","Invoico"+newInv);
+                
+                    // Get Spare Parts Div
+                    $.ajax({
+                        url: '/GetMySpareParts/', // <-- point to server-side PHP script
+                        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                        beforeSend:function(xmlHttpRequest){
+                            $(".shadow15").append('<div class="loader"></div>')
+                        },
+                        success: function(arr){
+                            $(".shadow15").remove()
+                            $(".jobSheetDiv").append('<div class="SparPartDiv animate__animated animate__fadeIn">   <div class="closeDiv">  <button type="button" class="btn btn-danger BackBtn" id="GoBackBtn">Go Back</button>     </div> <div class="inrSparePartItem">            </div>      </div>')
+                            j=0
+                            for(i=0 ; i<arr.length/6 ; i++){
+                                $(".inrSparePartItem").append('<button value="'+arr[j]+'" class="service-item text-center  AllDivs"><div ><div class="spareImgDiv">  <img class="SpareImg"  src="'+arr[j+4]+'"/>     </div></div>   <div class="sparelowerdiv">  <h5 class="sparh5">'+arr[j+1]+'</h5> <small class="PartNum"> '+arr[j+5]+' </small>  <small class="lightSmall" id="Loto"> Lot : '+arr[j+2]+' </small>  <small class="lightSmall"> Remaining QTY : '+arr[j+3]+' </small>    </div>        </div></button> ')
+                                j=j+6
+                            }
+                            
+                            // Closing Spare Div 
+                            $("#GoBackBtn").click(function(){
+                                $(".SparPartDiv").remove()
+                            })
+                            
+                            $(".AllDivs").click(function(){
+                                GetId = $(this).val()
+                                transferItem(GetId,newSparo,newSparoLot,newInvoice)
+                            })                              
+                        },
+                    });
+                })
+            })
+            
+
+            
+            GetAllNames()
+            HosSearch()      
+            valHos()
+            valDato()
+            valInv()
+            valDatoBtn()
+
+            // Upolad Image 
+            $("#Hosimgbtn").click(function(){
+                $(".jobSheetDiv").append('<div class="shadow15"> </div>')
+                imgFun()
+            }) 
+
+
+            // Submit The Form
+            $("#save2").click(function(){
+                HosName = $("#HosName").val()
+                Invoice = $("#Invoico").val()
+                BookDate = $("#HosDate").val()
+                note = $("#HosNote").val()
+                counter = $("#AnaCounter").val()
+                Software = $("#AnaSoftware").val()
+                myData=[]
+                LotArr=[]
+                InvData=[]
+
+                // spare Parts
+                $(".Sparo").each(function (){
+                    cv = $(this).val()
+                    myData.push(cv)
+                    
+				});
+
+                // invoice val
+                $(".Invoico5").each(function (){
+                    inv = $(this).val()
+                    InvData.push(inv)
+                    
+				});
+
+                // Lots
+                $(".Lot").each(function (){
+                    xc = $(this).html()
+                    LotArr.push(xc)
+				});
+                
+
+                // Check Btn
+                if ($("#CheckPm").hasClass('selcted')){
+                    checkVal = "Yes"
+                }
+                else{
+                    checkVal = "No"
+                }
+
+                if ($("#CheckUps").hasClass('selctedUps')){
+                    checkValUps = "Yes"
+                }
+                else{
+                    checkValUps = "No"
+                }
+
+                if ($("#CheckStab").hasClass('selctedStab')){
+                    checkValStab = "Yes"
+                }
+                else{
+                    checkValStab = "No"
+                }
+
+                if ($("#CheckEarth").hasClass('selctedEarth')){
+                    checkValEarth = "Yes"
+                }
+                else{
+                    checkValEarth = "No"
+                }
+                
+                
+                $.ajax({
+                    url: '/SendSubmitForm/',
+                    type: 'post',
+                    dataType: "json",
+                    data: {
+                        'partNumber[]':myData,
+                        'IdArr[]':LotArr,
+                        'InvData[]':InvData,
+                        'HosName':HosName,
+                        'Invoice':Invoice,
+                        'BookDate':BookDate,
+                        'note':note,
+                        'checkVal':checkVal,
+                        'counter':counter,
+                        'Software':Software,
+                        'checkValUps':checkValUps,
+                        'checkValStab':checkValStab,
+                        'checkValEarth':checkValEarth,
+                    },
+                    success:function(arrayOfNames){
+                        $(".outerItemPrice").removeClass('animate__animated')
+                        $(".outerItemPrice").removeClass('animate__fadeInUp')
+                        $(".outerItemPrice").addClass('animate__animated animate__fadeOutDown')
+                        setTimeout(function(){
+                            $(".outerItemPrice").remove()
+                        },500)
+                    } 
+                });
+					
+            })
+        })
+    </script>
+
+    <!------   upload Images -------- -->
+    <script>
+        function imgFun(){   
+            $("#Hosimgbtn").attr("disabled", true)         
+            var form_data = new FormData();
+            file_data1 = $("#HosImg").prop('files').length;
+            for(var i = 0 ; i<=file_data1 ; i++){
+                    file_data = $("#HosImg").prop('files')[i];
+                    form_data.append("file", file_data);
+                    console.log(i);
+                    }
+            $.ajax({
+                url: '/uploadFiles8/', // <-- point to server-side PHP script
+                dataType: 'text',  // <-- what to expect back from the PHP script, if anything
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: 'post',
+                beforeSend:function(xmlHttpRequest){
+                    $(".shadow15").append('<div class="loader"></div>')
+                },
+
+                success: function(response){
+                    $(".shadow15").remove()
+                    
+                    
+                    $("#Hosimgbtn").addClass("Vali")
+                    valAllInput()
+                    
+                },
+                
+            });
+		    
+        }
+		
+    </script> 
+
+    <!-- validate Image Btn  -->
+    <script>
+        function valAllInput(){
+
+                HosName = $("#HosName").val()
+                HosDate = $("#HosDate").val()
+                Invoico = $("#Invoico").val()
+                if(HosName == "--Please choose an option--" ||HosName == "" ||  HosDate == "" ||  Invoico == "--Please choose an option--" ){
+                    $("#save2").attr("disabled", true)
+                }
+                else{
+                    $("#save2").attr("disabled", false)
+                }
+        }
+        
+    </script>
+
+    <!-- validate Hospitals Name   -->
+    <script>
+        function valHos(){
+            $("#HosName").change(function(){
+                HosName = $("#HosName").val()
+                HosDate = $("#HosDate").val()
+                Invoico = $("#Invoico").val()
+                if ($("#Hosimgbtn").hasClass('Vali')){
+                    if(HosName == "--Please choose an option--" ||HosName == "" ||  HosDate == "" ||  Invoico == "--Please choose an option--"  ){
+                    $("#save2").attr("disabled", true)
+                    }
+                    else{
+                        $("#save2").attr("disabled", false)
+                    }
+                }
+                else{
+                    $("#save2").attr("disabled", true)
+                }
+                
+
+            })
+        }
+        
+    </script>
+
+    <!-- validate Date    -->
+    <script>
+        function valDato(){
+            $("#HosDate").change(function(){
+                HosName = $("#HosName").val()
+                HosDate = $("#HosDate").val()
+                Invoico = $("#Invoico").val()
+                if ($("#Hosimgbtn").hasClass('Vali')){
+                    if(HosName == "--Please choose an option--" ||HosName == "" ||  HosDate == "" ||  Invoico == "--Please choose an option--"  ){
+                    $("#save2").attr("disabled", true)
+                    }
+                    else{
+                        $("#save2").attr("disabled", false)
+                    }
+                }
+                else{
+                    $("#save2").attr("disabled", true)
+                }
+                
+
+            })
+        }
+        
+    </script>
+
+    <!-- validate Date    -->
+    <script>
+        function valDatoBtn(){
+            $(".Tod").click(function(){
+                HosName = $("#HosName").val()
+                HosDate = $("#HosDate").val()
+                Invoico = $("#Invoico").val()
+                if ($("#Hosimgbtn").hasClass('Vali')){
+                    if(HosName == "--Please choose an option--" ||HosName == "" ||  HosDate == "" ||  Invoico == "--Please choose an option--"  ){
+                    $("#save2").attr("disabled", true)
+                    }
+                    else{
+                        $("#save2").attr("disabled", false)
+                    }
+                }
+                else{
+                    $("#save2").attr("disabled", true)
+                }
+                
+
+            })
+        }
+        
+    </script>
+
+    <!-- validate Invoice    -->
+    <script>
+        function valInv(){
+            $("#Invoico").change(function(){
+                HosName = $("#HosName").val()
+                HosDate = $("#HosDate").val()
+                Invoico = $("#Invoico").val()
+                if ($("#Hosimgbtn").hasClass('Vali')){
+                    if(HosName == "--Please choose an option--" ||HosName == "" ||  HosDate == "" ||  Invoico == "--Please choose an option--"  ){
+                    $("#save2").attr("disabled", true)
+                    }
+                    else{
+                        $("#save2").attr("disabled", false)
+                    }
+                }
+                else{
+                    $("#save2").attr("disabled", true)
+                }
+                
+
+            })
+        }
+        
+    </script>
+
+    <!-- get Item To The Form -->
+    <script>
+        function transferItem(GetId,newSparo,newSparoLot,newInvoice){
+            $(".SparPartDiv").removeClass('animate__animated')
+            $(".SparPartDiv").removeClass('animate__fadeInIn')
+            $(".SparPartDiv").addClass('animate__animated animate__fadeOut')
+            setTimeout(function () {
+                $(".SparPartDiv").remove()
+            },500)
+            
+            $.ajax({
+                url: '/GetPartNumber/', // <-- point to server-side PHP script
+                data:{
+                    'GetId':GetId,
+                },
+                success: function(partNum){
+                    newSparo.val(partNum)
+                    newSparoLot.html(GetId)
+
+                    $(".Sparo").attr("disabled", true)
+                    $(".AddSpare").attr("disabled", false)
+                    
+                },
+            });
+            
+            
+        }
+    </script>
+
+    <!-- search Hospital input  -->
+    <script>
+        function HosSearch(){
+            $("#search").keyup("change",function(e){
+            $("#HosName").html("")
+            searchVal = e.target.value
+            $.ajax({
+                url: '/hosSearch/',
+                contentType: "application/json; charset=utf-8",
+                dataType:  'JSON',  // <-- what to expect back from the PHP script, if anything
+                data:{
+                    'searchVal':searchVal,
+                },
+                success: function(arrayOfNames){
+                arra = arrayOfNames.sort()
+
+                var j=0;
+                for(i=0 ; i<arrayOfNames.length ; i++){
+                    $("#HosName").append('<option id="companyNameOpt" >'+arra[j]+'</option>')
+                    j++
+                }
+                },
+            });
+        });
+        }
+        
+    </script>
+
+    <!-- Get All Hospital -->
+    <script>
+        function GetAllNames(){
+            $.ajax({
+                url: '/GethosName/',
+                contentType: "application/json; charset=utf-8",
+                dataType:  'JSON',  // <-- what to expect back from the PHP script, if anything
+                success: function(arr){
+                console.log(arr)
+                arra = arr.sort()
+
+                for(i=0 ; i<arr.length ; i++){
+                    $("#HosName").append('<option id="companyNameOpt" >'+arra[i]+'</option>')
+                }
+                },
+            });
+        }
+       
+    </script>
+
+    <!-- Search Input -->
+    <script>
+        $('#searchInput').keyup("change",function(e){
+                searchVal = e.target.value
+                console.log(searchVal);
+                $("#browsers").html("")
+                $.ajax({
+                url: '/seclive/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anythin
+                data:{
+                    'searchVal':searchVal,
+                },
+                beforeSend:function(xmlHttpRequest){
+                                $("#browsers").append('<div id="contdiv"> <div class="loader"></div></div>');
+                            },
+                success: function(AllArrayOfNames){
+                    $("#browsers").html("")
+                    $("#contdiv").remove();
+                    var j = 0;
+                    for(var i=0;i<AllArrayOfNames.length/5;i++){
+                        $("#browsers").append(' <button type="button" value="'+AllArrayOfNames[j+1]+'" class="SearchBtn" id="imgdiv"><div id="smallo"><option id="searchOption"> '+AllArrayOfNames[j]+'</option><div id="smalldiv"><big> QTY : '+AllArrayOfNames[j+3]+'</big><big> AllQTY : '+AllArrayOfNames[j+4]+'</big></div></div> <img id="itemphoto" src="'+AllArrayOfNames[j+2]+'">  </button>');
+                        j = j+5;
+                    }
+                    console.log("MOH5")
+                    $(".SearchBtn").click(function(){
+                        itemId = $(this).val()
+                        bookStoreFun(itemId)
+                    })
+
+                    $(".bodya").click(function(){
+                            $("#browsers").css("display", "none");
+                        });
+
+                    $("#searchInput").wrapInner(function(){
+                        $("#browsers").css("display", "inline");
+                    });
+                    },
+                });
+        });
+    </script>
+
+    
+    {% endblock%}
+
+
+</html>

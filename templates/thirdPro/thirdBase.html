@@ -1,0 +1,435 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Stock System</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{%static 'thirdPro/img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{%static 'thirdPro/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{%static 'thirdPro/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{%static 'thirdPro/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <!-- <link href="{%static 'loadingbars.css' %}" rel="stylesheet"> -->
+    <link href="{%static 'thirdPro/css/style66.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
+
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body class="bodya">
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    
+
+
+    {% block thirdCont %}
+    {% endblock%}
+        
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6 linkso">
+                    <h4 class="text-white mb-3">Quick Links</h4>
+                    <a class="btn btn-link" href="/InventoryPage">Stock</a>
+                    <a class="btn btn-link" href="/InvoicePage">Invoices</a>
+                    <a class="btn btn-link" href="/InputPage">Inputs</a>
+                    <a class="btn btn-link" href="/Hospitals">Hospitals</a>
+                    <a class="btn btn-link" href="/setupPage">Setup</a>
+                </div>
+                
+                <div class="col-lg-8 col-md-6">
+                    <h4 class="text-white mb-3">Recent Booked Items</h4>
+                    <div class="bottomImg">
+                        
+
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    <!-- Footer End -->
+    <div class="outerAll">
+        
+        <div class="allPageFav">
+            <div class="ContLeft-Adv">
+                <div class="logoDiv">
+                    <div class="logo">
+                        <div class="m-0 text-primary hlogo">
+                            <div class="logo">
+                                <i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i>
+                                <a href="/" class="text-decoration-none logoText">
+                                    <h4 class="h5 h5logo">stock</h4>
+                                    <h1 class="h1 hlogo2">Master</h1>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="UserDiv"></div>
+                    <div class="Btns">
+                        <button class="mon" value="1">Jan</button>
+                        <button class="mon" value="2">Feb</button>    
+                        <button class="mon" value="3">Mar</button>
+                        <button class="mon" value="4">Apr</button>
+                        <button class="mon" value="5">May</button>    
+                        <button class="mon" value="6">Jun</button>
+                        <button class="mon" value="7">Jul</button>
+                        <button class="mon" value="8">Aug</button>    
+                        <button class="mon" value="9">Sep</button>
+                        <button class="mon" value="10">Oct</button>
+                        <button class="mon" value="11">Nov</button>    
+                        <button class="mon" value="12">Dec</button>
+                    </div>
+                </div>
+            <!-- <div class="ContfavAdv">
+                
+                
+            </div> -->
+        </div>
+            <div class="showAdv"><button class="advBtn" type="button"> <p class="pAdv">Report</p>  </button></div>
+        </div>
+    </div>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{%static 'thirdPro/lib/wow/wow.min.js' %}"></script>
+    <script src="{%static 'thirdPro/lib/easing/easing.min.js' %}"></script>
+    <script src="{%static 'thirdPro/lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{%static 'thirdPro/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="{%static 'thirdPro/js/main.js' %}"></script>
+
+    <script>
+        $.ajax({
+                type: 'GET',
+                url: '/GetItems/',
+                contentType: "text/plain",
+                dataType: 'json',
+                success: function (arr) {
+                    console.log(arr)
+                    j=0
+                    for(i=0; i<arr.length/3 ; i++){
+                        $(".bottomImg").append('<div class="bigimgdiv"><div class = "BotImageDiv"><img value="'+arr[j]+'" class="img-fluid bg-light p-1 btomoimg" src="'+arr[j+2]+'" alt=""> <p class="ImageName">'+arr[j+1]+'</p></div></div>')
+                        j=j+3
+                    }
+                    
+                },  
+            });
+    </script>
+
+<!-- <script>
+    $.ajax({
+            type: 'GET',
+            url: '/TryHosp/',
+            contentType: "text/plain",
+            dataType: 'json',
+            success: function (response) {
+                console.log(response)
+                
+                
+            },  
+        });
+</script> -->
+    
+    <!-- Fav Adv Div -->
+<script> 
+    $(".advBtn").click(function(){
+        
+        $(".ContLeft-Adv").toggle("slow");
+        $(".Btns").css({'display':'none'})
+        $(".ContfavAdv").remove()
+        $(".innerCont").remove()
+        $(".bigWorkDiv").remove()
+        
+        getUsers()
+    })
+  
+  </script>
+
+  <!-- Get Fav Users -->
+  <script>
+    function getUsers(){
+        $.ajax({
+            type: 'GET',
+            url: '/GetWorkFlowUsers/',
+            dataType: 'json',
+            success: function (arr) {
+                $(".UserDiv").html("")
+                
+                j=0
+                for(i=1;i<=arr.length/2 ; i++){
+                    $(".UserDiv").append('<div class="bigWorkDivBtn"> <button class="UserBtn" value="'+arr[j]+'">'+arr[j+1]+'</button>   </div>')
+                    j = j+2        
+                }
+
+                $(".UserBtn").click(function(){
+                    $(".innerCont").remove()
+                    $(".ContfavAdv").remove()
+                    $(".ContLeft-Adv").append('<div class="ContfavAdv"></div>')
+                    UserId = $(this).val()
+                    $(".UserBtn").removeClass('ado')
+                    $(this).addClass('ado')
+                    $(".Btns").css({'display':'inline'})
+                })
+                
+                $(".mon").click(function(){
+                    $(".innerCont").remove()
+                    $(".ContfavAdv").append('<div class="innerCont"></div>')
+                    BtnVal = $(this).val()
+                    $.ajax({
+                        type: 'GET',
+                        url: '/GetWorkFlow/',
+                        data:{
+                            'BtnVal':BtnVal,
+                            'UserId':UserId,
+                        },
+                        dataType: 'json',
+                        success: function (arr) {
+                            console.log(arr)
+                            // $(".innerCont").remove()
+                            // $(".bigWorkDiv").empty()
+                            var now = new Date();
+                            xc =  new Date(now.getFullYear(), now.getMonth()+1, 0 ).getDate()
+                            
+                            j=0
+                            for(i=1;i<=xc ; i++){
+                                if (i == arr[j].slice(8,)){
+                                    $(".innerCont").append('<div class="bigWorkDiv"><p class="info">'+arr[j]+'</p>         <p class="info Hos">'+arr[j+1]+' </p>    </div>')
+                                    j = j+2
+                                    if(i == arr[j].slice(8,)){
+                                        $(".innerCont").append('<div class="bigWorkDiv"><p class="info">'+arr[j]+'</p>         <p class="info Hos">'+arr[j+1]+' </p>    </div>')
+                                        j = j+2
+                                        if(i == arr[j].slice(8,)){
+                                            $(".innerCont").append('<div class="bigWorkDiv"><p class="info">'+arr[j]+'</p>         <p class="info Hos">'+arr[j+1]+' </p>    </div>')
+                                            j = j+2
+                                            if(i == arr[j].slice(8,)){
+                                                $(".innerCont").append('<div class="bigWorkDiv"><p class="info">'+arr[j]+'</p>         <p class="info Hos">'+arr[j+1]+' </p>    </div>')
+                                                j = j+2
+                                            } 
+                                        } 
+                                    }    
+                                }
+                                }
+                        },  
+                    });
+                })
+                    // getWorkLine(UserId)
+                
+            },  
+        });
+    }
+    
+</script>
+
+
+<!-- book strore func -->
+<script>
+    function bookStoreFun(itemId){
+        console.log("MOH2")
+        $(".bodya").append('<div class="outerItemPrice animate__animated animate__fadeInUp">   <div class="inrItemPrice">      <div class="formo" id="mediascreen"><div class="BookTool" ><div class="form-group"><label class="prag1" for="Item_Lot">Lot Number</label><select class="form-control ico" id="Item_Lot" name="ItemLot" ></select><div id="Avlq"><h1 id="AVLQTY"></h1></div></div><div class="form-group"><label class="prag1" for="QTY_book">QTY</label><input type="number" disabled placeholder=" QTY" class="form-control ico"  id="QTY_book" name="QTY" required></div><div class="form-group ItemPricebtns">   <button id="Cancel2" type="submit" class="btn btn-danger btnico"  >Cancel</button>   <button id="save2" type="submit" disabled class="btn btn-success btnico"  >Save</button>    </div></div></div>      </div>       </div>')
+            
+            $("#Cancel2").click(function(){
+                $(".outerItemPrice").removeClass('animate__fadeInUp')
+                $(".outerItemPrice").addClass('animate__fadeOutDown')
+                setTimeout(function(){
+                    $(".outerItemPrice").remove()
+                },500)
+            })
+
+            getItemLot(itemId)
+
+            $("#Item_Lot").change(function(){
+                SelLotQty(itemId)
+            });
+
+            ValidateQty(itemId)
+            EnableBookQtyBtn()
+            
+    }
+</script>
+    <!-- Get Item Lot  -->
+<script>
+    function getItemLot(itemId){
+        $("#Item_Lot").html('<option id="teamLeaderOpt" >--Please choose an option--</option>  ')
+        $.ajax({
+            url: '/QTYdataBase/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                'itemId':itemId,
+                },
+            success: function(response){
+                j=0;
+                for(i=0 ; i<response.LotArr.length/2 ;i++){
+                    b = response.LotArr[j]
+                    $("#Item_Lot").append('<option id="teamLeaderOpt" >'+b+'</option> ')
+                    j=j+2
+                }
+            }
+        });
+        
+    }
+</script>
+
+<!-- Select Lot QTY -->
+<script>
+    function SelLotQty(itemId){
+        $("#AVLQTY").html('')
+        var loto = $("#Item_Lot").val();
+        $.ajax({
+            url: '/QTYdataBaseQTY/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                'itemId':itemId,
+                'loto':loto,
+                },
+            success: function(response){
+                console.log(response)
+                x = response.LotArr.length
+                for(i=0 ; i<x/2 ;i++){
+                    z = response.LotArr[i]
+                    if(z >= 1){
+                        $("#AVLQTY").css("border", "3px solid green");
+                        $("#AVLQTY").append(''+z+' ')
+                    }
+                    if(z == 0){
+                        $("#AVLQTY").css("border", "3px solid red");
+                        $("#AVLQTY").append(''+z+' ')
+                    }
+                }
+            }
+        });
+    }
+</script>
+
+ <!-- Validate Qty -->
+ <script>
+    function ValidateQty(itemId){
+        
+        $("#QTY_book").change(function(){
+            x= $("#QTY_book").val()
+            var lott =$('#Item_Lot').val();
+            $('#Item_Lot').attr("disabled", true)
+            if(x ==""){
+                    $('#save2').attr("disabled", true)
+                }
+            $.ajax({
+                url: '/foriphone/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                data:{
+                    'reqQty':x,
+                    'lott':lott,
+                    'itemId':itemId,
+                    },
+                success: function(response){
+                    console.log(response.finalQty)
+                        if( response.finalQty >=0){
+                            $('#save2').attr("disabled", false)
+                            submito(itemId)
+                        }
+                        
+                        else{
+                            $('#save2').attr("disabled", true)
+                            alert("Not enoungh QTY")
+                            var max1 =$('#QTY_book').val("");
+                        }
+                    }
+            });
+        })
+    }
+    
+</script>
+
+<!-- enable Qty_Book Btn -->
+<script>
+    function EnableBookQtyBtn(){
+        $("#Item_Lot").change(function(){
+            var ItemLot =$('#Item_Lot').val();
+            $.ajax({
+                url: '/codevalid/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                data:{
+                    'ItemLot':ItemLot,
+                    },
+                success: function(response){
+                    if(response){
+                        $('#QTY_book').attr("disabled", false)
+                    }
+                }
+            });
+        });
+    }
+    
+</script>
+
+<!-- Submit the Form  -->
+<script>
+    function submito(itemId){
+        $('#save2').click(function(){
+                var loto = $("#Item_Lot").val();
+                var InptQTY = $("#QTY_book").val()
+                $.ajax({
+                    url: '/SaveBookStore/', // <-- point to server-side PHP script
+                    dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                    data:{
+                        'loto':loto,
+                        'InptQTY':InptQTY,
+                        'itemId':itemId,
+                    },
+                    success: function(arrayOfNames){
+                        $(".outerItemPrice").removeClass('animate__fadeInUp')
+                        $(".outerItemPrice").addClass('animate__fadeOutDown')
+                        setTimeout(function(){
+                            $(".outerItemPrice").remove()
+                            $(".stockDiv").html("")
+                        },500)
+
+                        },
+                });
+            })
+    }
+</script>
+    {% block thirdScript %}
+    {% endblock %}
+</body>
+
+</html>

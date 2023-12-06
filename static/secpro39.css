@@ -1,0 +1,1107 @@
+.header-area .main-nav .logo {
+    color: #eea00a;
+    font-size: 41px;
+}
+.bto {
+    border-radius: 20px;
+    margin-top: 24px;
+    width: 258px;
+}
+#VitrosV1 {
+    width: 99%;
+    height: 89vh;
+    position: absolute;
+    top: 0px;
+    left: 7px;
+    background-color: #000000d6;
+    z-index: 1200;
+    border-radius: 86px;
+}
+.vitrodiv {
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+    color: #fff;
+    justify-content: space-around;
+    height: 100%;
+}
+.formo12 {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+
+
+#VitrosX1 {
+    width: 99%;
+    height: 89vh;
+    position: absolute;
+    top: 0;
+    left: 7px;
+    background-color: #000000d6;
+    z-index: 1200;
+    border-radius: 86px;
+}
+
+.allaction {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.ito {
+    width: 24%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+}
+
+
+#Invoice1 {
+    width: 99%;
+    width: 99%;
+    height: 141vh;
+    position: absolute;
+    top: 0px;
+    left: 7px;
+    background-color: #000000d6;
+    z-index: 1200;
+    border-radius: 86px;
+}
+.contall {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+.deletediv {
+    width: 101%;
+    background-color: #22243a9e;
+    position: absolute;
+    z-index: 8000;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    height: 87vh;
+    padding: 13px;
+    border-radius: 38px;
+}
+.autoconddiv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 91%;
+    overflow-y: scroll;
+    height: 100%;
+    align-items: center;
+}
+.autocond{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    background-color: #f2f0f0;
+    width: 100%;
+    border-radius: 20px;
+}
+#contbtn {
+    background-color: #cfa101;
+    font-size: 20px;
+    border-radius: 31px;
+    width: 155px;
+}
+.autocondotr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 98%;
+    box-shadow: 0px 0px 1px black;
+}
+.autocondinr {
+    width: 319px;
+    text-align: center;
+}
+.confh1{
+    font-size: 18px;
+}
+#Orderdelete {
+    margin: 5px;
+    background-color: #852b1e;
+}
+.progclose{
+    background-color: #851112;
+    color: #fff;
+}
+
+#cardo2{
+    width: 263px;
+    border-radius: 20px;
+    margin: 10px;
+    height: 397px;
+}
+
+#cardo{
+    width: 320px;;
+    border-radius: 20px;
+    margin: 10px;
+    height: 465px;
+}
+#cardli{
+    border-bottom: 3px solid;
+    height: 58pxpx;
+    font-size: 18px;
+    font-weight: 600;
+}
+#cardh{
+    font-size: 20px;
+}
+#btndiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0;
+}
+
+#btndiv2{
+    display: flex;
+    flex-direction: row;
+}
+.bg-warning {
+    background-color: #f9bf00!important;
+}
+
+
+/* .owl-service-item.owl-carousel.undero1.owl-loaded.owl-drag {
+    display: flex;
+    overflow-x: scroll;
+    height: 113%;
+    width: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scrollbar-width: 0px;
+} */
+.owl-service-item.owl-carousel.undero1.owl-loaded.owl-drag {
+    display: flex;
+    overflow-x: scroll;
+    height: 113%;
+    background-color: #252627;
+    width: 100%;
+    border-radius: 25px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scrollbar-width: 0px;
+    align-items: center;
+}
+
+.undero1::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+#pagesorders{
+    cursor: pointer;
+}
+#confdiv989 {
+    width: 98%;
+    height: 97%;
+    overflow-y: scroll;
+    position: absolute;
+    top: 9px;
+    left: 12px;
+    background-color: #e7e7e7;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+#confdiv98 {
+    width: 98%;
+    height: 97%;
+    overflow-y: scroll;
+    position: absolute;
+    top: 9px;
+    left: 12px;
+    background-color: #e7e7e7;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+#confdiv {
+    width: 72%;
+    height: 86%;
+    overflow-y: scroll;
+    position: absolute;
+    top: 63px;
+    left: 88px;
+    background-color: #e7e7e7;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-content: space-around;
+}
+.dataTables_wrapper .dataTables_length select {
+    border-radius: 12px;
+}
+#outrdiv888{
+    width: 100%;
+    height: 91vh;
+    background-color: #000000d1;
+    position: absolute;
+    z-index: 30;
+    left: 0;
+}
+#outrdiv {
+    width: 100%;
+    height: 91vh;
+    background-color: #000000d1;
+    position: absolute;
+    z-index: 30;
+    left: 0;
+}
+#outrdiv7896 {
+    width: 100%;
+    height: 91vh;
+    background-color: #00000000;
+    position: absolute;
+    z-index: 30;
+    left: 0;
+}
+#outrdiv111 {
+    width: 100%;
+    height: 91vh;
+    background-color: #000000d1;
+    position: absolute;
+    z-index: 30;
+    left: 0;
+    z-index: 55;
+}
+#confdiv1234 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background-color: #e7e7e7;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+#tablediv {
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-x: scroll;
+}
+#containercardoitem {
+    width: 31%;
+    height: 100%;
+    background-color: #000000e8;
+    position: fixed;
+    top: 0;
+    transition: 1s;
+    display: flex;
+    padding: 20px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    overflow-y: scroll;
+    left: 1144px;
+    z-index: 9999;
+}
+#containercardo {
+    background-image: url(../static/secproject/assets/images/meetings-bg.jpg);
+    width: 100%;
+    height: 100%;
+    background-color: #000000e8;
+    position: fixed;
+    transition: 1s;
+    display: flex;
+    padding: 13px;
+    margin-top: 72px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    overflow-y: scroll;
+    left: 0;
+    top: 0;
+    z-index: 20;
+}
+#containercardo::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+#con {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 96%;
+}
+#closo {
+    width: 70px;
+    background-color: #851112;
+    color: #fff;
+    
+}
+#closo78 {
+    width: 70px;
+    background-color: #85111200;
+    color: #fff;
+    font-size: 34px;
+    border-radius: 100%;
+    border: none;
+    box-shadow: 0px 0px 5px #000000ad;
+}
+#closo63{
+    width: 70px;
+    background-color: #851112;
+    color: #fff;
+    position: fixed;
+    height: 100%;
+}
+#closo1 {
+    width: 70px;
+    background-color: #851112;
+    color: #fff;
+    
+}
+#closo12 {
+    width: 70px;
+    background-color: #851112;
+    color: #fff;
+    
+}
+#btnd{
+    display: flex;
+}
+#cardo1{
+    border-radius: 20px;
+    margin: 10px;
+    height: 437px;
+    margin-right: 24px;
+    width: 190px;
+}
+#cardo6{
+    border-radius: 20px;
+    margin: 10px;
+    height: 437px;
+    width: 219px;
+}
+
+#contbtn2 {
+    border-radius: 12px;
+    width: 52%;
+    font-size: 12px;
+}
+.ordersbtn {
+    width: 12%;
+    padding: 5px;
+}
+#ordersbtn {
+    border-radius: 11px;
+    font-size: 19px;
+    font-weight: 600;
+    width: 50%;
+    padding: 5px;
+    background-color: #b88e00;
+    width: 100px;
+}
+#ordersbtn2 {
+    border-radius: 11px;
+    font-size: 19px;
+    font-weight: 600;
+    width: 50%;
+    padding: 5px;
+    background-color: #b88e00;
+    width: 100px;
+}
+
+#inputa1 {
+    width: 617px;
+    height: 354px;
+    box-shadow: 1px 1px 9px black;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    border-radius: 25px;
+    justify-content: center;
+}
+
+.allinputs {
+    width: 100%;
+    height: 113vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+}
+
+.inpumiddiv {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 9px black;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    align-items: center;
+}
+.divhead {
+    text-align: center;
+    color: #fff;
+}
+.invnum {
+    box-shadow: 0px 0px 9px #68b4ec;
+    border-radius: 18px;
+    width: 80%;
+    font-size: 17px;
+    color: black;
+    background-color: #fff;
+}
+.invnum:hover{
+    color: #2701ff;
+}
+div#outrdiv989 {
+    display: flex;
+    background-color: #bdbdbd;
+    width: 98%;
+    height: 98%;
+    border-radius: 10px;
+}
+#closo121{
+    background: #851112;
+    color: white;
+    border-radius: 10px;
+}
+#excelfilediv {
+    width: 93%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* #conf_btn {
+    height: 100%;
+    overflow-y: scroll;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+} */
+#conf_btn {
+    height: 100%;
+    overflow-y: scroll;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #252627;
+}
+#conf_btn::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+#outrdiv98 {
+    z-index: 5555;
+    display: flex;
+    background-color: #bdbdbd;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+}
+#tablediv98 {
+    width: 93%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#confdiv986 {
+    width: 98%;
+    height: 100%;
+    overflow-y: scroll;
+    background-color: #e7e7e7;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+#confdiv986::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+/* #exceldiv1 {
+    height: 610px;
+} */
+/* #exceldiv {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    overflow-x: scroll;
+} */
+#exceldiv {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    background-color: #252627;
+    border-radius: 20px;
+    overflow-x: scroll;
+}
+#exceldiv::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.excbtn {
+    border-radius: 25px;
+    margin-right: 13px;
+}
+
+#outrcom {
+    background-color: #000000c9;
+    width: 100%;
+    height: 120%;
+    position: absolute;
+    z-index: 6000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+#innrcom {
+    width: 44%;
+    background-color: #010110c2;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#inrdiv{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.allacptdiv {
+    z-index: 90;
+    width: 89vh;
+    height: 70vh;
+    background-color: #000000c2;
+    display: flex;
+    border-radius: 20px;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+.delbtno {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    margin-right: 83px;
+    margin-top: 30px;
+}
+.outracptdiv {
+    z-index: 90;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+}
+.acptdiv {
+    width: 69%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-evenly;
+}
+.delbtno {
+    display: flex;
+}
+.editNumber {
+    width: 500px;
+}
+.btnso {
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+#comh1{
+    color: #fff;
+    text-align: center;
+}
+.abovediv {
+    width: 76%;
+    height: 79px;
+    border-radius: 20px;
+    display: flex;
+    box-shadow: 5px 4px 14px black;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+/* .progressdiv{
+    height: 87vh;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #8b89893d;
+    border-radius: 20px;
+} */
+.progressdiv {
+    height: 87vh;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #000000ab;
+    border-radius: 20px;
+}
+.tabdiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 95%;
+}
+.tabinrdiv {
+    background-color: #dbdbdb;
+    border-radius: 15px;
+}
+.paraInput {
+    background-color: #000000cc;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 38;
+    display: flex;
+    justify-content: space-evenly;
+    z-index: 99999;
+    flex-direction: column;
+    align-items: center;
+}
+.inrInput {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.buttons1 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.vlc{
+    width: 16%;
+}
+.prag2 {
+    color: #fff;
+}
+table#example100 {
+    font-size: 12px;
+}
+/* div#invoicesBtn {
+    height: 381px;
+    background-color: transparent;
+    display: flex;
+    background-color: #00000059;
+    justify-content: space-around;
+    align-items: flex-end;
+    align-content: center;
+} */
+div#invoicesBtn {
+    margin: 0px;
+    height: 381px;
+    background-color: transparent;
+    display: flex;
+    background-color: #252627;
+    justify-content: space-around;
+    align-items: flex-end;
+    align-content: center;
+}
+.itopara{
+    text-align: center;
+}
+.icon985 {
+    width: 29%;
+}
+.iconimg{
+    height: 66px;
+}
+.BackOrderdiv{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #000000db;
+    z-index: 8000;
+    display: flex;
+    justify-content: space-around;
+    top: 0;
+    left: 0;
+}
+.backtablediv {
+    display: flex;
+    align-items: center;
+    width: 96%;
+    height: 100%;
+    justify-content: center;
+    overflow-y: scroll;
+}
+.midbacktablediv {
+    width: 89%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    justify-content: center;
+    border-radius: 20px;
+}
+.inrbacktablediv {
+    width: 89%;
+    background-color: white;
+}
+.Invdiv1{
+    width: 100%;
+    height: 100%;
+    background-color: #000000db;
+    position: absolute;
+    z-index: 8000;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+}
+.allcond {
+    width: 94%;
+    height: 81%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.inrcond {
+    width: 88%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+#ordernumber {
+    width: 84%;
+    text-align: center;
+}
+#froozen{
+    width: 30%;
+}
+#refrig{
+    width: 30%;
+}
+#normltemp{
+    width: 30%;
+}
+.progclose1{
+    background-color: #851112;
+    color: #fff;
+}
+.Invdiv{
+    width: 100%;
+    height: 100%;
+    background-color: #000000db;
+    position: absolute;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+}
+.Invtablediv {
+    display: flex;
+    align-items: center;
+    width: 96%;
+    height: 100%;
+    justify-content: center;
+}
+.midInvtablediv {
+    width: 89%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    justify-content: center;
+    border-radius: 20px;
+}
+.inrInvtablediv {
+    width: 89%;
+    background-color: white;
+}
+.Invdiv16{
+    width: 100%;
+    height: 100%;
+    background-color: #000000db;
+    position: absolute;
+    z-index: 10001;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+}
+.Invtablediv1 {
+    display: flex;
+    align-items: center;
+    width: 96%;
+    height: 100%;
+    justify-content: center;
+}
+.midInvtablediv1 {
+    width: 89%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    background-color: #ffffff;
+    justify-content: center;
+    border-radius: 20px;
+}
+.inrInvtablediv1 {
+    width: 89%;
+    background-color: white;
+}
+div#example100_wrapper {
+    overflow-x: scroll;
+    border-radius: 15px;
+}
+#example100_wrapper::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+#ordersbtn{
+    width: 100px;
+    border-radius: 11px;
+    font-size: 19px;
+    font-weight: 600;
+    width: 12%;
+    padding: 5px;
+}
+.vitrofiles{
+    position: fixed;
+    left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 96%;
+    overflow-x: scroll;
+    width: 96%;
+    background-color: #e8e9e9;
+    border-radius: 16px;
+    top: 20px;
+    z-index: 1000;
+}
+.vitrofiles::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+.ordersbtn {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+.slash {
+    width: 100%;
+    height: 2px;
+    background-color: black;
+}
+.orderscontain {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    border-right: 2px solid black;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.mono {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 98%;
+    background-color: #666a6c26;
+    border-radius: 16px;
+    align-items: flex-start;
+}
+.ordhead {
+    color: #363e45;
+    text-align: center;
+    font-size: 30px;
+    margin-left: 10px;
+}
+.pdfsdiv {
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    width: 70%;
+}
+.pdfsdiv::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+.pdfs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    flex-wrap: wrap;
+}
+.headdiv {
+    height: 100%;
+    width: 348px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    border-right: 2px solid black;
+}
+.createorder {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 83%;
+    width: 100%;
+    align-items: center;
+}
+.createorderdiv {
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    width: 70%;
+}
+.createorderdiv::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+.pdfurl {
+    margin-bottom: 19px;
+    color: black;
+    font-size: 15px;
+    margin-left: 20px;
+    font-weight: 600;
+    height: 41px;
+    box-shadow: 1px 1px 5px #00000040;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+}
+.pdfurl:hover{
+    color: #4359a0;
+}
+.OCdiv {
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    width: 70%;
+}
+.OCdiv::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+.OC {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.bodydiv {
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    width: 70%;
+}
+.bodydiv::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+.filebtn {
+    width: 150px;
+}
+#filebtn {
+    background-color: #656565;
+    color: #fff;
+}
+#filebtn:hover{
+    background-color: #445166;
+}
+#invnumber {
+    width: 300px;
+    margin-left: 20px;
+    background-color: #656565;
+}
+.awsmo {
+    position: absolute;
+    top: 7px;
+    left: 1411px;
+    font-size: 20px;
+    color: #b10102f7;
+    cursor: pointer;
+}

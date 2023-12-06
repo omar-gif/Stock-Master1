@@ -1,0 +1,778 @@
+{% extends "thirdPro/thirdBase.html" %}
+{% load static %}
+
+{% block thirdCont %}
+    <!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <!-- <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5"> -->
+        <div class="m-0 text-primary hlogo">
+            <div class="logo">
+                <i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i>
+                <a href="/" class="text-decoration-none logoText">
+                    <h4 class="h5 h5logo">stock</h4>
+                    <h1 class="h1 hlogo2">Master</h1>
+                </a>
+            </div>
+        </div>
+    <!-- </a> -->
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <form  class="search nav-form heado">
+        <div class="input-group input-search searchoBtn">
+            <input type="text"   class="form-control" name="searchInput" id="searchInput" placeholder="Search By Name Or Part Number" autocomplete="off">
+            <div id="browsers">
+
+            </div>
+        </div>
+    </form>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="/" class="nav-item nav-link ">Home</a>
+            <a href="/InventoryPage" class="nav-item nav-link">Stock</a>
+            <a href="/InvoicePage" class="nav-item nav-link">Invoices</a>
+            <a href="/InputPage" class="nav-item nav-link ">Inputs</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                <div class="dropdown-menu fade-down m-0">
+                    <a href="/Hospitals" class="dropdown-item active">Hospitals</a>
+                    <a href="/pages-price-list.html" class="dropdown-item">Price List</a>
+                    <a href="/setupPage" class="dropdown-item">Setup</a>
+                </div>
+            </div>
+
+        </div>
+        <a href="/signout" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Logout<i class="fa fa-arrow-right ms-3"></i></a>    </div>
+</nav>
+<!-- Navbar End -->
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header invoices">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <h1 class="display-3 text-white animated slideInDown">Hospitals</h1>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <div class="tableDiv"></div>
+    <div class="layer"></div>
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">Hospitals Pages</h6>
+                <h1 class="mb-5">Check The Hospitals</h1>
+            </div>
+            <div class="allInvoHos">
+                <div class="testimonial-item text-center invDiv">
+                    <i class="fa-regular fa-hospital invico"></i>
+                    <h5 class="mb-0 mapa">Ortho Clinical Diagnostics</h5>
+                    <p class="mapa">Show Ortho Hospitals</p>
+                    <div class="testimonial-text bg-light text-center p-4 btnAcpt">
+                        <button type="button" class="btn btn-success invBtn" id="OCDBtn">Open</button>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center invDiv">
+                    <i class="fa-regular fa-hospital invico"></i>
+                    <h5 class="mb-0 mapa">Diasys</h5>
+                    <p class="mapa">Show Diasys Hospitals</p>
+                    <div class="testimonial-text bg-light text-center p-4 btnAcpt">
+                        <button type="button" class="btn btn-success invBtn" id="DiasysBtn">Open</button>
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+
+
+
+            
+        </div>
+    </div>
+    <!-- Testimonial End -->
+        
+
+    
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    {% endblock%}
+    {% block thirdScript %}
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+<!--     **************************      Hospitals       *****************************       -->
+
+    <!-- Open OCD Hospitals Div  -->
+    <script>
+        $("#OCDBtn").click(function(){
+            $(".container-xxl").append('<div class="outerFOCDiv animate__animated animate__fadeInUp"> <div class="tableHead"> <div class="m-0 text-primary hlogo"><div class="logo"><i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i><a href="/" class="text-decoration-none logoText"><h4 class="h5 h5logo">stock</h4><h1 class="h1 hlogo2">Master</h1></a></div></div> <div class="searchHos" >   <input class="searchHosInput" placeholder="Enter Hospital Name">     </div>    <div class="GoBack">  <button type="button" class="btn btn-danger BackBtn" id="GoBackBtn">Go Back</button>    </div>         </div>               <div class="innerFOCDiv">  <div class="AllGovern">        </div>     <div class="innerinHosDiv"></div>     </div>               </div>')
+            
+            $.ajax({
+                type: 'GET',
+                url: '/GetAllGovern/',
+                contentType: "text/plain",
+                dataType: 'json',
+                success: function (arr) {
+                    arr.sort()
+                    for(i=0;i<arr.length;i++){
+                        $(".AllGovern").append('<button value="'+arr[i]+'"  class="GovernVal"  >'+arr[i]+'</button>')
+                    }
+                    $(".GovernVal").click(function(){
+                        $(".GovernVal").removeClass('GovernValColor')
+                        $(this).addClass('GovernValColor')
+                        $(".innerinHosDiv").html("")
+                        GovernValue = $(this).val()
+                        GetOcdHos(GovernValue)
+                    })
+                },  
+            });
+
+            $("#GoBackBtn").click(function(){
+                close()
+            })
+            
+            
+            
+            $(".searchHosInput").keyup("change",function(e){
+                searchVal = e.target.value
+                
+                $(".searchoRes").remove()
+                $.ajax({
+                type: 'GET',
+                url: '/SearchOCDHosp/',
+                contentType: "text/plain",
+                dataType: 'json',
+                data:{
+                    'searchVal':searchVal
+                },
+                success: function (arr) {
+                    $(".searchoRes").remove()
+                    $(".bodya").click(function(){
+                        $(".searchoRes").remove()
+                    })
+                    $(".searchHos").append('<div class="searchoRes"></div>')
+                    
+                    var today = new Date();
+                    var dd = String(today.getDate()).padStart(2, '0');
+                    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                    var yyyy = today.getFullYear();
+
+                    today = mm + '-' + dd + '-' + yyyy;
+                    j=0
+                    for(i=0 ; i<arr.length/7 ; i++){
+                        dato = arr[j+5]
+                        if(dato != null){
+                            
+                            diff = mm - arr[j+5].slice(5,7)
+                            if(diff > 5){
+                                 $(".searchoRes").append('<div class="testimonial-item text-center invDiv3"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-solid fa-solid fa-xmark invico2"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                                j = j+7
+                            }
+
+                            else if (diff > 3){
+                                $(".searchoRes").append('<div class="testimonial-item text-center invDiv4"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-solid fa-screwdriver-wrench invico5"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                                j = j+7
+                            }
+                            
+                            else{
+                                $(".searchoRes").append('<div class="testimonial-item text-center invDiv5"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-regular fa-solid fa-check invico"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                                j = j+7
+                            }
+                            
+                        }
+                        else{
+                            
+                            $(".searchoRes").append('<div class="testimonial-item text-center invDiv6"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-solid fa-screwdriver-wrench invico"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                            j = j+7
+                        }
+                        
+                    }
+                    $(".jobBtn").click(function(){
+                        HosId = $(this).val()
+                        reviewJobSheet(HosId)
+                    })
+
+                    $(".SpareBtn").click(function(){
+                        HosId = $(this).val()
+                        reviewSpareParts(HosId)
+                    })
+                    
+                    $(".OpenHos2").click(function(){
+                        HosId = $(this).val()
+                        OpenHos(HosId)
+                    })
+                },  
+            });
+
+            })
+        })
+    </script>
+
+    <!-- Open Diasys Div  -->
+    <script>
+        $("#DiasysBtn").click(function(){
+            $(".container-xxl").append('<div class="outerFOCDiv animate__animated animate__fadeInUp"> <div class="tableHead"> <div class="m-0 text-primary hlogo"><div class="logo"><i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i><a href="/" class="text-decoration-none logoText"><h4 class="h5 h5logo">stock</h4><h1 class="h1 hlogo2">Master</h1></a></div></div>  <div class="searchHos" >   <input class="searchHosInput" placeholder="Enter Hospital Name">     </div>   <div class="GoBack">  <button type="button" class="btn btn-danger BackBtn" id="GoBackBtn">Go Back</button>    </div>         </div>               <div class="innerFOCDiv"> <div class="AllGovern">        </div>        <div class="innerinHosDiv"></div>    </div>               </div>')
+            
+            $("#GoBackBtn").click(function(){
+                close()
+            })
+            
+            $.ajax({
+                type: 'GET',
+                url: '/GetAllGovern/',
+                contentType: "text/plain",
+                dataType: 'json',
+                success: function (arr) {
+                    arr.sort()
+                    for(i=0;i<arr.length;i++){
+                        $(".AllGovern").append('<button value="'+arr[i]+'"  class="GovernVal"  >'+arr[i]+'</button>')
+                    }
+                    $(".GovernVal").click(function(){
+                        $(".GovernVal").removeClass('GovernValColor')
+                        $(this).addClass('GovernValColor')
+                        $(".innerinHosDiv").html("")
+                        GovernValue = $(this).val()
+                        GetDiasysHos(GovernValue)
+                    })
+                },  
+            });
+            
+            $(".searchHosInput").keyup("change",function(e){
+                searchVal = e.target.value
+               
+                $(".searchoRes").remove()
+                $.ajax({
+                type: 'GET',
+                url: '/SearchDiaHosp/',
+                contentType: "text/plain",
+                dataType: 'json',
+                data:{
+                    'searchVal':searchVal
+                },
+                success: function (arr) {
+                    $(".searchoRes").remove()
+                    $(".bodya").click(function(){
+                        $(".searchoRes").remove()
+                    })
+                    $(".searchHos").append('<div class="searchoRes"></div>')
+                    
+                    var today = new Date();
+                    var dd = String(today.getDate()).padStart(2, '0');
+                    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                    var yyyy = today.getFullYear();
+
+                    today = mm + '-' + dd + '-' + yyyy;
+                    j=0
+                    for(i=0 ; i<arr.length/7 ; i++){
+                        dato = arr[j+5]
+                        if(dato != null){
+                            
+                            diff = mm - arr[j+5].slice(5,7)
+                            if(diff > 5){
+                                 $(".searchoRes").append('<div class="testimonial-item text-center invDiv3"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-solid fa-solid fa-xmark invico2"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                                j = j+7
+                            }
+
+                            else if (diff > 3){
+                                $(".searchoRes").append('<div class="testimonial-item text-center invDiv4"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-solid fa-screwdriver-wrench invico5"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                                j = j+7
+                            }
+                            
+                            else{
+                                $(".searchoRes").append('<div class="testimonial-item text-center invDiv5"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-regular fa-solid fa-check invico"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                                j = j+7
+                            }
+                            
+                        }
+                        else{
+                            
+                            $(".searchoRes").append('<div class="testimonial-item text-center invDiv6"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-solid fa-screwdriver-wrench invico"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                            j = j+7
+                        }
+                        
+                    }
+                    $(".jobBtn").click(function(){
+                        HosId = $(this).val()
+                        reviewJobSheet(HosId)
+                    })
+
+                    $(".SpareBtn").click(function(){
+                        HosId = $(this).val()
+                        reviewSpareParts(HosId)
+                    })
+                    
+                    $(".OpenHos2").click(function(){
+                        HosId = $(this).val()
+                        OpenHos(HosId)
+                    })
+                },  
+            });
+        });
+        })
+    </script>
+
+    <!-- close Hospitals Div  -->
+    <script>
+        function close(){
+            $(".outerFOCDiv").removeClass('animate__animated')
+            $(".outerFOCDiv").removeClass('animate__fadeInUp')
+            $(".outerFOCDiv").addClass('animate__animated animate__fadeOutDown')
+            setTimeout(function () {
+                $(".outerFOCDiv").remove()
+                $(".outerFOCDiv").load(" .outerFOCDiv > *");
+            },500)
+        }
+    </script>
+
+    <!-- Get Diasys Hospitals -->
+    <script>
+        function GetDiasysHos(GovernValue){
+            $.ajax({
+                type: 'GET',
+                url: '/GetDiaHos/',
+                contentType: "text/plain",
+                dataType: 'json',
+                data:{
+                    'GovernValue':GovernValue
+                },
+                success: function (arr) {
+                    console.log(arr)
+                    var today = new Date();
+                    var dd = String(today.getDate()).padStart(2, '0');
+                    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                    var yyyy = today.getFullYear();
+
+                    today = mm + '-' + dd + '-' + yyyy;
+                    j=0;
+                    for(i=0 ; i<arr.length/7 ; i++){
+                        dato = arr[j+5]
+                        if(dato != null){
+                            
+                            diff = mm - arr[j+5].slice(5,7)
+                            if(diff > 5){
+                                 $(".innerinHosDiv").append('<div class="testimonial-item text-center invDiv2"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-solid fa-solid fa-xmark invico2"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                                j = j+7
+                            }
+
+                            else if (diff > 3){
+                                $(".innerinHosDiv").append('<div class="testimonial-item text-center invDiv1"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-solid fa-screwdriver-wrench invico5"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                                j = j+7
+                            }
+                            
+                            else{
+                                $(".innerinHosDiv").append('<div class="testimonial-item text-center invDiv"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-regular fa-solid fa-check invico"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                                j = j+7
+                            }
+                            
+                        }
+                        else{
+                            
+                            $(".innerinHosDiv").append('<div class="testimonial-item text-center invDiv"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-solid fa-screwdriver-wrench invico"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                            j = j+7
+                        }
+                        
+                    }
+
+                    $(".jobBtn").click(function(){
+                        HosId = $(this).val()
+                        reviewJobSheet(HosId)
+                    })
+
+                    $(".SpareBtn").click(function(){
+                        HosId = $(this).val()
+                        reviewSpareParts(HosId)
+                    })
+                    
+                    $(".OpenHos2").click(function(){
+                        HosId = $(this).val()
+                        OpenHos(HosId)
+                    })
+                },  
+            });
+        }
+        
+    </script>
+
+    <!-- Get OCD Hospitals -->
+    <script>
+        function GetOcdHos(GovernValue){
+            $.ajax({
+                type: 'GET',
+                url: '/GetFilterHos/',
+                contentType: "text/plain",
+                dataType: 'json',
+                data:{
+                    'GovernValue':GovernValue,
+                },
+                success: function (arr) {
+                    var today = new Date();
+                    var dd = String(today.getDate()).padStart(2, '0');
+                    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                    var yyyy = today.getFullYear();
+
+                    today = mm + '-' + dd + '-' + yyyy;
+                    j=0;
+                    for(i=0 ; i<arr.length/7 ; i++){
+                        dato = arr[j+5]
+                        if(dato != null){
+                            
+                            diff = mm - arr[j+5].slice(5,7)
+                            if(diff > 5){
+                                 $(".innerinHosDiv").append('<div class="testimonial-item text-center invDiv2"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-solid fa-solid fa-xmark invico2"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                                j = j+7
+                            }
+
+                            else if (diff > 3){
+                                $(".innerinHosDiv").append('<div class="testimonial-item text-center invDiv1"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-solid fa-screwdriver-wrench invico5"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                                j = j+7
+                            }
+                            
+                            else{
+                                $(".innerinHosDiv").append('<div class="testimonial-item text-center invDiv"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-regular fa-solid fa-check invico"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                                j = j+7
+                            }
+                            
+                        }
+                        else{
+                            
+                            $(".innerinHosDiv").append('<div class="testimonial-item text-center invDiv"> <div class="detDiv1">    <small>'+arr[j+6]+'</small> </div>  <div class="topHead">  <div class="topHeadIco">  <i class="fa-solid fa-screwdriver-wrench invico"></i> </div>       </div>  <h5 class="mb-0 HosName">'+arr[j+1]+'</h5><small class="AfterHov">'+arr[j+2]+'</small><p class="SN AfterHov">'+arr[j]+'</p>   <div class="details">  <div class="detDiv"><small>Counter</small> <p class="testo">   '+arr[j+4]+' </p>  </div>  <div class="detDiv"> <small>Last PM</small> <p class="testo">    '+arr[j+5]+' </p>  </div>  </div>    <div class="testimonial-text bg-light text-center p-6 HosBtns">            <button type="button" class="btn btn-success invBtn HosBTns1  OpenHos2" value="'+arr[j]+'" id="OpenBtn">Open Hospital</button><button type="button" class="btn btn-success  invBtn HosBTns1 SpareBtn" value="'+arr[j]+'" id="spareBtn">Spare parts</button><button type="button" class="btn btn-success invBtn HosBTns1 jobBtn" value="'+arr[j]+'" id="jobBtn">Job Sheets</button></div></div>')
+                            j = j+7
+                        }
+                        
+                    }
+
+                    $(".jobBtn").click(function(){
+                        HosId = $(this).val()
+                        reviewJobSheet(HosId)
+                    })
+
+                    $(".SpareBtn").click(function(){
+                        HosId = $(this).val()
+                        reviewSpareParts(HosId)
+                    })
+                    
+                    $(".OpenHos2").click(function(){
+                        HosId = $(this).val()
+                        OpenHos(HosId)
+                    })
+                },  
+            });
+        }
+        
+    </script>
+
+    <!-- Open Hospitals -->
+    <script>
+        function OpenHos(HosId){
+            $(".container-xxl").append('<div class="outerFOCDiv2 animate__animated animate__fadeInUp"> <div class="tableHead"> <div class="m-0 text-primary hlogo"><div class="logo"><i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i><a href="/" class="text-decoration-none logoText"><h4 class="h5 h5logo">stock</h4><h1 class="h1 hlogo2">Master</h1></a></div></div>    <div class="GoBack">  <button type="button" class="btn btn-danger BackBtn" id="GoBackBtn2">Go Back</button>    </div>         </div>               <div class="innerFOCDiv3">    <div class="outerHosDiv"></div>   <div  class="MiddHosName"> <div class="Midlifto"> </div>  <div class="MidRight"> <canvas id="myChart" style="width:100%;max-width:100%"></canvas></div>   </div> <div class="OuterUpper">  <div class="InnerUpper"> <h2 class="JobSheetHead">Job Sheets </h2>    </div>        <div  class="UpperHosName"></div>           <div class="InnerUpper"> <h2 class="JobSheetHead">Invoices </h2>    </div>        <div  class="UpperInvoice"></div>    </div>            </div>             </div>               </div>')
+
+            $("#GoBackBtn2").click(function(){
+                        close2()
+                    })  
+
+            $.ajax({
+                type: 'GET',
+                url: '/OpenHos/',
+                dataType: 'json',
+                data:{
+                    'HosId':HosId,
+                },
+                success: function (response) {
+                    console.log(response.arrPrice)
+                    for(i=0;i<response.arr.length/10;i++){
+                        $(".outerHosDiv").append('    <div  class="topHosDiv"> <h1 class="InnerHosName">'+response.arr[i]+'</h1>   <div class="HosDetails"> <p class="HosDato"><small class="HosDetaSmall">Verion</small>'+response.arr[i+1]+'</p> <p class="HosDato"><small class="HosDetaSmall">SN</small>'+response.arr[i+2]+'</p>  <p class="HosDato">     <small class="HosDetaSmall">Last PM</small>'+response.arr[i+3]+'</p> <p class="HosDato"><small class="HosDetaSmall">Counter</small>'+response.arr[i+4]+'</p>  <p class="HosDato"><small class="HosDetaSmall">Software Verion</small>   '+response.arr[i+5]+'</p> <p class="HosDato upso"><small class="HosDetaSmall">Ups</small>'+response.arr[i+6]+'</p> <p class="HosDato stabo"><small class="HosDetaSmall">Stablizer</small>'+response.arr[i+7]+'</p>  <p class="HosDato Eartho"><small class="HosDetaSmall">Eath</small>'+response.arr[i+8]+'</p>     <p class="HosDato"><small class="HosDetaSmall">Last Eng</small>'+response.arr[i+9]+'</p>   </div>   </div>              ')
+                    }
+                    if (response.arr[7] == "Yes"){
+                        $(".stabo").css("color", "Green");
+                    }
+                    else{
+                        $(".stabo").css("color", "red");
+                    }
+                    
+                    if (response.arr[6] == "Yes"){
+                        $(".upso").css("color", "Green");
+                    }
+                    else{
+                        $(".upso").css("color", "red");
+                    }
+                    
+                    if (response.arr[8] == "Yes"){
+                        $(".Eartho").css("color", "Green");
+                    }
+                    else{
+                        $(".Eartho").css("color", "red");
+                    }
+                    
+                    // Middle Part
+                    j=0
+                    for(k=0;k<response.arrpart.length/2;k++){
+                        $(".Midlifto").append(' <div class="MidLeft">  <div class="midleftleft">  <p class="midleftp"> '+response.arrpart[j]+'   </p>  </div>    <div class="midleftright">   <p class="midleftp"> '+response.arrpart[j+1]+'   </p>    </div>       </div>                 ')
+                        j=j+2
+                    }
+                    const xValues = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+                    const yValues = [response.arrPrice[0], response.arrPrice[1],response.arrPrice[2], response.arrPrice[3],response.arrPrice[4],response.arrPrice[5],response.arrPrice[6],response.arrPrice[7],response.arrPrice[8],response.arrPrice[9],response.arrPrice[10],response.arrPrice[11]];
+                    
+                    const barColors = [
+                    "#b91d47",
+                    "#00aba9",
+                    "#2b5797",
+                    "#00c7ff",
+                    "#09b6a2",
+                    "#067242",
+                    "#9ba70a",
+                    "#a78b0a",
+                    "#a7510a",
+                    "#660000",
+                    "#7a7a7a",
+                    "#73077c",
+                    ];
+                    
+                    new Chart("myChart", {
+                    type: "pie",
+                    data: {
+                        labels: xValues,
+                        datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                        }]
+                    },
+                    options: {
+                        title: {
+                        display: true,
+                        text: "Spare Parts Costs in this Year"
+                        }
+                    }
+                    });
+
+                    //  Lower Part 
+                    for(o=0;o<response.arrPic.length;o++){
+                        $(".UpperHosName").append('<div class="outerImage"> <div class="innerDiv">  <img src="'+response.arrPic[o]+'" class="JobimgPhoto"/>    </div>  </div>')
+                    }
+                    $(".JobimgPhoto").click(function(){
+                        if($(this).hasClass('imageClass0')){
+                            $(this).removeClass('imageClass0')
+                            $(this).removeClass('animate__animated')
+                            $(this).removeClass('animate__fadeIn')
+                        }
+                        else{
+                            $(this).addClass('imageClass0 animate__animated animate__fadeIn')
+                        }
+                    })
+
+                    // Invoice Part
+                    j=0
+                    for(q=0;q<response.arrInvo.length/7;q++){
+                        $(".UpperInvoice").append('<div class="testimonial-item text-center invDivInv"><i class="fa-solid fa-file-invoice invico"></i><h5 class="mb-0 mapa">'+response.arrInvo[j]+'</h5><p class="mapa">'+response.arrInvo[j+1]+'</p><div class="AboveDiv"> <p class="mapa">PN : '+response.arrInvo[j+2]+'</p> <p class="mapa">'+response.arrInvo[j+3]+'</p></div><div class="MidDiv"> <p class="mapa">Lot : '+response.arrInvo[j+4]+'</p> <p class="mapa">Quotation Num : '+response.arrInvo[j+5]+'</p></div><p class="mapa PriceNM">Price : '+response.arrInvo[j+6]+'</p></div>')
+                        j = j+7
+                    }
+
+                },  
+            });
+        }
+    </script>
+
+    <!-- Review Job Sheet -->
+    <script>
+        function reviewJobSheet(HosId){
+            $.ajax({
+                type: 'GET',
+                url: '/GetHosJob/',
+                dataType: 'json',
+                data:{
+                    'HosId':HosId,
+                },
+                success: function (response) {
+                    $(".container-xxl").append('<div class="outerFOCDiv2 animate__animated animate__fadeInUp"> <div class="tableHead"> <div class="m-0 text-primary hlogo"><div class="logo"><i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i><a href="/" class="text-decoration-none logoText"><h4 class="h5 h5logo">stock</h4><h1 class="h1 hlogo2">Master</h1></a></div></div>    <div class="GoBack">  <button type="button" class="btn btn-danger BackBtn" id="GoBackBtn2">Go Back</button>    </div>         </div>               <div class="innerFOCDiv2">            </div>               </div>')
+
+                    $("#GoBackBtn2").click(function(){
+                        close2()
+                    })
+                    console.log(response)
+                    j=0
+                    l=0
+                    o=0
+                    g=0
+                    newId=0
+                    for(i=0;i<response.arr.length/4;i++){
+                        
+                        $(".innerFOCDiv2").append(' <div class="BigJobSheet">  <div class="ImgJobSheet">  <img src="'+response.arr[j+3]+'" class="JobImg" >  </div> <div class="RightJobSheet"> <div class="rightUp">  <div class="User">   <h3 class="userNam">'+response.arr[j]+'</h3>   </div> <div class="dato"> '+response.arr[j+1]+'   </div>    </div>   <div class="rightdown">   <div class="NoteDiv"><h4 class="NoteH2">'+response.arr[j+2]+'</h4></div>    <div class="SpareDiv" id="sparo">    </div>          </div><div class="Down">         <p> Price : '+response.arrPri[l]+'</p></div>  </div>   </div>    ')
+                        arrlen=response.arrl.length
+                        ds = response.arrl[o]
+                        x = response.arrAssem.length
+                        var newSparo = $("#sparo").attr("id","sparo"+newId);
+                        for(m=0;m<ds;m++){
+                            $(newSparo).append('<h5 class="sparoh5">'+response.arrAssem[g]+' </h5>')
+                            g=g+1
+                        }
+                        o = o +1
+                        j = j + 4
+                        l = l+1
+                        newId = newId+1
+                        
+                    }
+                    $(".ImgJobSheet").click(function(){
+                        if($(this).hasClass('imageClass')){
+                            $(this).removeClass('imageClass')
+                            $(this).removeClass('animate__animated')
+                            $(this).removeClass('animate__fadeIn')
+                        }
+                        else{
+                            $(this).addClass('imageClass animate__animated animate__fadeIn')
+                        }
+                    })
+                    
+                    
+                },  
+            });
+        }
+    </script>
+
+    <!-- close Job Sheet Div  -->
+    <script>
+        function close2(){
+            $(".outerFOCDiv2").removeClass('animate__animated')
+            $(".outerFOCDiv2").removeClass('animate__fadeInUp')
+            $(".outerFOCDiv2").addClass('animate__animated animate__fadeOutDown')
+            setTimeout(function () {
+                $(".outerFOCDiv2").remove()
+                // $(".outerFOCDiv2").load(" .outerFOCDiv2 > *");
+            },500)
+        }
+    </script>
+
+
+    <!-- Review Spareparts  -->
+    <script>
+        function reviewSpareParts(HosId){
+            $(".container-xxl").append('<div class="outerFOCDiv2 animate__animated animate__fadeInUp"> <div class="tableHead"> <div class="m-0 text-primary hlogo"><div class="logo"><i class="fa-solid fa-cubes" style="color: #181e39 ;font-size: 33px;"></i><a href="/" class="text-decoration-none logoText"><h4 class="h5 h5logo">stock</h4><h1 class="h1 hlogo2">Master</h1></a></div></div>    <div class="GoBack">  <button type="button" class="btn btn-danger BackBtn" id="GoBackBtn2">Go Back</button>    </div>         </div>               <div class="innerFOCDiv2">  <div class="innerExam"></div>            </div>               </div>')
+            $(".innerExam").append('<table id="example" class="table table-striped FOCTable" style="width:100%;    font-size: 14px;" ><thead ><tr><tr>      <th>Item Name</th>     <th>Part Number</th>        <th>Date</th>  <th>Lot</th><th>User</th>                    <th>Invoice Number</th><th>Price</th></tr></tr></thead>         <tbody class="jj"></tbody>              <tfoot><tr><th>Item Name</th>     <th>Part Number</th>        <th>Date</th>  <th>Lot</th><th>User</th>                    <th>Invoice Number</th><th>Price</th></tr></tfoot></table>')
+
+            // go Back
+            $("#GoBackBtn2").click(function(){
+                close2()
+            })
+
+            // Table Options
+            $('#example').dataTable( {
+                dom: 'Bfrtip',
+                order: [0, 'desc'],
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                    
+                ]
+                
+            });
+            
+            $.ajax({
+            type: 'GET',
+            url: '/GetHosSpare/',
+            contentType: "text/plain",
+            dataType: 'json',
+            data:{
+                    'HosId':HosId,
+                },
+            success: function (response) {
+                console.log(response)
+                populateDataTableInter(response);
+                
+            },  
+            });
+
+        }
+    </script>
+
+     <!-- bulid the International Table  -->
+     <script>
+
+
+        function populateDataTableInter(response) {
+
+            $("#example").DataTable().clear();
+            var length = Object.keys(response.data).length;
+            var table = $('#example').DataTable();
+            
+            for(var i = 0; i < length; i++) {
+                var customer = response.data[i];
+                // You could also use an ajax property on the data table initialization
+                $('#example').dataTable().fnAddData( [
+                    customer.ItemName,
+                    customer.partNumber,            
+                    customer.Dato,
+                    customer.LotNum,
+                    customer.nameOfUser,
+                    customer.InvoNum,
+                    customer.Price,
+
+                ]);
+            }
+            $('#example tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                } else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+        }                        
+    </script>
+
+    <!-- Search Input -->
+    <script>
+        $('#searchInput').keyup("change",function(e){
+                searchVal = e.target.value
+                console.log(searchVal);
+                $("#browsers").html("")
+                $.ajax({
+                url: '/seclive/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anythin
+                data:{
+                    'searchVal':searchVal,
+                },
+                beforeSend:function(xmlHttpRequest){
+                                $("#browsers").append('<div id="contdiv"> <div class="loader"></div></div>');
+                            },
+                success: function(AllArrayOfNames){
+                    $("#browsers").html("")
+                    $("#contdiv").remove();
+                    var j = 0;
+                    for(var i=0;i<AllArrayOfNames.length/5;i++){
+                        $("#browsers").append(' <button type="button" value="'+AllArrayOfNames[j+1]+'" class="SearchBtn" id="imgdiv"><div id="smallo"><option id="searchOption"> '+AllArrayOfNames[j]+'</option><div id="smalldiv"><big> QTY : '+AllArrayOfNames[j+3]+'</big><big> AllQTY : '+AllArrayOfNames[j+4]+'</big></div></div> <img id="itemphoto" src="'+AllArrayOfNames[j+2]+'">  </button>');
+                        j = j+5;
+                    }
+                    console.log("MOH5")
+                    $(".SearchBtn").click(function(){
+                        itemId = $(this).val()
+                        bookStoreFun(itemId)
+                    })
+
+                    $(".bodya").click(function(){
+                            $("#browsers").css("display", "none");
+                        });
+
+                    $("#searchInput").wrapInner(function(){
+                        $("#browsers").css("display", "inline");
+                    });
+                    },
+                });
+        });
+    </script>
+    {% endblock %}
+
+</body>
+
+</html>

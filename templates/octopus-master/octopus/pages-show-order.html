@@ -1,0 +1,254 @@
+
+{% extends "block2.html" %}
+{% load static %}
+{% block Dash %}
+All Orders 
+{%endblock%}
+{% block headName %}
+All Orders
+{%endblock%}
+{% block Hname %}
+All Orders
+{%endblock%}
+{% block sty %}
+
+<link rel="stylesheet" href="{%static 'xc.css'%}">
+
+{%endblock%}
+
+
+{% block cont %}
+<div id="Under" class="tab-pane">
+    <div class="row mg-files undero1"></div>
+</div>
+
+
+
+{%endblock%}
+
+
+{% block script %}
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+
+
+<script>
+    $.ajax({
+        url: '/getOreders/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        success: function(arrayOfNames){
+            allOrders(arrayOfNames)
+            }
+        
+    });
+    
+    
+    function allOrders(arrayOfNames){
+        var j=0;
+        len = arrayOfNames.length
+        for(i=0 ; i<len/7 ; i++){
+            if( arrayOfNames[j+6] == "OK"){
+                $(".undero1").append('<div id="cardo2" class="card  bg-success"   ><div class="card-body"><h5   class="card-title">'+arrayOfNames[j]+'</h5><p id="cardh" class="card-text">'+arrayOfNames[j+1]+'</p></div><ul class="list-group list-group-flush"><li id="cardli" class="list-group-item">'+arrayOfNames[j+2]+'</li><li id="cardli" class="list-group-item">'+arrayOfNames[j+3]+'</li><li id="cardli" class="list-group-item">'+arrayOfNames[j+4]+'</li><li id="cardli" class="list-group-item">'+arrayOfNames[j+5]+'</li><li id="cardli" class="list-group-item">'+arrayOfNames[j+6]+'</li></ul><div id="btndiv2" class="card-body btndiv2"><button data-value="'+arrayOfNames[j+1]+'"   type="button" id="ordersbtn" class="btn btn-success  undertestbtn">open</button>   <button data-value="'+arrayOfNames[j+1]+'" id="contbtn2" class="btn btn-success confbtn" type="button">Confermations</button> </div></div>')   
+                j = j+7
+            }
+            else{       
+                $(".undero1").append('<div id="cardo2" class="card  bg-warning"   ><div class="card-body"><h5   class="card-title">'+arrayOfNames[j]+'</h5><p id="cardh" class="card-text">'+arrayOfNames[j+1]+'</p></div><ul class="list-group list-group-flush"><li id="cardli" class="list-group-item">'+arrayOfNames[j+2]+'</li><li id="cardli" class="list-group-item">'+arrayOfNames[j+3]+'</li><li id="cardli" class="list-group-item">'+arrayOfNames[j+4]+'</li><li id="cardli" class="list-group-item">'+arrayOfNames[j+5]+'</li><li id="cardli" class="list-group-item">'+arrayOfNames[j+6]+'</li></ul><div id="btndiv2" class="card-body btndiv2"><button data-value="'+arrayOfNames[j+1]+'"   type="button" id="ordersbtn" class="btn btn-warning  undertestbtn">open</button>   <button data-value="'+arrayOfNames[j+1]+'"  id="contbtn2" class="btn btn-success confbtn" type="button">Confermations</button> </div></div>')   
+                j = j+7
+            }
+        }
+        
+        $(".undertestbtn").click(function(){
+
+            console.log(this.getAttribute("data-value"))
+            itemId = this.getAttribute("data-value")
+            $("#Under").append('<div id="container" class=" animate__animated animate__fadeIn" ><div id="btnd"><button type="button" id="closo">close</button></div><div  id="con"></div></div>')   
+
+            $.ajax({
+                url: '/getOrderElements/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                data:{
+                    'itemId':itemId
+                },
+                success: function(arr){
+                    console.log(arr)
+                    arrlen = arr.length
+                    a=0;
+                    for(i=0 ; i<arrlen/8 ; i++){
+                        if( arr[a+6] == "OK"){
+                            $("#con").append('<div id="cardo1" class="card  bg-success"   ><div class="card-body"><h5   class="card-title">'+arr[a]+'</h5><p id="cardh" class="card-text">'+arr[a+1]+'</p></div><ul class="list-group list-group-flush"><li id="cardli" class="list-group-item">'+arr[a+2]+'</li><li id="cardli" class="list-group-item">'+arr[a+3]+'</li><li id="cardli" class="list-group-item">'+arr[a+4]+'</li><li id="cardli" class="list-group-item">'+arr[a+5]+'</li><li id="cardli" class="list-group-item">'+arr[a+6]+'</li><li id="cardli" class="list-group-item">'+arr[a+7]+'</li></ul><div id="btndiv" class="card-body"><button data-value="'+arr[a]+'" data-value1="'+arr[a+3]+'" id="contbtn" class="btn btn-success undertestbtn1" type="button">open</button>    </div></div>')   
+                            a = a+8
+                        }
+                        else{
+                            console.log(a,i)
+                            $("#con").append('<div id="cardo1" class="card  bg-warning"   ><div class="card-body"><h5   class="card-title">'+arr[a]+'</h5><p id="cardh" class="card-text">'+arr[a+1]+'</p></div><ul class="list-group list-group-flush"><li id="cardli" class="list-group-item">'+arr[a+2]+'</li><li id="cardli" class="list-group-item">'+arr[a+3]+'</li><li id="cardli" class="list-group-item">'+arr[a+4]+'</li><li id="cardli" class="list-group-item">'+arr[a+5]+'</li><li id="cardli" class="list-group-item">'+arr[a+6]+'</li><li id="cardli" class="list-group-item">'+arr[a+7]+'</li></ul><div id="btndiv" class="card-body"><button data-value="'+arr[a]+'" data-value1="'+arr[a+3]+'" id="contbtn" class="btn btn-warning undertestbtn1" type="button">open</button></div></div>')   
+                            a = a+8
+                        }
+                    }
+                    $("#closo").click(function(){
+                        $("#container").addClass('animate__animated animate__fadeOut');
+                        setTimeout(function() { 
+                            $("#container").remove()
+                        }, 1000,);
+                        
+                    });
+                    $(".undertestbtn1").click(function(){
+                        
+                        $("#Under").append('<div id="outrdiv" class=" animate__animated animate__fadeIn"><div id="confdiv1234"><button type="button" id="closo1" >close</button><div id="tablediv"><table id="example" class="display nowrap" style="width:100%"><thead><tr><tr>   <th>Date</th>  <th>Order Number</th>  <th>Confermation Number</th>  <th>Company Name</th>       <th>Element Name</th>  <th>Cat. Number</th> <th>Batch Number</th> <th>Expiry Date</th>  <th>QTY In Packs</th>    <th>QTY In Slides</th>                         <th>Status</th></tr></tr></thead><tbody ></tbody><tfoot><tr><th>Date</th>   <th>Order Number</th> <th>Confermation Number</th>   <th>Company Name</th>       <th>Element Name</th>  <th>Cat. Number</th> <th>Batch Number</th> <th>Expiry Date</th> <th>QTY In Packs</th>    <th>QTY In Slides</th>                         <th>Status</th></tr></tfoot></table></div></div></div>')
+
+                        val = this.getAttribute("data-value")
+                        val1 = this.getAttribute("data-value1")
+
+                        $('#example').DataTable( {
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'copy', 'csv', 'excel', 'pdf', 'print'
+                            
+                        ]
+                        
+                        } );
+
+                        $.ajax({
+                            type: 'GET',
+                            url: '/confJson/',
+                            contentType: "text/plain",
+                            dataType: 'json',
+                            data:{
+                                'val':val,
+                                'val1':val1,
+                            },
+                            success: function (response) {
+                                populateDataTable(response);                                
+                            },
+                        });
+                        $("#closo1").click(function(){
+                            $("#outrdiv").addClass('animate__animated animate__fadeOut');
+                            setTimeout(function() { 
+                                $("#outrdiv").remove()
+                            }, 1000,);
+                        });
+                    });         
+                }
+            });
+            
+              
+        });
+        
+        $(".confbtn").click(function(){
+            
+            itemId = this.getAttribute("data-value")
+            console.log(itemId)
+            $.ajax({
+                url: '/getAllConf/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                data:{
+                    'itemId':itemId
+                },
+                success: function(response1){
+                    
+                    $("#Under").append('<div id="outrdiv" class=" animate__animated animate__fadeIn"><div id="confdiv1234"><button type="button" id="closo1" >close</button><div id="tablediv"><table id="example1" class="display nowrap" style="width:100%"><thead><tr><tr>   <th>Date</th> <th>Order Number</th> <th>Confirmation Number</th>   <th>Company Name</th><th>Analyzer Type</th>       <th>Element Name</th>  <th>Cat. Number</th>  <th>QTY In Packs</th>    <th>QTY In Slides</th>      <th>Price</th>                     </tr></tr></thead><tbody ></tbody><tfoot><tr><th>Date</th>   <th>Order Number</th> <th>Confirmation Number</th> <th>Company Name</th><th>Analyzer Type</th>       <th>Element Name</th>  <th>Cat. Number</th>  <th>QTY In Packs</th>    <th>QTY In Slides</th>           <th>Price</th>          </tr></tfoot></table></div></div></div>')
+
+                    $('#example1').DataTable( {
+                        dom: 'Bfrtip',
+                        order: [0, 'desc'],
+                        buttons: [
+                            'copy', 'csv', 'excel', 'pdf', 'print'
+                        ]
+                    } );
+                    populateDataTable1(response1);
+                    console.log(response1)
+                    $("#closo1").click(function(){
+                        $("#outrdiv").addClass('animate__animated animate__fadeOut');
+                        setTimeout(function() { 
+                            $("#outrdiv").remove()
+                        }, 1000,);
+                    
+                    }); 
+                }
+            });
+        });
+    }
+</script>
+
+
+<script>
+    function populateDataTable(response) {
+        $('#example tbody').on('click', 'tr', function () {
+            
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+            } else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+        });
+                
+        $("#example").DataTable().clear();
+        var length = Object.keys(response.data).length;
+        var table = $('#example').DataTable();
+        
+        for(var i = 0; i < length; i++) {
+            var customer = response.data[i];
+            $('#example').dataTable().fnAddData( [
+                customer.dat,
+                customer.orderNum,
+                customer.ConfNum,
+                customer.Item_Model_compName,
+                
+                customer.ElementName,
+                customer.CatNumber,
+                customer.BatchNumber,
+                customer.ExpiryDate,
+                customer.QTY,
+                customer.SlidesQTY,
+                
+                customer.status,
+                
+            ]);
+        }
+    }                        
+</script>
+<script>
+    function populateDataTable1(response1) {
+        
+        $('#example1 tbody').on('click', 'tr', function () {
+            
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+            } else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+        });
+               
+        $("#example1").DataTable().clear();
+        var length = Object.keys(response1.data1).length;
+        var table = $('#example1').DataTable();
+
+        for(var i = 0; i < length; i++) {
+            var customer1 = response1.data1[i];
+            
+            $('#example1').dataTable().fnAddData( [
+                customer1.dat,
+                customer1.orderNum,
+                customer1.ConfNum,
+                customer1.Item_Model_compName,
+                customer1.Item_Model_compUnit,
+                customer1.ElementName,
+                customer1.CatNumber,
+                customer1.QTY,
+                customer1.SlidesQTY,
+                customer1.Price,
+            ]);
+        }
+    }                        
+</script>
+
+
+{% endblock %}
+

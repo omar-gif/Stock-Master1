@@ -1,0 +1,1552 @@
+{% extends "block2.html" %}
+{% load static %}
+{% block boot %}
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+
+			{%endblock%}
+{% block headName %}
+Home
+{%endblock%}
+{% block Hname %}
+Home
+{%endblock%}
+{% block cont %}
+<aside id="sidebar-right" class="sidebar-right">
+    <div class="nano">
+        <div class="nano-content">
+            <a href="#" class="mobile-close visible-xs">
+                Collapse <i class="fa fa-chevron-right"></i>
+            </a>
+            <div class="btndiv"><button  class="form-control btn btn-warning"   name="progress_item" id="progress" >In Progress Orders</button></div>
+            <div id="tabdiv">
+                <div class="form-group ind">
+                    <input  class="form-control" placeholder="Check Orders Invoices" name="orderNumber_Item" id="orderNumberShow"  required />
+                    <button id="sear" class="form-control btn btn-success">Search</button>
+                </div>
+            </div>
+            <div class="sidebar-right-wrapper">
+
+                <div class="sidebar-widget widget-calendar rightbox">
+
+
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+        
+    
+<div class="contall">
+    <div class="contup animate__animated animate__backInDown"> <a  class="VitroChem  ele" id="ordinp" href="#VitrosV1" data-toggle="tab">Order</a></div>
+    <div class="lowerdivs">
+        <div class="contleft animate__animated animate__backInLeft"><a  class="VitroChem  ele" id="confinp" href="#recent1" data-toggle="tab">Confermation</a></div>
+        <div class="contright animate__animated animate__backInRight"><a  class="VitroChem  ele" id="eleinp" href="#VitrosX1" data-toggle="tab">Item</a></div>
+    </div>
+    <div class="contup animate__animated animate__backInUp"> <a  class="VitroChem  ele" id="ordInv" href="#Invoice1" data-toggle="tab">Invoice</a></div>
+    <div  id="allcontent">
+            <div class="row">
+                    <div class="tab-content">
+
+                        <div id="VitrosV1" class="tab-pane">
+                            <div class="vitrodiv animate__animated animate__backInDown" >
+                                <form method="post" data-val-VIN-url="{%url 'getFiles'%}" enctype="multipart/form-data" name="basic__form" class="formo12">
+                                    {% csrf_token %}
+                                    <div class="form-group ico">
+                                        <label class="prag2" for="Dato">Order Number</label>
+                                        <input  class="form-control"  name="orderNumber_item" id="orderNumber" readonly required />
+                                    </div>
+                                    <div class="form-group ico">
+                                        <label class="prag2" for="analyzerName">Organize Name</label>
+                                        <select class="form-control" id="OrganizeName" name="OrganizeName_Item" required >
+                                            <option id="analyzerNameOpt" >--Please choose an option--</option>
+                                        </select>
+                                    </div>	
+                                    <div class="form-group ico">
+                                        <label class="prag2" for="companyName">Company Name</label>
+                                        <select class="form-control" id="companyName" name="companyName_Item" required >
+                                            <option id="companyNameOpt" >--Please choose an option--</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group ico">
+                                        <label class="prag2" for="typeOfAnalyzer">Type Of Analyzer</label>
+                                        <select class="form-control" id="typeOfAnalyzer" name="typeOfAnalyzer_Item" required >
+                                            <option id="typeOfAnalyzerOpt" >--Please choose an option--</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group ico">
+                                        <label class="prag2" for="Dato">Date</label>
+                                        <input  class="form-control"  name="Dato_item" id="Dato1" required type="date" readonly/>
+                                    </div>
+                                    <div class="form-group ico">
+                                        <label class="prag2" for="Dato">Note</label>
+                                        <input  class="form-control"  name="Note_item" id="Note" />
+                                    </div>
+                                    <div class="buttons1">
+                                        <button id="Ordercancel" type="button" class="btn btn-danger vlc"  >Cancel</button>
+                                        <button id="OrderInput" type="button" class="btn btn-success vlc"  >Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="VitrosX1" class="tab-pane icoc">
+                            <div class="vitrodiv animate__animated animate__backInDown">
+                                    <div class="formo12">
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="Dato">Date</label>
+                                            <input  class="form-control"  name="Dato_item" id="Dato2" required readonly/>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="Dato">Order Number</label>
+                                            <input  class="form-control"  name="orderNumber_item" id="orderNumber1" required />
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="companyName">Company Name</label>
+                                            <input  class="form-control"  name="companyName_Item" id="companyName1" readonly required />
+
+                                           
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="typeOfAnalyzer">Type Of Analyzer</label>
+                                            <input  class="form-control"  name="typeOfAnalyzer_Item" id="typeOfAnalyzer1"  required />
+                                            
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="companyName">Item Name</label>
+                                            <select class="form-control" id="ElementName" name="ElementName_Item" required >
+                                                <option id="companyNameOpt" >--Please choose an option--</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="companyName">Cat. Number</label>
+                                            <select class="form-control" id="CatNumber" name="Cat_Item" required >
+                                                <option id="companyNameOpt" >--Please choose an option--</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="Dato">QTY</label>
+                                            <input  class="form-control"  name="QTY_item" id="QTY" required />
+                                            <div id="Avlq2"><h1 id="AVLQTY2"></h1></div>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="Dato">Note</label>
+                                            <input  class="form-control"  name="Note_item" id="Note1" />
+                                        </div>
+                                        <div class="buttons1">
+                                            <button id="Ordercancel1" type="button" class="btn btn-danger vlc"  >Cancel</button>
+                                            <button id="OrderInput1" type="button" class="btn btn-success vlc"  >Save</button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div id="recent1" class="tab-pane">
+                            <div class="vitrodiv animate__animated animate__backInDown">
+                                    <form method="post" data-val-VIN-url="{%url 'getFiles'%}" enctype="multipart/form-data" name="basic__form" class="formo12">
+                                        {% csrf_token %}
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="Dato">Date</label>
+                                            <input  class="form-control"  name="Dato_item" id="Dato3" required readonly/>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="Dato">Order Number</label>
+                                            <input  class="form-control animate__shakeX"  name="orderNumber_item" id="orderNumber2" required />
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="Dato">Confermation Number</label>
+                                            <input  class="form-control animate__shakeX"  name="ConfermationNumber_item" id="ConfermationNum" readonly required />
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="companyName">Company Name</label>
+                                            <input  class="form-control"  name="companyName_Item" id="companyName2" readonly required />
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="typeOfAnalyzer">Type Of Analyzer</label>
+                                            <input  class="form-control"  name="typeOfAnalyzer_Item" id="typeOfAnalyzer2" readonly required />
+                                        </div>
+                                        
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="companyName">Element Name</label>
+                                            <select class="form-control" id="ElementName2" name="ElementName_Item" required >
+                                                <option id="companyNameOpt" >--Please choose an option--</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="ElementNumber2">Cat. Number</label>
+                                            <select class="form-control" id="ElementNumber2" name="ElementNumber2_Item" required >
+                                                <option id="companyNameOpt" >--Please choose an option--</option>
+                                            </select>
+                                            <div id="Avlq">
+                                                <label class="prag2" for="companyName">Pack</label>
+                                                <h1 id="AVLQTY3"></h1>
+                                                <label class="prag2" for="companyName">Slides</label>
+                                                <h1 id="AVLQTY4"></h1>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="Dato">QTY</label>
+                                            <input  class="form-control"  name="QTY_item" id="QTY2" required />
+                                            <div id="Avlq">
+                                                <h1 id="AVLQTY5"></h1>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="Dato">Expiry Date</label>
+                                            <input type="date" class="form-control"  name="EXPDato_item" id="EXPDato2" required />
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="Dato">Status</label>
+                                            <select class="form-control" id="statusacpt" name="statusacpt_item" required >
+                                                <option>--Please choose an option--</option>
+                                                <option>Accepted</option>
+                                                <option>Rejected</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="Dato">Note</label>
+                                            <input  class="form-control"  name="Note_item" id="Note2" />
+                                        </div>
+                                        <div class="buttons1">
+                                            <button id="Ordercancel2" type="button" class="btn btn-danger vlc"  >Cancel</button>
+                                            <button id="OrderInput2" type="button" class="btn btn-success vlc"  >Save</button>
+                                        </div>
+                                    </form>
+                            </div>
+                        </div>
+                        <div id="Invoice1" class="tab-pane">
+                            <div class="vitrodiv animate__animated animate__backInDown">
+                                    <div class="formo123">
+                                        {% csrf_token %}
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="Dato">Date</label>
+                                            <input  class="form-control" type="date"  name="Dato4_item" id="Dato4" required />
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="Dato">Order Number</label>
+                                            <input  class="form-control animate__shakeX"  name="orderNumber_item" id="orderNumber4" required />
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="companyName">Confirmation Number</label>
+                                            <select class="form-control" id="confNumber" name="conf_Item" required >
+                                                <option id="companyNameOpt" >--Please choose an option--</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="companyName">Company Name</label>
+                                            <input  class="form-control"  name="companyName4_Item" id="companyName4" readonly required />
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="typeOfAnalyzer">Type Of Analyzer</label>
+                                            <input  class="form-control"  name="typeOfAnalyzer4_Item" id="typeOfAnalyzer4" readonly required />
+                                        </div>
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="Dato">Invoice Number</label>
+                                            <input  class="form-control animate__shakeX"  name="InvoiceNumber_item" id="InvoiceNumber4" required />
+                                        </div>         
+                                        <div class="form-group ico">
+                                            <label class="prag2" for="Dato">Price</label>
+                                            <input  class="form-control"  name="Price4_item" id="Price4" readonly required />
+                                        </div>
+
+                                        
+                                        <div class="buttons1">
+                                            <button id="Ordercancel45" type="button" class="btn btn-danger vlc"  >Cancel</button>
+                                            <button id="OrderInput4" type="button" class="btn btn-success vlc"  >Save</button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+        </div>
+</div>
+    
+{%endblock%}
+{% block script %}
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>	
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+
+
+<script>
+                        
+    $("#sear").click(function(){
+        ordnumber = $("#orderNumberShow").val()
+        $(".contall").append('<div id="outrdiv1234" class=" animate__animated animate__fadeIn"><div id="outrdiv12" class=" animate__animated animate__fadeIn"><button class="closo9">close</button><div id="confdiv123"><div id="tablediv"><table id="example" class="display nowrap" style="width:100%"><thead><tr><tr>   <th>Date</th>    <th>Company Name</th><th>Analyzer Type</th>            <th>Order Number</th> <th>Confirmation Number</th> <th>Invoice Number</th>  <th>Price</th> </tr></tr></thead><tbody ></tbody><tfoot><tr><th>Date</th>    <th>Company Name</th><th>Analyzer Type</th>            <th>Order Number</th> <th>Confirmation Number</th> <th>Invoice Number</th>  <th>Price</th>         </tr></tfoot></table></div></div></div></div>')
+
+        $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+        } );
+
+        $(".closo9").click(function(){
+        $("#outrdiv1234").addClass('animate__animated animate__fadeOut');
+        setTimeout(function() { 
+            $("#outrdiv1234").remove()
+            $("#orderNumberShow").val("")
+            // $("#outrdiv1234").load(" #outrdiv1234 > *");
+                            }, 500,);
+    
+    });
+
+        $.ajax({
+            type: 'GET',
+            url: '/invTable/',
+            contentType: "text/plain",
+            dataType: 'json',
+            data:{
+                'ordnumber':ordnumber,
+            },
+            success: function (response) {
+                populateDataTable1213(response);                                
+            },
+        });
+    })
+</script>
+<script>
+    function populateDataTable1213(response) {
+        $('#example tbody').on('click', 'tr', function () {
+            
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+            } else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+        });
+                
+        $("#example").DataTable().clear();
+        var length = Object.keys(response.data).length;
+        var table = $('#example').DataTable();
+        
+        for(var i = 0; i < length; i++) {
+            var customer = response.data[i];
+            $('#example').dataTable().fnAddData( [
+                customer.dat,
+                customer.Item_Model_compName,
+                customer.Item_Model_compUnit,
+                customer.orderNum,
+                customer.orderConfermation,
+                customer.InvoiceNumber,
+                
+                customer.Price,
+
+            ]);
+        }
+    }                        
+</script>
+
+
+
+
+
+
+<script>
+    $("#progress").click(function(){
+        $(".contall").append('<div class="progressdiv animate__animated animate__fadeIn"> <button class="progclose">close</button><div class="tabdiv"> <div class="tabinrdiv"> <table id="example" class="display nowrap" style="width:100%"><thead><tr><tr>   <th>PO</th>    <th>Company Name</th><th>Analyzer Type</th>   <th>Invoice Number</th> <th>Cal Kit</th>         <th>Import Approval</th> <th>Ok To Ship</th> <th>Shipping Date</th>  <th>Shipping Cond</th> <th>Arrival Date</th> <th>EDA Date</th> <th>Tech. Date</th> <th>EDA Release Date</th>  </tr></tr></thead><tbody class="tred" ></tbody><tfoot><tr><th>PO</th>    <th>Company Name</th><th>Analyzer Type</th>   <th>Invoice Number</th> <th>Cal Kit</th>         <th>Import Approval</th> <th>Ok To Ship</th> <th>Shipping Date</th>  <th>Shipping Cond</th> <th>Arrival Date</th> <th>EDA Date</th> <th>Tech. Date</th> <th>EDA Release Date</th>          </tr></tfoot></table></div></div> </div>')
+
+        $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+        } );
+
+        $.ajax({
+            type: 'GET',
+            url: '/progressTable/',
+            contentType: "text/plain",
+            dataType: 'json',
+            success: function (response) {
+                populateDataTable(response);                                
+            },
+        });
+
+        $(".progclose").click(function(){
+            $(".progressdiv").addClass('animate__animated animate__fadeOut');
+            setTimeout(function() { 
+                $(".progressdiv").remove()
+                                }, 500,);
+        
+    });
+        
+    })
+</script>  <!-- ////////////////// in progress  //////////////////////////////  -->
+<script>
+    function populateDataTable(response) {
+        var table = $('#example').DataTable();
+        $('#example tbody').on('click', 'tr', function () {
+            console.log( table.row(this).data() );
+            var dat = table.row(this).data();
+            da = dat[0]
+
+            if ($(this).hasClass('selected')) {
+                
+                $(".contall").append('<div class="paraInput animate__animated animate__fadeIn"> <div class="inrInput">  <div class="form-group ico"><label class="prag2" for="companyName">Import Approval</label><select class="form-control" id="ImportApproval" name="ImportApproval_Item" required ><option id="typeOfAnalyzerOpt" >--Please choose an option--</option><option id="typeOfAnalyzerOpt" >Approved</option><option id="typeOfAnalyzerOpt" >Canceled</option></select></div><div class="form-group ico"><label class="prag2" for="typeOfAnalyzer">Ok To Ship</label><select class="form-control" id="OktOShip" name="OktOShip_Item" required ><option id="typeOfAnalyzerOpt" >--Please choose an option--</option><option id="typeOfAnalyzerOpt" >OK</option><option id="typeOfAnalyzerOpt" >Cancel</option></select></div><div class="form-group ico"><label class="prag2" for="ShippingDato">Shipping Date</label><input type="date" class="form-control"  name="ShippingDato_item" id="ShippingDato"  required /></div> <div class="form-group ico"><label class="prag2" for="Dato">Shipping Cond.</label><select class="form-control" id="ShippingCond" name="ShippingCond_Item" required ><option id="typeOfAnalyzerOpt" >--Please choose an option--</option><option id="typeOfAnalyzerOpt" >Normal Temperature</option><option id="typeOfAnalyzerOpt" >0 -> 18</option><option id="typeOfAnalyzerOpt" >-23 -> 0 </option></select></div>         <div class="form-group ico"><label class="prag2" for="arrivDato">Arrival Date</label><input type="date" class="form-control"  name="Dato_item" id="arrivDato"  required /></div><div class="form-group ico"><label class="prag2" for="EDADato">EDA Date</label><input type="date" class="form-control"  name="EDADato_item" id="EDADato"  required /></div><div class="form-group ico"><label class="prag2" for="TechDato">Tech. Date</label><input type="date" class="form-control"  name="TechDato_item" id="TechDato"  required /></div><div class="form-group ico"><label class="prag2" for="EDAReleaseDato">EDA Release Date</label><input type="date" class="form-control"  name="EDAReleaseDato_item" id="EDAReleaseDatoDato"  required /></div>    <div class="buttons1"><button id="editcancel" type="button" class="btn btn-danger vlc"  >Cancel</button><button id="editInput" type="button" class="btn btn-success vlc"  >Save</button></div> </div>   </div>')
+
+                $("#editInput").click(function(){
+                if($("#ImportApproval").val() != "--Please choose an option--"){
+                    importval = $("#ImportApproval").val()
+                }
+                else{
+                    importval = $("#ImportApproval").val("")
+                }
+
+                if($("#OktOShip").val() != "--Please choose an option--"){
+                    OkToShipval = $("#OktOShip").val()
+                }
+                else{
+                    OkToShipval = $("#OktOShip").val("")
+                }
+
+                if($("#ShippingDato").val() != "yyyy-mm-dd" || "yyyy-dd-mm"){
+                    shipval = $("#ShippingDato").val()
+                }
+                else{
+                    shipval = $("#ShippingDato").val("")
+                }
+
+                if($("#ShippingCond").val() != "--Please choose an option--"){
+                    shipcondval = $("#ShippingCond").val()
+                }
+                else{
+                    shipcondval = $("#ShippingCond").val("")
+                }
+
+                if($("#arrivDato").val() != "yyyy-mm-dd" || "yyyy-dd-mm"){
+                    arrivdateval = $("#arrivDato").val()
+                }
+                else{
+                    arrivdateval = $("#arrivDato").val("")
+                }
+
+                if($("#EDADato").val() != "yyyy-mm-dd" || "yyyy-dd-mm"){
+                    EDAdatval = $("#EDADato").val()
+                }
+                else{
+                    EDAdatval = $("#EDADato").val("")
+                }
+
+                if($("#TechDato").val() != "yyyy-mm-dd" || "yyyy-dd-mm"){
+                    techval = $("#TechDato").val()
+                }
+                else{
+                    techval = $("#TechDato").val("")
+                }
+
+                if($("#EDAReleaseDatoDato").val() != "yyyy-mm-dd" || "yyyy-dd-mm"){
+                    edareleaseval = $("#EDAReleaseDatoDato").val()
+                }
+                else{
+                    edareleaseval = $("#EDAReleaseDatoDato").val("")
+                }
+
+
+                
+                $.ajax({
+                    url: '/editship/', // <-- point to server-side PHP script
+                    dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                    data:{
+                            'da':da,
+                            'importval':importval,
+                            'OkToShipval':OkToShipval,
+                            'shipval':shipval,
+                            'shipcondval':shipcondval,
+                            'arrivdateval':arrivdateval,
+                            'EDAdatval':EDAdatval,
+                            'techval':techval,
+                            'edareleaseval':edareleaseval,
+                        },
+                    success: function(ordNumber){
+                        console.log(ordNumber)
+                        $(".paraInput").addClass('animate__animated animate__fadeOut');
+                            setTimeout(function() { 
+                                $(".paraInput").remove()
+                                
+
+                                        }, 500,);
+                        },
+                    
+                });
+
+            })
+
+                $("#editcancel").click(function(){
+                    $(".paraInput").addClass('animate__animated animate__fadeOut');
+                    setTimeout(function() { 
+                        $(".paraInput").remove()
+                                        }, 500,);
+                })
+                
+                $(this).removeClass('selected');
+            } else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+
+            
+        });
+                
+        $("#example").DataTable().clear();
+        var length = Object.keys(response.data).length;
+        var table = $('#example').DataTable();
+        
+        for(var i = 0; i < length; i++) {
+            var customer = response.data[i];
+            $('#example').dataTable().fnAddData( [
+                customer.PO,
+                customer.Item_Model_compName,
+                customer.Item_Model_compUnit,
+                customer.InvNumber,
+                customer.Cal,
+                customer.ImportApproval,
+                customer.OkToShip,
+                customer.ShippingDate,
+                customer.ShippingCond,
+                customer.ArrivalDate,
+                customer.EDADate,
+                customer.TechDate,
+                customer.EDAReleaseDate,
+                
+                
+
+            ]);
+        }
+        
+        
+
+    
+    }                        
+</script>       <!-- ////////////////// function  //////////////////////////////  -->
+
+
+
+
+<script>
+        $.ajax({
+        url: '/parameters/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        success: function(arr){
+            console.log(arr)
+            arr.sort()
+            for(var i=0;i<arr.length;i++){
+                $(".rightbox").append('<div class="items"><button class="items bb"  value="'+arr[i]+'" type="button">'+arr[i]+'</button></div>')
+            }
+            $(".bb").click(function(){
+                $(".contall").append('<div class="alloutrdiv1" class=" animate__animated animate__fadeIn"><div class="clo"> <button type="button" id="closo2" >close</button></div>  <div id="optionsbtn"> <button class="items" id="ordbtnz" type="button">Orders</button>   <button class="items" id="confbtn" type="button">Confermations</button></div>   </div>')
+
+                $("#closo2").click(function(){
+                    $(".alloutrdiv1").addClass('animate__animated animate__fadeOut');
+                    setTimeout(function() { 
+                        $(".alloutrdiv1").remove()
+                    }, 500,);
+                
+                });
+                
+                itemName = this.getAttribute("value")
+                console.log(itemName)
+                $("#ordbtnz").click(function(){
+                    getdata(itemName)
+                })
+                $("#confbtn").click(function(){
+                    getconfdata(itemName)
+                })
+                
+            })
+            },
+        });
+</script>     <!-- ////////////////// items table  //////////////////////////////  -->
+<script>
+
+    
+
+    function getdata(itemName){
+        
+        $.ajax({
+        url: '/pardata/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        data:{
+            'itemName':itemName,
+        },
+        success: function(response){
+            $(".contall").append('<div id="outrdiv1" class=" animate__animated animate__fadeIn"><div id="confdiv"><button type="button" id="closo1" >close</button><div id="tablediv"><table id="example" class="table table-striped" style="width:100%"><thead><tr><tr>  <th>Date</th>  <th>Company Name</th>    <th>Analyzer Type</th>       <th>Element Name</th>   <th>Cat. Number</th> <th>QTY in Packs</th> <th>QTY in slides</th> <th>Order Number</th>                       <th>Note</th></tr></tr></thead><tbody ></tbody><tfoot><tr>  <th>Date</th> <th>Company Name</th>   <th>Analyzer Type</th>       <th>Element Name</th> <th>Cat. Number</th> <th>QTY in Packs</th> <th>QTY in Slides</th> <th>Order Number</th>                <th>Note</th></tr></tfoot></table></div></div></div>')
+
+            $("#closo1").click(function(){
+                    $("#outrdiv1").addClass('animate__animated animate__fadeOut');
+                    setTimeout(function() { 
+                        $("#outrdiv1").remove()
+                    }, 500,);
+                
+                });
+
+            $('#example tbody').on('click', 'tr', function () {
+                
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                    
+                } else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+                   
+            $("#example").DataTable().clear();
+            var length = Object.keys(response.data).length;
+            var table = $('#example').DataTable();
+            
+            for(var i = 0; i < length; i++) {
+                var customer = response.data[i];
+                // You could also use an ajax property on the data table initialization
+                $('#example').dataTable().fnAddData( [
+                    // <a id="linko"  >zz</a>,
+                    customer.dat,
+                    customer.Item_Model_compName,
+                    customer.Item_Model_compUnit,
+                    customer.ElementName,
+                    customer.CatNumber,
+                    customer.QTY,
+                    customer.SlidesQTY,
+                    customer.orderNum,
+                    
+                    customer.Note,
+                ]);
+            
+            }
+        }
+        });
+    
+    }
+
+
+    function getconfdata(itemName){
+        $.ajax({
+        url: '/confdata/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        data:{
+            'itemName':itemName,
+        },
+        success: function(response){
+            $(".contall").append('<div id="outrdiv1" class=" animate__animated animate__fadeIn"><div id="confdiv"><button type="button" id="closo3" >close</button><div id="tablediv"><table id="example" class="table table-striped" style="width:100%"><thead><tr><tr>    <th>Date</th>   <th>Company Name</th>   <th>Analyzer Type</th>       <th>Element Name</th>            <th>Cat. Number</th>          <th>QTY in Packs</th>  <th>QTY In Slides</th> <th>Order Number</th> <th>Expiry Date</th> <th>Status</th> <th>Note</th></tr></tr></thead><tbody ></tbody><tfoot><tr>    <th>Date</th>   <th>Company Name</th>   <th>Analyzer Type</th>       <th>Element Name</th>   <th>Cat. Number</th>      <th>QTY in Packs</th>            <th>QTY in Slides</th> <th>Order Number</th> <th>Expiry Date</th>    <th>Status</th>  <th>Note</th></tr></tfoot></table></div></div></div>')
+
+            $("#closo3").click(function(){
+                    $("#outrdiv1").addClass('animate__animated animate__fadeOut');
+                    setTimeout(function() { 
+                        $("#outrdiv1").remove()
+                    }, 500,);
+                
+                });
+
+            $('#example tbody').on('click', 'tr', function () {
+                
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                    
+                } else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+                   
+            $("#example").DataTable().clear();
+            var length = Object.keys(response.data).length;
+            var table = $('#example').DataTable();
+            
+            for(var i = 0; i < length; i++) {
+                var customer = response.data[i];
+                // You could also use an ajax property on the data table initialization
+                $('#example').dataTable().fnAddData( [
+                    // <a id="linko"  >zz</a>,
+                    customer.dat,
+                    customer.Item_Model_compName,
+                    customer.Item_Model_compUnit,
+                    customer.ElementName,
+                    customer.CatNumber,
+                    customer.QTY,
+                    customer.SlidesQTY,
+                    customer.orderNum,
+                    customer.ExpiryDate,
+                    customer.status,
+                    customer.Note,
+                ]);
+            
+            }
+        }
+        });
+    }
+</script>       <!-- ////////////////// items table  //////////////////////////////  -->
+
+
+
+<script>
+    $("#ordInv").click(function(){
+        $("#Ordercancel45").click(function(){
+            $(".formo123").addClass('animate__animated animate__fadeOut');
+            setTimeout(function() { 
+                $(".formo123").load(" .formo123 > *");
+                $("#allcontent").load(" #allcontent > *");
+                                }, 500,);
+        
+    });
+})
+</script>   <!-- ////////////////// Invoice form cancel //////////////////////////////  -->
+
+<script>
+    $("#ordinp").click(function(){
+        $("#Ordercancel").click(function(){
+            $(".formo12").addClass('animate__animated animate__fadeOut');
+            setTimeout(function() { 
+                $(".formo12").load(" .formo12 > *");
+                $("#allcontent").load(" #allcontent > *");
+                                }, 500,);
+        
+    });
+})
+</script>   <!-- ////////////////// ord form cancel //////////////////////////////  -->
+
+<script>
+    $("#eleinp").click(function(){
+    $("#Ordercancel1").click(function(){
+        $(".formo12").addClass('animate__animated animate__fadeOut');
+        setTimeout(function() { 
+            $(".formo12").load(" .formo12 > *");
+            $("#allcontent").load(" #allcontent > *");
+                            }, 500,);
+        
+    });
+})
+</script>   <!-- ////////////////// conf form cancel //////////////////////////////  -->
+
+<script>
+    $("#confinp").click(function(){
+    $("#Ordercancel2").click(function(){
+        $(".formo12").addClass('animate__animated animate__fadeOut');
+        setTimeout(function() { 
+            $(".formo12").load(" .formo12 > *");
+            $("#allcontent").load(" #allcontent > *");
+                            }, 500,);
+        
+    });
+})
+</script>   <!-- ////////////////// ele form cancel //////////////////////////////  -->
+
+
+<script>
+    $('#orderNumber').keyup("change",function(e){
+        searchVal = e.target.value
+        console.log(searchVal);
+
+        $.ajax({
+        url: '/CheckOrderNum/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        data:{
+            'searchVal':searchVal
+        },
+        success: function(message){
+            if(message){
+            alert(message)
+            $("#orderNumber").val("")
+        }
+            },
+        });
+    });
+</script>  <!-- ////////////////// Check Order Number //////////////////////////////  -->
+
+
+
+
+<!-- ////////////////// Invoice //////////////////////////////  -->
+
+<script>
+    $("#ordInv").click(function(){
+        $("#orderNumber4").change(function(){
+            $("#companyName2").val("")
+            $("#typeOfAnalyzer2").val("")
+            ordernum = $("#orderNumber4").val()
+            $.ajax({
+            url: '/getcompanies/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                'ordernum':ordernum
+            },
+            success: function(arr){
+                console.log(arr)
+                j = 0
+                for(i=0 ; i<arr.length ; i++){
+                    $("#companyName4").val(''+arr[j]+'')
+                    $("#typeOfAnalyzer4").val(''+arr[j+1]+'')
+     
+                }
+                },
+            });
+        })
+    });
+</script> <!-- ////////////////// company name //////////////////////////////  -->
+
+<script>
+    $("#ordInv").click(function(){
+        $("#orderNumber4").change(function(){
+            $("#confNumber").val("")
+            ordernum = $("#orderNumber4").val()
+            $.ajax({
+            url: '/getconfs/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                'ordernum':ordernum
+            },
+            success: function(arr){
+                console.log(arr)
+                j=0;
+                for(i=0 ; i<arr.length/3 ; i++){
+                    // $("#confNumber").append('<option id="companyNameOpt" >'+arr[j]+ '&emsp;&emsp;&emsp;'  +arr[j+1]+ '&emsp;&emsp;&emsp;' +arr[j+2]+      '</option>')
+                    $("#confNumber").append('<option id="companyNameOpt" >'+arr[j]+ '</option>')
+                    j=j+3
+                }
+                },
+            });
+        })
+    });
+</script> <!-- ////////////////// Confermation Number //////////////////////////////  -->
+
+<script>
+    $("#ordInv").click(function(){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = today.getFullYear();
+
+        today =yyyy + '-' + mm + '-' + dd ;
+        $("#Dato4").val(''+today+'')
+    });
+</script>   <!-- ////////////////// date //////////////////////////////  -->
+
+<script>
+    $("#ordInv").click(function(){
+        $("#confNumber").change(function(){
+            // $("#confNumber").val("")
+            confNum = $("#confNumber").val()
+            console.log(confNum)
+            $.ajax({
+            url: '/showPrices/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                'confNum':confNum
+            },
+            success: function(curPrice){
+                $("#Price4").val(curPrice)
+                },
+            });
+        })
+    });
+</script> <!-- ////////////////// Confermation Number //////////////////////////////  -->
+
+<script>
+    $("#ordInv").click(function(){
+
+        $("#OrderInput4").click(function(){
+            compNam = $("#companyName4").val()
+            typAna = $("#typeOfAnalyzer4").val()
+            ordNum = $("#orderNumber4").val()
+            confNumber = $("#confNumber").val()
+            ordDat = $("#Dato4").val()
+            InvNum = $("#InvoiceNumber4").val()
+            Price = $("#Price4").val()
+            
+            $.ajax({
+                url: '/SavconnfOrder/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                data:{
+                        'compNam':compNam,
+                        'typAna':typAna,
+                        'ordNum':ordNum,
+                        'ordDat':ordDat,
+                        'InvNum':InvNum,
+                        'Price':Price,
+                        'confNumber':confNumber,
+                    },
+                
+                success: function(){
+
+                    $(".formo123").addClass('animate__animated animate__fadeOut');
+                        setTimeout(function() { 
+                            $(".formo123").load(" .formo123 > *");
+                            $("#allcontent").load(" #allcontent > *");
+                                        }, 500,);
+                    
+                    },
+                    
+                
+                });
+            });
+        
+    });
+</script>  <!-- ////////////////// save Invoice //////////////////////////////  -->
+
+
+
+
+<!-- ////////////////// confermation //////////////////////////////  -->
+
+<script>
+$("#confinp").click(function(){
+    $("#ElementNumber2").change(function(){
+            $("#AVLQTY3").html("")
+            $("#AVLQTY4").html("")
+            eleNam = $("#ElementName2").val()
+            ordNum = $("#orderNumber2").val()
+            eleNum = $("#ElementNumber2").val()
+            console.log(eleNam)
+            $.ajax({
+            url: '/CheckelementNum2/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                    'eleNam':eleNam,
+                    'ordNum':ordNum,
+                    'eleNum':eleNum,
+                },
+            success: function(response){
+                console.log(response.number)
+                if(response.number >= 1){
+                    $("#AVLQTY3").append(response.number)
+                    $("#AVLQTY3").val(response.number)
+                    $("#AVLQTY4").append(response.number1)
+                    $("#AVLQTY4").val(response.number1)
+                }
+                $('#QTY2').keyup("change",function(e){
+                    searchVal = e.target.value
+                    console.log(eleNam)
+                    if(searchVal>response.number){
+                    alert("Check Element Number")
+                    $('#QTY2').val("")
+                    }
+                });
+                },
+            
+            });
+        });
+    });
+</script><!-- ////////////////// Check elements Numbers//////////////////////////////  -->
+
+<script>
+    $("#confinp").click(function(){
+        $("#orderNumber2").change(function(){
+            ordNum = $("#orderNumber2").val()
+            $.ajax({
+            url: '/CreateConNum/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                    'ordNum':ordNum,
+                },
+            success: function(newConfNum){
+                console.log(newConfNum)
+                $("#ConfermationNum").val(newConfNum)
+                },
+            
+            });
+        });
+    });
+    </script>  <!-- ////////////////// Create Con Number //////////////////////////////  -->
+
+<script>
+$("#confinp").click(function(){
+    $("#ElementName2").change(function(){
+        eleNam = $("#ElementName2").val()
+        ordNum = $("#orderNumber2").val()
+        $.ajax({
+        url: '/getcatnum/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        data:{
+                'eleNam':eleNam,
+                'ordNum':ordNum,
+            },
+        success: function(arr){
+            $("#ElementNumber2").html("<option  >--Please choose an option--</option>")
+                console.log(arr)
+                for(i=0 ; i<arr.length ; i++){
+                    $("#ElementNumber2").append('<option id="companyNameOpt" >'+arr[i]+'</option>')
+                }
+            },
+        
+        });
+    });
+});
+</script>  <!-- ////////////////// Check elements //////////////////////////////  -->
+
+<script>
+    $("#confinp").click(function(){
+        $("#EXPDato2").change(function(){
+            dateval = $("#EXPDato2").val()
+            
+            ElementNumber2 = $("#ElementNumber2").val() 
+            $.ajax({
+                url: '/getdates/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                data:{
+                    'dateval':dateval,
+                    'ElementNumber2':ElementNumber2,
+                },
+                success: function(arr){
+                    console.log(arr)
+                    
+                    setTimeout(function() {
+                        $(".contall").append('<div id="outrcom" class="animate__animated animate__fadein">   <div id="innrcom"> <h1 id="comh1">There is a newer Expiry Date !!  </h1>    <h1 id="comh1">Do you want to continue </h1> <div id="inrdiv">      <button  id="danbtn" class="btn btn-danger confbtn" type="button">Cancel</button>     <button  id="sucbtn" class="btn btn-success confbtn" type="button">Continue</button></div> </div>     </div>')
+
+                        $("#danbtn").click(function(){
+                            $("#outrcom").addClass('animate__animated animate__fadeOut');
+                            setTimeout(function() {
+                                $("#outrcom").remove()
+                                $("#recent1").remove()
+                                $("#allcontent").load(" #allcontent > *");
+                            }, 500,);
+                        });
+
+                        $("#sucbtn").click(function(){
+                            $("#outrcom").addClass('animate__animated animate__fadeOut');
+                            setTimeout(function() {
+                                $("#outrcom").remove()
+
+                            }, 500,);
+                        });
+                    }, 500,);
+                    
+                },
+            });           
+
+        })
+        
+    })
+</script> <!-- ////////////////// ckeck confermations dates //////////////////////////////  -->
+
+<script>
+    $("#confinp").click(function(){
+        $('#orderNumber2').keyup("change",function(e){
+
+            searchVal = e.target.value
+            console.log(searchVal);
+
+            $.ajax({
+            url: '/CheckOrderNum2/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                'searchVal':searchVal
+            },
+            success: function(arr){
+                dd = arr.filter((item, index) => arr.indexOf(item) === index);
+                $("#ElementName2").html("<option  >--Please choose an option--</option>")
+                for(i=0 ; i<dd.length ; i++){
+                    $("#ElementName2").append('<option id="companyNameOpt" >'+dd[i]+' </option>')
+                }
+            },
+            });
+        });
+    });
+</script>  <!-- ////////////////// Check elements //////////////////////////////  -->
+
+
+<script>
+    $("#confinp").click(function(){
+        $("#QTY2").change(function(){
+            $("#AVLQTY5").html("")
+            packval = $("#AVLQTY3").val()
+            slideval = $("#AVLQTY4").val()
+            Qtyv = $("#QTY2").val()
+            
+            result = slideval/packval
+            
+            actval = Qtyv*result
+            $("#AVLQTY5").append(actval)
+            $("#AVLQTY5").val(actval)
+        })
+    })
+</script> <!-- ////////////////// Item QTY Slides //////////////////////////////  -->
+
+<script>
+    $("#confinp").click(function(){
+        $("#orderNumber2").change(function(){
+            $("#companyName2").val("")
+            $("#typeOfAnalyzer2").val("")
+            ordernum = $("#orderNumber2").val()
+            $.ajax({
+            url: '/getcompanies/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                'ordernum':ordernum
+            },
+            success: function(arr){
+                console.log(arr)
+                j = 0
+                for(i=0 ; i<arr.length ; i++){
+                    $("#companyName2").val(''+arr[j]+'')
+                    $("#typeOfAnalyzer2").val(''+arr[j+1]+'')
+     
+                }
+                },
+            });
+        })
+    });
+</script> <!-- ////////////////// company name //////////////////////////////  -->
+
+
+
+<script>
+    $("#confinp").click(function(){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = today.getFullYear();
+
+        today =yyyy + '-' + mm + '-' + dd ;
+        $("#Dato3").val(''+today+'')
+    });
+</script>   <!-- ////////////////// date //////////////////////////////  -->
+
+<script>
+    $("#confinp").click(function(){
+        $('#QTY2').change(function(){
+            $("#OrderInput2").click(function(){
+                searchVal = $('#QTY2').val()
+                ordNum = $('#orderNumber2').val()
+                eleNum = $('#ElementName2').val()
+                slidesnum = $('#AVLQTY5').val()
+                statusacpt = $('#statusacpt').val()
+
+                console.log(searchVal)
+                $.ajax({
+                url: '/UpdateOrderQTy/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                data:{
+                    'searchVal':searchVal,
+                    'ordNum':ordNum,
+                    'eleNum':eleNum,
+                    'slidesnum':slidesnum,
+                    'statusacpt':statusacpt,
+                },
+                success: function(arr){
+                    console.log(arr)
+                    
+                },
+                });
+            });
+        });
+    });
+</script>  <!-- ////////////////// update Order Number //////////////////////////////  -->
+
+<script>
+    $("#confinp").click(function(){
+
+        $("#OrderInput2").click(function(){
+            eleNam = $("#ElementName2").val()
+            compNam = $("#companyName2").val()
+            typAna = $("#typeOfAnalyzer2").val()
+            ordNum = $("#orderNumber2").val()
+            ordDat = $("#Dato3").val()
+            ordNot = $("#Note2").val()
+            ordqty = $("#QTY2").val()
+            statu = $("#statusacpt").val()
+            expdate = $("#EXPDato2").val()
+            slideqty = $("#AVLQTY5").val()
+
+            packval = $("#AVLQTY3").val()
+            slideval = $("#AVLQTY4").val()
+            confnum = $("#ConfermationNum").val()
+            
+            result = slideval/packval
+            $.ajax({
+                url: '/SavconnfOrder1/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                data:{
+                        'eleNam':eleNam,
+                        'compNam':compNam,
+                        'typAna':typAna,
+                        'ordNum':ordNum,
+                        'ordDat':ordDat,
+                        'ordNot':ordNot,
+                        'ordqty':ordqty,
+                        'expdate':expdate,
+                        'slideqty':slideqty,
+                        'result':result,
+                        'statu':statu,
+                        'confnum':confnum,
+                        
+                    },
+                
+                success: function(){
+
+                    $(".formo12").addClass('animate__animated animate__fadeOut');
+                        setTimeout(function() { 
+                            $(".formo12").load(" .formo12 > *");
+                            $("#allcontent").load(" #allcontent > *");
+                                        }, 500,);
+                    
+                    },
+                    
+                
+                });
+            });
+        
+    });
+</script>  <!-- ////////////////// save element //////////////////////////////  -->
+
+
+<!-- ////////////////// Element //////////////////////////////  -->
+
+
+
+
+<script>
+    $("#eleinp").click(function(){
+        $('#orderNumber1').keyup("change",function(e){
+            ordernum = e.target.value
+            console.log(ordernum);
+            $("#companyName1").val("")
+            $("#typeOfAnalyzer1").val("")
+            ordernum = $("#orderNumber1").val()
+            $.ajax({
+            url: '/getcompanies/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                'ordernum':ordernum
+            },
+            success: function(arr){
+                console.log(arr)
+                j = 0
+                for(i=0 ; i<arr.length ; i++){
+                    $("#companyName1").val(''+arr[j]+'')
+                    $("#typeOfAnalyzer1").val(''+arr[j+1]+'')
+     
+                }
+                },
+            });
+        })
+    });
+</script> <!-- ////////////////// company name //////////////////////////////  -->
+
+<script>
+$("#eleinp").click(function(){
+    $("#orderNumber1").change(function(){
+            compname = $("#companyName1").val()
+            unit = $("#typeOfAnalyzer1").val()
+            console.log(compname,unit)
+            $.ajax({
+            url: '/getParameter/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                    'compname':compname,
+                    'unit':unit,
+                },
+            success: function(arrayOfNames){
+                $("#ElementName").html("<option  >--Please choose an option--</option>")
+                var j=0;
+                arrayOfNames.sort()
+                for(i=0 ; i<arrayOfNames.length ; i++){
+                    y = arrayOfNames[j]
+                    $("#ElementName").append('<option id="companyNameOpt" >'+y+'</option>')
+                    j++
+                }
+                },
+            
+            });
+    });
+});
+</script><!-- ////////////////// element //////////////////////////////  -->
+
+<script>
+    $("#eleinp").click(function(){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = today.getFullYear();
+
+        today =yyyy + '-' + mm + '-' + dd ;
+        $("#Dato2").val(''+today+'')
+    });
+</script>   <!-- ////////////////// date //////////////////////////////  -->
+
+<script>
+    $("#eleinp").click(function(){
+        $("#ElementName").change(function(){
+            eleNam = $("#ElementName").val()
+            compNam = $("#companyName1").val()
+            
+            $("#CatNumber").html("<option>--Please choose an option--</option>")
+            $.ajax({
+            url: '/checkcat/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                    'eleNam':eleNam,
+                    'compNam':compNam,
+                },
+            success: function(arr){
+                console.log(arr)
+                var j=0;
+                for(i=0 ; i<arr.length/2 ; i++){
+                    y = arr[j]
+                    $("#CatNumber").append('<option id="companyNameOpt" >'+y+'</option>')                    
+                    j = j+2
+                }
+                
+                
+                },
+            
+            });
+        });
+    });
+</script><!-- ////////////////// cat number //////////////////////////////  -->
+
+<script>
+    $("#eleinp").click(function(){
+        $("#QTY").change(function(){
+            catval = $("#CatNumber").val()
+            Qtyv = $("#QTY").val()
+            $("#AVLQTY2").html("")
+            $.ajax({
+                url: '/checkcatQty/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                data:{
+                        'catval':catval,
+                    },
+                success: function(num){
+                    console.log(num)
+                    actval = num * Qtyv
+                    console.log(actval)
+                    $("#AVLQTY2").append(actval)
+                    $("#AVLQTY2").val(actval)
+                    },
+                
+                });
+        })
+    })
+</script> <!-- ////////////////// Item QTY Slides //////////////////////////////  -->
+
+<script>
+    $("#eleinp").click(function(){
+        $("#OrderInput1").click(function(){
+            eleNam = $("#ElementName").val()
+            compNam = $("#companyName1").val()
+            typAna = $("#typeOfAnalyzer1").val()
+            ordNum = $("#orderNumber1").val()
+            ordDat = $("#Dato2").val()
+            ordNot = $("#Note1").val()
+            ordqty = $("#QTY").val()
+            CatNum = $("#CatNumber").val()
+            SlidesQTY = $("#AVLQTY2").val()
+            
+            console.log(SlidesQTY)
+
+            $.ajax({
+            url: '/SavelementOrder/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                    'eleNam':eleNam,
+                    'compNam':compNam,
+                    'typAna':typAna,
+                    'ordNum':ordNum,
+                    'ordDat':ordDat,
+                    'ordNot':ordNot,
+                    'ordqty':ordqty,
+                    'CatNum':CatNum,
+                    'SlidesQTY':SlidesQTY,
+                },
+            success: function(){
+                $(".formo12").addClass('animate__animated animate__fadeOut');
+            setTimeout(function() { 
+                $(".formo12").load(" .formo12 > *");
+                $("#allcontent").load(" #allcontent > *");
+                                }, 500,);
+
+                },
+            
+            });
+        });
+    });
+</script>  <!-- ////////////////// save element //////////////////////////////  -->
+
+
+
+
+<!-- ////////////////// Order //////////////////////////////  -->
+
+<script>
+    $("#ordinp").click(function(){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = today.getFullYear();
+
+        today =yyyy + '-' + mm + '-' + dd ;
+        console.log(mm)
+        $("#Dato1").val(''+today+'')
+
+        $.ajax({
+        url: '/checkOrderNum/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        data:{
+            'yyyy':yyyy,
+            'mm':mm,
+        },
+        success: function(newOrderNum){
+            console.log(newOrderNum)
+                $("#orderNumber").val(''+newOrderNum+'')
+            },
+        
+        });
+    });
+</script>  <!-- ////////////////// order number  //////////////////////////////  -->
+<script>
+    $("#ordinp").click(function(){
+        $("#OrderInput").click(function(){
+            orgNam = $("#OrganizeName").val()
+            compNam = $("#companyName").val()
+            typAna = $("#typeOfAnalyzer").val()
+            ordNum = $("#orderNumber").val()
+            ordDat = $("#Dato1").val()
+            ordNot = $("#Note").val()
+            $.ajax({
+            url: '/SaveOrders/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                    'orgNam':orgNam,
+                    'compNam':compNam,
+                    'typAna':typAna,
+                    'ordNum':ordNum,
+                    'ordDat':ordDat,
+                    'ordNot':ordNot,
+                    
+                },
+            success: function(ordNum){
+                console.log(ordNum)
+                if(ordNum)
+            
+                $(".formo12").addClass('animate__animated animate__fadeOut');
+                setTimeout(function() { 
+                    $(".formo12").load(" .formo12 > *");
+                    $("#allcontent").load(" #allcontent > *");
+                                    }, 500,);
+                    
+                
+                },
+            
+            });
+        });
+    });
+</script>  <!-- ////////////////// save orders //////////////////////////////  -->
+<script>
+    $("#ordinp").click(function(){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+        var yyyy = today.getFullYear();
+
+        today =yyyy + '-' + mm + '-' + dd ;
+        $("#Dato1").val(''+today+'')
+    });
+</script>   <!-- ////////////////// date //////////////////////////////  -->
+
+
+<script>
+    $("#ordinp").click(function(){
+        $("#OrganizeName").html("<option>--Please choose an option--</option>")
+        $.ajax({
+        url: '/getOrganize/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        success: function(arrayOfNames){
+            var j=0;
+            for(i=0 ; i<arrayOfNames.length ; i++){
+                y = arrayOfNames[j]
+                $("#OrganizeName").append('<option id="companyNameOpt" >'+y+'</option>')
+                j++
+            }
+            },
+        
+        });
+    });
+</script> <!-- ////////////////// organize name //////////////////////////////  -->
+
+<script>
+    $("#ordinp").click(function(){
+        $("#companyName").html("<option>--Please choose an option--</option>")
+        $.ajax({
+        url: '/companiesName/', // <-- point to server-side PHP script
+        dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+        success: function(arrayOfNames){
+            var j=0;
+            for(i=0 ; i<arrayOfNames.length ; i++){
+                y = arrayOfNames[j]
+                $("#companyName").append('<option id="companyNameOpt" >'+y+'</option>')
+                j++
+            }
+            },
+        });
+    });
+</script> <!-- ////////////////// company name //////////////////////////////  -->
+<script>
+    $("#ordinp").click(function(){
+        $("#typeOfAnalyzer").html("<option>--Please choose an option--</option>")
+        $("#companyName").click(function(){
+            $("#typeOfAnalyzer").html("<option>--Please choose an option--</option>")
+            max = $("#companyName").val()
+            console.log(max)
+            $.ajax({
+            url: '/analyzerTypes/', // <-- point to server-side PHP script
+            dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+            data:{
+                'max':max
+            },
+            success: function(arrayOfNames){
+                console.log(arrayOfNames)
+                var j=0;
+                for(i=0 ; i<arrayOfNames.length ; i++){
+                    y = arrayOfNames[j]
+                    $("#typeOfAnalyzer").append('<option id="companyNameOpt" >'+y+'</option>')
+                    j++
+                }
+                },
+            });
+        });
+    });	
+</script> <!-- ////////////////// type of analyzer //////////////////////////////  -->
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
