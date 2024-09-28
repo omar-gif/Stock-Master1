@@ -22,12 +22,12 @@ Invoices
   <div class="container">
     <div class="row">
       
-      <form method="post" data-val-VIN-url="{%url 'getFiles'%}" enctype="multipart/form-data" name="basic__form" class="formo">                             
+      <form method="post" enctype="multipart/form-data" name="basic__form" class="formo">                             
                             
         {% csrf_token %}
                   <!-- <input type="file" id="orderupload" name="Orderfiles" class="form-control"> -->
-                <div class="allinputs">
-                  <!-- <div class="inpu1 inputa2" id="inputa1">
+                 <!-- <div class="allinputs">
+                  <div class="inpu1 inputa2" id="inputa1">
                     <div class="inpumiddiv">
                       <h1 class="divhead">Upload pack QTY</h1>
                       <input type="file" id="image8"  name="image8[]"  class="btn btn-primary mco" accept=".xlsx, .xls, .csv" />
@@ -47,15 +47,16 @@ Invoices
                       <input type="file" id="image5"  name="image5[]"  class="btn btn-primary mco" accept=".xlsx, .xls, .csv" />
                       <button id="upload5" type="button" class="btn btn-success uplo"  >Upload</button>
                     </div>
-                  </div> 
-                  <div class="inpu1 inputa2" id="inputa1">
+                  </div>    -->
+                  <!-- <div class="inpu1 inputa2" id="inputa1">
                     <div class="inpumiddiv">
                       <h1 class="divhead">Upload Reagent specifications</h1>
                       <input type="file" id="image6"  name="image6[]"  class="btn btn-primary mco" accept=".xlsx, .xls, .csv" />
                       <button id="upload6" type="button" class="btn btn-success uplo"  >Upload</button>
                     </div>
-                  </div> -->
-                   <!-- <button type="submit" id="uplo" class="btn btn-success" >Upload New Order</button>  -->
+                  </div> 
+                     <button type="submit" id="uplo" class="btn btn-success" >Upload New Order</button> 
+                    -->
                    <div class="inpu1 inputa4" id="inputa1">
                     <div class="inpumiddiv">
                       <h1 class="divhead">Upload Invoices</h1>
@@ -65,8 +66,8 @@ Invoices
                       <input type="file" id="image1"  name="image1[]" multiple  class="btn btn-primary mco"  accept=".xlsx, .xls, .csv, .pdf" />
                       <button id="upload1" type="button" class="btn btn-success uplo" disabled >Upload</button>
                     </div>
-                  </div>
-        
+                  </div> 
+                  
                   <!-- <div class="inpu1" id="inputa1">
                     <div class="inpumiddiv">
                       <h1 class="divhead">Upload Others</h1>
@@ -74,14 +75,14 @@ Invoices
                       <input type="file" id="image"  name="image[]" multiple class="btn btn-primary mco" />
                       <button id="upload2" type="button" class="btn btn-success uplo" disabled >Upload</button>
                     </div>
-                  </div> -->
+                  </div>  -->
         
                   <!-- /////////////////// order files //////////////////////////// --> 
                   <div class="inpu1 inputa3" id="inputa1">
                     <div class="inpumiddiv">
                       <h1 class="divhead">Upload Confirmation</h1>
-                      <input type="text" id="invnum3"  placeholder="Order Number"  class="btn btn invnum" />
-                      <input type="file" id="image3" disabled  name="image3[]"  class="btn btn-primary mco"  accept=".xlsx, .xls, .csv"/>
+                      <input type="text" id="invnum3"  placeholder="Order Number"  class="btn btn invnum " />
+                      <input type="file" id="image3"   name="image3[]"  class="btn  mco"  accept=".xlsx, .xls, .csv" disabled/>
                       <button id="upload3" type="button" class="btn btn-success uplo" disabled >Upload</button>
                     </div>
                   </div>
@@ -163,6 +164,7 @@ Invoices
             alert(message)
           }
             // $(".inputa3").load(" .inputa3 > *");
+
             location.reload();
           },
         });
@@ -336,12 +338,14 @@ $('#ordnum1').change(function(){
           data: form_data,
           type: 'post',
           success: function(message){
-            // $('#upload3').attr("disabled", true)
-            if(message == '"This File is Not Compatable"'){
-            alert(message)
-          }
-            // $(".inputa3").load(" .inputa3 > *");
-            location.reload();
+            console.log(message)
+            if(message != '{"State": "Success"}'){
+              alert(message)
+            }
+            else{
+              alert(message)
+              location.reload();
+            }            
           },
         });
 
@@ -372,8 +376,6 @@ $('#ordnum1').change(function(){
 			for(var i = 0 ; i<=file_data1 ; i++){
 					file_data = $("#image4").prop('files')[i];
 					form_data.append("file", file_data);
-
-					console.log(i);
 					}
 			$.ajax({
 				url: '/uploadOrder/',
@@ -383,14 +385,14 @@ $('#ordnum1').change(function(){
 				processData: false,
         data: form_data,
 				type: 'post',
-        success: function(message){
-          console.log(message);
-          if(message == '"This File is Not Compatable"'){
-            alert(message)
-          }
-          location.reload();
-          // $(".inputa2").load(" .inputa2 > *");
-          // $(".invnum").load(" .invnum > *");
+        success: function(fo,mess){
+            if(fo != '["OK"]'){
+              alert("The first Column must be the Cataloge Number or there is an error in this Cataloge Number "+ " " + fo  )
+            }
+            else if(mess){
+              alert(mess)
+              location.reload();
+            }
         },
 			});
 

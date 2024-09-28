@@ -73,8 +73,8 @@
     <!-- Service Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-3 col-sm-6 wow fadeInUp vitroBtn" data-wow-delay="0.1s">
+            <div class="row g-4 AllAna">
+                <div class="col-lg-2 col-sm-6 wow fadeInUp vitroBtn" data-wow-delay="0.1s">
                     <div class="service-item text-center pt-3 vitros350">
                         <div class="p-4">
                             <i class="fa fa-3x fa-graduation-cap text-primary mb-4 analyzerIcon"></i>
@@ -82,7 +82,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp resBtn" data-wow-delay="0.3s">
+                <div class="col-lg-2 col-sm-6 wow fadeInUp resBtn940" data-wow-delay="0.3s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-globe text-primary mb-4 analyzerIcon"></i>
+                            <h5 class="mb-3">R940</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-sm-6 wow fadeInUp resBtn" data-wow-delay="0.3s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-globe text-primary mb-4 analyzerIcon"></i>
@@ -90,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp resBtn910" data-wow-delay="0.5s">
+                <div class="col-lg-2 col-sm-6 wow fadeInUp resBtn910" data-wow-delay="0.5s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-home text-primary mb-4 analyzerIcon"></i>
@@ -98,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp resBtn15" data-wow-delay="0.7s">
+                <div class="col-lg-2 col-sm-6 wow fadeInUp resBtn15" data-wow-delay="0.7s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-book-open text-primary mb-4 analyzerIcon"></i>
@@ -149,11 +157,11 @@
                     j=0
                     for(i=0 ; i<arrayOfItemName.length/7 ; i++){
                         if(arrayOfItemName[j+5] < 2){
-                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDivDanger"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtns px-1">     <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>   <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="itemNamo">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDivDanger"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtns px-1">     <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>   <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-2"><h5 class="itemNamo">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
                             j = j+7
                         }
                         else{
-                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDiv"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtnsnormal px-1">       <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'" ><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>    <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="mb-0">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDiv"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtnsnormal px-1">       <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'" ><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>    <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-2"><h5 class="mb-0">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
                         j = j+7
                         }
                     }
@@ -179,6 +187,47 @@
                 
     </script>
 
+    <!-- Response 940 Div -->
+    <script>
+        $(".resBtn940").click(function(){
+            $(".stockDiv").html("")
+            $.ajax({
+                url: '/GetItemR940/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                success: function(arrayOfItemName){
+                    lengthOfArray = arrayOfItemName.length/5
+                    j=0
+                    for(i=0 ; i<arrayOfItemName.length/7 ; i++){
+                        if(arrayOfItemName[j+5] < 2){
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDivDanger"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtns px-1">     <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>   <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-2"><h5 class="itemNamo">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            j = j+7
+                        }
+                        else{
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDiv"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtnsnormal px-1">       <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'" ><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>    <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-2"><h5 class="mb-0">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            j = j+7
+                        }
+                    }
+
+                    $(".shape").click(function(){
+                        itemId = $(this).val()
+                        
+                        bookStoreFun(itemId)
+                    })
+
+                    $(".ItemHos").click(function(){
+                        itemId = $(this).val()
+                        GetHopitals(itemId)
+                    })
+
+                    $(".undertest").click(function(){
+                        itemId = $(this).val()
+                        GetUnderTest(itemId)
+                    })
+                },
+            });
+        })
+    </script>
+
     <!-- Response 920 Div -->
     <script>
         $(".resBtn").click(function(){
@@ -191,11 +240,11 @@
                     j=0
                     for(i=0 ; i<arrayOfItemName.length/7 ; i++){
                         if(arrayOfItemName[j+5] < 2){
-                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDivDanger"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtns px-1">     <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>   <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="itemNamo">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDivDanger"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtns px-1">     <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>   <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-2"><h5 class="itemNamo">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
                             j = j+7
                         }
                         else{
-                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDiv"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtnsnormal px-1">       <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'" ><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>    <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="mb-0">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDiv"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtnsnormal px-1">       <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'" ><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>    <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-2"><h5 class="mb-0">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
                             j = j+7
                         }
                     }
@@ -232,11 +281,11 @@
                     j=0
                     for(i=0 ; i<arrayOfItemName.length/7 ; i++){
                         if(arrayOfItemName[j+5] < 2){
-                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDivDanger"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtns px-1">     <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>   <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="itemNamo">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDivDanger"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtns px-1">     <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>   <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-2"><h5 class="itemNamo">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
                             j = j+7
                         }
                         else{
-                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDiv"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtnsnormal px-1">       <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'" ><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>    <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="mb-0">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDiv"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtnsnormal px-1">       <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'" ><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>    <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-2"><h5 class="mb-0">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
                             j = j+7
                         }
                     }
@@ -273,11 +322,11 @@
                     j=0
                     for(i=0 ; i<arrayOfItemName.length/7 ; i++){
                         if(arrayOfItemName[j+5] < 2){
-                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDivDanger"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtns px-1">     <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>   <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="itemNamo">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDivDanger"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtns px-1">     <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>   <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-2"><h5 class="itemNamo">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
                             j = j+7
                         }
                         else{
-                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDiv"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtnsnormal px-1">       <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'" ><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>    <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-4"><h5 class="mb-0">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
+                            $('.stockDiv').append('<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"><div class="team-item bg-light bigDiv"><div class="overflow-hidden"><img class="img-fluid img-images" src="'+arrayOfItemName[j+1]+'" alt=""></div><div class="position-relative d-flex justify-content-center" style="margin-top: -23px;"><div class="bg-light d-flex justify-content-center fontbtnsnormal px-1">       <button class="btn btn-sm-square shape mx-1" value="'+arrayOfItemName[j+4]+'"><i class="fa-solid fa-toolbox"></i></button>        <button class="btn btn-sm-square mx-1 ItemHos" value="'+arrayOfItemName[j+4]+'" ><i class="fa-solid fa-file-invoice "></i></button>    <button class="btn btn-sm-square mx-1 undertest" value="'+arrayOfItemName[j+4]+'" >    <i class="fa-solid fa-users-gear"></i>    <div class="numDiv">   <p class="cirNum">'+arrayOfItemName[j+6]+'</p> </div>    </button></div></div><div class="text-center p-2"><h5 class="mb-0">'+arrayOfItemName[j]+'</h5><small>'+arrayOfItemName[j+3]+'</small><div class="Quant"><small>All QTY : '+arrayOfItemName[j+5]+'</small>   <small>Stock QTY : '+arrayOfItemName[j+2]+'</small></div> </div></div></div>')
                             j = j+7
                         }
                     }

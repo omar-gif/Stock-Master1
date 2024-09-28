@@ -110,9 +110,7 @@ urlpatterns = [
     path('getcatnum/', views.getcatnum,name='getcatnum'),
     path('getdates/', views.getdates,name='getdates'),
 
-    path('index-reagent.html', views.homeReagent,name='homeReagent'),
-
-    path('parameters/', views.parameters,name='parameters'),
+    path('index-reagent.html/', views.homeReagent,name='homeReagent'),
 
     path('pardata/', views.pardata,name='pardata'),
     path('confdata/', views.confdata,name='confdata'),
@@ -155,6 +153,7 @@ urlpatterns = [
     path('AutoInvOrder/', views.AutoInvOrder,name="AutoInvOrder"),
     path('updateInvNumber/', views.updateInvNumber,name="updateInvNumber"),
     path('excelbtns/', views.excelbtns,name="excelbtns"),
+    path('orderExcels/', views.orderExcels,name="orderExcels"),
     path('uploadexcel/', views.uploadexcel,name="uploadexcel"),
     path('uploadexcelnamechick/', views.uploadexcelnamechick,name="uploadexcelnamechick"),
     path('uploadexcelname/', views.uploadexcelname,name="uploadexcelname"),
@@ -176,6 +175,8 @@ urlpatterns = [
     path('importsystem/', views.secProHomePage,name="secProHomePage"),
 
     path('itemsnumbers/', views.itemsnumbers,name="itemsnumbers"),
+
+
 
     ##################### third project
 
@@ -210,6 +211,7 @@ urlpatterns = [
     path('GetItem/', views.GetItem,name='GetItem'),
     path('GetItemmc15/', views.GetItemmc15,name='GetItemmc15'),
     path('GetItemr910/', views.GetItemr910,name='GetItemr910'),
+    path('GetItemR940/', views.GetItemR940,name='GetItemR940'),
     path('SaveBookStore/', views.SaveBookStore,name='SaveBookStore'),
     path('foriphone/', views.foriphone,name='foriphone'),
     path('ItemHopitals/', views.ItemHopitals,name='ItemHopitals'),

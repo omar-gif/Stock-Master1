@@ -18,6 +18,7 @@
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
+    
     <form  class="search nav-form heado">
         <div class="input-group input-search searchoBtn">
             <input type="text"   class="form-control" name="searchInput" id="searchInput" placeholder="Search By Name Or Part Number" autocomplete="off">
@@ -492,9 +493,13 @@
                     'HosId':HosId,
                 },
                 success: function (response) {
-                    console.log(response.arrPrice)
                     for(i=0;i<response.arr.length/10;i++){
-                        $(".outerHosDiv").append('    <div  class="topHosDiv"> <h1 class="InnerHosName">'+response.arr[i]+'</h1>   <div class="HosDetails"> <p class="HosDato"><small class="HosDetaSmall">Verion</small>'+response.arr[i+1]+'</p> <p class="HosDato"><small class="HosDetaSmall">SN</small>'+response.arr[i+2]+'</p>  <p class="HosDato">     <small class="HosDetaSmall">Last PM</small>'+response.arr[i+3]+'</p> <p class="HosDato"><small class="HosDetaSmall">Counter</small>'+response.arr[i+4]+'</p>  <p class="HosDato"><small class="HosDetaSmall">Software Verion</small>   '+response.arr[i+5]+'</p> <p class="HosDato upso"><small class="HosDetaSmall">Ups</small>'+response.arr[i+6]+'</p> <p class="HosDato stabo"><small class="HosDetaSmall">Stablizer</small>'+response.arr[i+7]+'</p>  <p class="HosDato Eartho"><small class="HosDetaSmall">Eath</small>'+response.arr[i+8]+'</p>     <p class="HosDato"><small class="HosDetaSmall">Last Eng</small>'+response.arr[i+9]+'</p>   </div>   </div>              ')
+                        $(".outerHosDiv").append('    <div  class="topHosDiv"> <h1 class="InnerHosName">'+response.arr[i]+'</h1>   <div class="HosDetails"> <p class="HosDato"><small class="HosDetaSmall">Verion</small>'+response.arr[i+1]+'</p> <p class="HosDato"><small class="HosDetaSmall">SN</small>'+response.arr[i+2]+'</p>  <p class="HosDato">     <small class="HosDetaSmall">Last PM</small>'+response.arr[i+3]+'</p> <p class="HosDato"><small class="HosDetaSmall">Counter</small>'+response.arr[i+4]+'</p>  <p class="HosDato"><small class="HosDetaSmall">Software Verion</small>   '+response.arr[i+5]+'</p> <p class="HosDato upso"><small class="HosDetaSmall">Ups</small>'+response.arr[i+6]+'</p> <p class="HosDato stabo"><small class="HosDetaSmall">Stablizer</small>'+response.arr[i+7]+'</p>  <p class="HosDato Eartho"><small class="HosDetaSmall">Eath</small>'+response.arr[i+8]+'</p>     <p class="HosDato"><small class="HosDetaSmall">Last Eng</small>'+response.arr[i+9]+'</p>   </div> <div class="form-group ico TDADiv"><p class="HosDato TDSInrDiv"><small class="HosDetaSmall">TDS</small>            <select class="form-control" id="TDSOptions"  ></select></p></div>  </div>              ')
+                        hg=0;
+                        for(r=0;r<response.arrTDS.length/2;r++){
+                            $('#TDSOptions').append('<option class="optr">TDS : '+response.arrTDS[hg]+'  Date : '+response.arrTDS[hg+1]+'    </option>') 
+                            hg = hg+2
+                        }
                     }
                     if (response.arr[7] == "Yes"){
                         $(".stabo").css("color", "Green");

@@ -184,6 +184,15 @@ class HospitalsAnalyzers(models.Model):
     def __str__(self):
         return force_str(self.HosNam)
 
+class TDS(models.Model):
+    TDS = models.CharField(max_length=250,null=True)
+    HosNam = models.ForeignKey(HospitalsAnalyzers,on_delete=models.CASCADE, null=True)
+    Datao = models.DateField(max_length=50, default=None, null=True)
+
+
+    def __str__(self):
+        return force_str(self.HosNam)
+
 class OutInvoice(models.Model):
     outInvoiceNumber = models.CharField(max_length=50, default=None, null=True)
     Datao = models.DateField(max_length=50, default=None, null=True)

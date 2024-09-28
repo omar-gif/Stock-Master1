@@ -715,7 +715,7 @@
     <script>
         $(".itemAdd").click(function(){
             $(".container-xxl").append('<div class="outerItemPrice animate__animated animate__fadeInUp">   <div class="inrItemPrice">     <div class="rowsh"><div class="col-lg-12"><div class="formo"><div class="form-group"><label class="prag1" for="partNumber">Part Number</label>    <div class="checkItems">     <input type="text"  placeholder=" Part Number" class="form-control ico" id="partNumber" name="partNumber_Item" required />   <input type="text"   class="checkPart" disabled id="checkpartNumber"   />  </div>   </div><div class="form-group"><label class="prag1" for="datepicker">Date</label><input type="date" id="ItemDate" class="form-control ico" /></div><div class="form-group ico"><label class="prag1" for="mainy">Item Image</label><div class="main" id="mainy"><div class="mini" id="mini" ><div class="innerinpuc" id="innerinpuc"><div id="frames" ></div><div id="loadingbar"></div></div></div><div id="loader" class="lds-dual-ring hidden overlay"></div><div class="inpu" id="inputa"><input type="file" id="image"  name="image[]" multiple class="btn btn-secondary" required/><button id="upload" type="button" class="btn btn-secondary" >Upload</button></div></div></div><div class="form-group ItemPricebtns wow fadeInUp">   <button id="Cancel2" type="submit" class="btn btn-danger btnico"  >Cancel</button>   <button id="save2" type="submit" disabled class="btn btn-success btnico"  >Save</button>    </div></div></div></div>         </div>       </div>')
-
+            
             $("#Cancel2").click(function(){
                 $(".outerItemPrice").removeClass('animate__fadeInUp')
                 $(".outerItemPrice").addClass('animate__fadeOutDown')
@@ -757,6 +757,8 @@
             });
             
             $('#upload').click(function () {
+                $("#upload").attr("disabled", true)
+                $(".outerItemPrice").append('<div class="shadow15"> </div>')
                 imgFun()
             });
 
@@ -793,20 +795,14 @@
                 data: form_data,
                 type: 'post',
                 beforeSend:function(xmlHttpRequest){
-                    if ($("#loadingbar").length === 0) {
-                        $("#loadingbar").addClass("waiting").append($("<dt/><dd/>"));
-                        $("#loadingbar").width((50 + Math.random() * 30) + "%");
-                    }
+                    $(".shadow15").append('<div class="loader"></div>')
                 },
 
                 success: function(response){
-                    console.log(response);
+                    $(".shadow15").remove()
+                    
                 },
-                complete:function(){
-                    $("#loadingbar").width("101%").delay(200).fadeOut(400, function() {
-                        $(this).remove();
-                    });
-            },
+
             });
 		    
         }

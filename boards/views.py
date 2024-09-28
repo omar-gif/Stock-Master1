@@ -5,6 +5,7 @@ from genericpath import exists
 from queue import Empty
 from re import X
 import select
+import pandas as pd
 from ssl import AlertDescription
 import sys
 from django.db.models.functions import Extract
@@ -1109,6 +1110,7 @@ def getOrderElements(request):
         arr.append(order.QTY)
         arr.append(order.status)
         arr.append(order.Note)
+        arr.append(order.ElementName.id)
 
     return JsonResponse(arr, safe=False)
 
@@ -1217,9 +1219,12 @@ def confJson(request):
     elementName  = request.GET.get('val')
     ordNum = request.GET.get('val1')
 
-    actname = ParameterName.objects.get(ParameterNam=elementName)
+    actname = ParameterName.objects.get(id=elementName)
     selectOptions = ElementConfermation.objects.filter(Q(orderNum=ordNum)&Q(ElementName=actname))
-
+    print("MOHA")
+    print("MOHA")
+    print("MOHA")
+    print("MOHA")
     data =[Item.get_conf() for Item in selectOptions]
     
     response = {'data':data}
@@ -1230,17 +1235,10 @@ def homeReagent(request):
     userOmar = request.user
     userStaff = userOmar.is_superuser
     if userStaff:
-        return render(request, 'octopus-master/secproj/index.html',{'userStaff':userStaff})
+        return render(request, 'secproj/index.html',{'userStaff':userStaff})
     else:
-        return render(request, 'octopus-master/secproj/index.html')
+        return render(request, 'secproj/index.html')
 
-def parameters(request):
-    items = ParameterName.objects.all()
-    arr =[]
-    for item in items:
-        arr.append(item.ParameterNam)
-
-    return JsonResponse(arr,safe=False)
 
 def pardata(request):
     itemName = request.GET.get('itemName')
@@ -1480,7 +1478,6 @@ def getAllConf(request):
 
 def getdates(request):
     dato = request.GET.get('dateval')
-    print(dato)
     ElementNumber =request.GET.get('ElementNumber2')
     getCat = ReagentQTY.objects.get(CatNumber=ElementNumber)
     experiment = ElementConfermation.objects.filter(Q(ExpiryDate__gte=dato)&Q(CatNumber=getCat))
@@ -1492,7 +1489,7 @@ def getdates(request):
             arr.append(n.ExpiryDate)
         return JsonResponse(arr,safe=False)
     else:
-        return False
+        return JsonResponse(arr,safe=False)
 
 def showPrices(request):
     confNumber = request.GET.get('confNum')
@@ -1587,8 +1584,19 @@ def editship(request):
     
     return JsonResponse(ordNumber,safe=False)
 
+def orderExcels(request):
+    GetOrder = OraderCreation.objects.all()
+    arr=[]
+    for n in list(GetOrder):
+        arr.append(n.orderNum)
+    
+    return JsonResponse(arr,safe=False)
+
 def excelbtns(request):
-    excels = ExcelFile.objects.all()
+    orderNumber = request.GET.get('excOrdNum')
+    selOrder = OraderCreation.objects.get(orderNum=orderNumber)
+    excels = ExcelFile.objects.filter(ordnum=selOrder)
+    
     exc = []
     for m in list(excels):
         exc.append(m.file.url)
@@ -1614,13 +1622,21 @@ def collectinfo(request):
     catnumber = request.GET.get('matrial')
     confqty = request.GET.get('confqty')
 
-    selcetOrder = OraderCreation.objects.get(orderNum__contains=ordnum)
-    selcetReagent = ReagentQTY.objects.get(CatNumber=catnumber)
+    try:
+        selcetReagent = ReagentQTY.objects.get(CatNumber=catnumber)
+        itemConf = ElementCreation.objects.get(Q(orderNum=ordnum)&Q(CatNumber=selcetReagent))
 
-    itemConf = ElementCreation.objects.get(Q(orderNum=ordnum)&Q(CatNumber=selcetReagent))
-
-    remainingqty = (itemConf.QTY) - float(confqty)
-    return JsonResponse(remainingqty,safe=False)
+        remainingqty = (itemConf.QTY) - float(confqty)
+        respone={
+            'remainingqty':remainingqty
+        }
+        return JsonResponse(respone,safe=False)
+    except:
+        messa = "Fas"
+        respone={
+            'messa':messa
+        }
+        return JsonResponse(respone,safe=False)
 
 def saveExcelToConf(request):
     selectedQTY = request.GET.get('selectedQTY')
@@ -1634,7 +1650,7 @@ def saveExcelToConf(request):
     status = "Accepted"
 
     matrialNumber = ReagentQTY.objects.get(CatNumber=matrial)
-    elementName = ParameterName.objects.get(ParameterNam=matrialNumber.ParName)
+    elementName = ParameterName.objects.get(id=matrialNumber.ParName_id)
     actorders = ElementConfermation.objects.filter(orderNum=orderNumber)
     selCompany = CompanyName.objects.get(companyName=matrialNumber.Item_Model_compName)
     seluni = CompanyUnits.objects.get(Q(modelOfAnalyzer=matrialNumber.Item_Model_compUnit)&Q(companyName1=selCompany))
@@ -1654,7 +1670,7 @@ def saveExcelToConf(request):
         QTYInSlides = int(matrialNumber.slideNumber) * float(confqty)
 
         if status == "Accepted" :
-            actname = ParameterName.objects.get(ParameterNam=matrialNumber.ParName)
+            actname = ParameterName.objects.get(id=matrialNumber.ParName_id)
             selectOptions = ElementCreation.objects.get(Q(orderNum=orderNumber)&Q(ElementName=actname.id))
             newval = int(selectOptions.QTY) - float(confqty)
             slidesval = int(selectOptions.SlidesQTY) - int(QTYInSlides)    
@@ -1741,11 +1757,11 @@ def saveExcelToConf(request):
             seldeleted.delete()    
     
     
-    if selectedQTY != Empty:
+    if selectedQTY != "":
         QTYInSlides = int(matrialNumber.slideNumber) * float(confqty)
 
         if status == "Accepted" :
-            actname = ParameterName.objects.get(ParameterNam=matrialNumber.ParName)
+            actname = ParameterName.objects.get(id=matrialNumber.ParName_id)
             selectOptions = ElementCreation.objects.get(Q(orderNum=orderNumber)&Q(ElementName=actname.id))
             newval = int(selectOptions.QTY) - int(selectedQTY)
             slidesval = int(selectOptions.SlidesQTY) - int(QTYInSlides)    
@@ -1958,7 +1974,7 @@ def backOrder(request):
 def AutoInvOrder(request):
     condo = request.GET.get("vals")
     orderNumbero = request.GET.get('numord')
-
+    print(orderNumbero)
     if condo == "1" :
         if orderNumbero != "1":
             pendingConf = AutoOrderInvoice.objects.filter(Q(orderNum = orderNumbero)&Q(InvoiceNumber = None)&Q(CatNumber__ShippindCond="Normal Temperture"))
@@ -1977,14 +1993,13 @@ def AutoInvOrder(request):
             return JsonResponse(response, safe=False)
     if condo == "2" :
         if orderNumbero != "1":
-            pendingConf = AutoOrderInvoice.objects.filter(Q(InvoiceNumber = None) and Q(CatNumber__ShippindCond="Refrigrated"))
+            pendingConf = AutoOrderInvoice.objects.filter(Q(orderNum = orderNumbero)&Q(InvoiceNumber = None) & Q(CatNumber__ShippindCond="Refrigrated"))
             print(pendingConf)
             data =[Item.get_AutoOrderInvoice() for Item in pendingConf]
             response = {'data':data}
             return JsonResponse(response, safe=False)
         else:
-            pendingConf = AutoOrderInvoice.objects.filter(Q(InvoiceNumber = None) and Q(CatNumber__ShippindCond="Refrigrated"))
-            print(pendingConf)
+            pendingConf = AutoOrderInvoice.objects.filter(Q(InvoiceNumber = None) & Q(CatNumber__ShippindCond="Refrigrated"))
             data =[Item.get_AutoOrderInvoice() for Item in pendingConf]
             
             response = {'data':data}
@@ -1992,10 +2007,9 @@ def AutoInvOrder(request):
     if condo == "3" :
         if orderNumbero != "1":
             pendingConf = AutoOrderInvoice.objects.filter(Q(orderNum = orderNumbero)&Q(InvoiceNumber = None)&Q(CatNumber__ShippindCond="Frozen"))
-            print(pendingConf)
-            data =[Item.get_AutoOrderInvoice() for Item in pendingConf]
-            
+            data =[Item.get_AutoOrderInvoice() for Item in pendingConf]            
             response = {'data':data}
+            print(response)
             return JsonResponse(response, safe=False)
         else:
             pendingConf = AutoOrderInvoice.objects.filter(Q(InvoiceNumber = None)&Q(CatNumber__ShippindCond="Frozen"))
@@ -2175,19 +2189,31 @@ def uploadexcel(request):
             # validation
             new13 = f'{settings.MEDIA_ROOT}/{upload_to}/{filename}'
             df = pd.read_excel(new13)
-            try:
-                for d in df.values:
-                    nym = d[2]
-                    catnum = d[4]
-                    if nym[4:] == path :
+            
+            for d in df.values:
+                
+                nym = str(d[2])
+                catnum = d[4]
+                if nym[4:] == path :
+                    try:
                         selCat = OraderCreation.objects.get(orderNum=nym[4:])
-                        # chickReagent = ReagentQTY.objects.get(CatNumber=catnum)
-                    else:
-                        return JsonResponse(message, safe=False)
-            except:
-                default_storage.delete(new13)
-                message = "This File is Not Compatable"
-                return JsonResponse(message, safe=False)
+                        chickReagent = ReagentQTY.objects.get(CatNumber=catnum)
+                    
+                    except:
+                        default_storage.delete(new13)
+                        message = "There is an error in this Catalog Number "+str(d[4])
+                        response = {
+                            'message':message
+                        }
+                        return JsonResponse(response, safe=False)
+                else:
+                    default_storage.delete(new13)
+                    message = "This File is Not Compatable OR the order Number is Wrong"
+                    response = {
+                        'message':message
+                    }
+                    return JsonResponse(response, safe=False)
+                
             # end validation
 
 
@@ -2210,11 +2236,14 @@ def uploadexcel(request):
                     CumConfQTY=d[9],
                     UnitPrice=d[10],
                     NetVal=d[11],
+                    # ProdDate=d[12]
                     excfile=obj
                 )
                 obm.save()
-            
-    return JsonResponse({'State': 'Success'})
+        response = {'State': 'Success'}
+
+
+    return JsonResponse(response,safe=False)
 
 @csrf_exempt
 def uploadItems(request):
@@ -2230,14 +2259,23 @@ def uploadItems(request):
             new13 = f'{settings.MEDIA_ROOT}/{upload_to}/{filename}'
             df = pd.read_excel(new13)
             try:
+                print("MOH")
+                print("MOH")
                 for d in df.values:
+                    print("MOH")
+                    print("MOH")
+                    
                     catnum = d[0]
                     desc = d[2]
                     compName = d[5]
+                    print(compName)
                     GTIN = d[6]
                     unit = d[8]
+                    print(unit)
                     getCompName = CompanyName.objects.get(companyName=compName)
-                    getCompunit = CompanyUnits.objects.get(modelOfAnalyzer=unit)
+                    print("DIa")
+                    getCompunit = CompanyUnits.objects.get(Q(modelOfAnalyzer=unit)&Q(companyName1=getCompName))
+                    
 
                     
             except:
@@ -2247,18 +2285,18 @@ def uploadItems(request):
             # end validation
 
             for d in df.values:
-                    catnum = d[0]
-                    desc = d[2]
-                    compName = d[5]
-                    GTIN = d[6]
-                    unit = d[8]               
-                    getCompName = CompanyName.objects.get(companyName=compName)
-                    getCompunit = CompanyUnits.objects.get(modelOfAnalyzer=unit)
-                    selpar = ParameterName.objects.create(Item_Model_compName=getCompName,Item_Model_compUnit=getCompunit,
-                                                            ParameterNam=desc)
-            for d in df.values:
-                    chickReagent = ReagentQTY.objects.create(Item_Model_compName= getCompName,Item_Model_compUnit= getCompunit,
-                                                                GTIN=GTIN, ParName=selpar ,CatNumber=catnum)
+                catnum = d[0]
+                desc = d[2]
+                compName = d[5]
+                GTIN = d[6]
+                unit = d[8]               
+                getCompName = CompanyName.objects.get(companyName=compName)
+                getCompunit = CompanyUnits.objects.get(Q(modelOfAnalyzer=unit)&Q(companyName1=getCompName))
+                selpar = ParameterName.objects.create(Item_Model_compName=getCompName,Item_Model_compUnit=getCompunit,
+                                                        ParameterNam=desc)
+                # for d in df.values:
+                chickReagent = ReagentQTY.objects.create(Item_Model_compName= getCompName,Item_Model_compUnit= getCompunit,
+                                                            GTIN=GTIN, ParName=selpar ,CatNumber=catnum)
             
     return JsonResponse({'State': 'Success'})
 
@@ -2367,16 +2405,17 @@ def uploadItems7(request):
             # for d in df.values:
             #     catnum1 = d[0]
             #     desc = d[2]
-            #     print(desc)
-            #     print(catnum1)
-            #     compName = d[5]
-            #     GTIN = d[6]
-            #     unit = d[8]               
-            #     getCompName = CompanyName.objects.get(companyName=compName)
-            #     getCompunit = CompanyUnits.objects.get(modelOfAnalyzer=unit)
-            #     selpar = ParameterName.objects.filter(ParameterNam=desc)
-            #     chickReagent = ReagentQTY.objects.create(Item_Model_compName= getCompName,Item_Model_compUnit= getCompunit,
-            #                                                 GTIN=GTIN, ParName=selpar[0] ,CatNumber=catnum1)
+                # print(desc)
+                # print(catnum1)
+                # compName = d[5]
+                # GTIN = d[6]
+                # unit = d[8]               
+                # getCompName = CompanyName.objects.get(companyName=compName)
+                # getCompunit = CompanyUnits.objects.get(modelOfAnalyzer=unit)
+                # selpar = ParameterName.objects.filter(ParameterNam=desc)
+                # ReagentQTY.objects.filter(CatNumber=catnum1).update(ShippindCond=desc)
+                # chickReagent = ReagentQTY.objects.create(Item_Model_compName= getCompName,Item_Model_compUnit= getCompunit,
+                #                                             GTIN=GTIN, ParName=selpar[0] ,CatNumber=catnum1)
 
     return JsonResponse({'State': 'Success'})
 
@@ -2464,15 +2503,16 @@ def uploadOrder(request):
 
             # Validate order excel 
 
-            try:
-                for d in df.values:
+            
+            for d in df.values:
+                try:
                     selCat = ReagentQTY.objects.get(CatNumber=d[0])
                     selcomp = CompanyName.objects.get(companyName=selCat.Item_Model_compName)
                     selunit = CompanyUnits.objects.get(Q(modelOfAnalyzer=selCat.Item_Model_compUnit)&Q(companyName1=selCat.Item_Model_compName))
-            except:
-                default_storage.delete(new)
-                message = "This File is Not Compatable"
-                return JsonResponse(message, safe=False)
+                except:
+                    default_storage.delete(new)
+                    fo = d[0]
+                    return JsonResponse(fo, safe=False)
 
             ordnumber = OraderCreation.objects.get(orderNum=path)
             obj = ExcelFileOrderCrea.objects.create(
@@ -2499,7 +2539,11 @@ def uploadOrder(request):
                     Item_Model_compUnit=selunit,
                 )
                 obm.save()
-    return JsonResponse({'State': 'success'})
+        
+
+        mess = "OK",      
+
+    return JsonResponse(mess,safe=False)
 
 def getAllOrders(request):
     allorders = OraderCreation.objects.all()
@@ -2572,10 +2616,10 @@ def checkForOrder(request):
             return JsonResponse(is_taken, safe=False)
     except:
         return JsonResponse(is_taken, safe=False)
-
+@login_required
 def secProHomePage(request):
 
-    return render(request, 'secproj/index.html')
+    return render(request, 'secproj/indexo.html')
 
 def itemsnumbers(request):
     allItems = ParameterName.objects.count()
@@ -2667,6 +2711,19 @@ def ItemPriceFunc(request):
 
 @csrf_exempt
 def uploadFiles3(request):
+
+    mypath3 = os.path.join(settings.MEDIA_ROOT, 'temporary','Item')
+        
+    onlyfiles = [f for f in listdir(mypath3) if isfile(join(mypath3, f))]
+    for item_att in onlyfiles:
+        item_att =  'temporary/'+'Item/'+item_att
+        file_path = os.path.join(settings.MEDIA_ROOT, item_att)
+        fi = open(file_path, 'rb')
+        local_file = File(fi)
+        local_file.close()
+        default_storage.delete(item_att)
+
+
     if request.method=='POST':
         for f in request.FILES.getlist('file'):
             upload_to = 'temporary/Item/'
@@ -2691,6 +2748,7 @@ def CheckItemName(request):
         return JsonResponse(Response, safe=False)
 
 def ItemInput3(request):
+
     userId = request.user
     partNumber_Item = request.GET.get('PartNum')
     dateOfArrival_Item = request.GET.get('itemDate')
@@ -2855,17 +2913,18 @@ def sendingInvoiceNum(request):
     itemId = request.GET.get('itemId')
     CotNum = request.GET.get('CotNumber')
     
-    SelPrice = Price.objects.get(partNumber=PartNum)
+    # SelPrice = Price.objects.get(partNumber=PartNum)
+    SelItem = AssembledStore.objects.get(pk=itemId)
     SelFoc = InvoiceStatus.objects.get(Status="OK")
     cartable3 = InvoiceNumbero.objects.create (
             ItemName=ItemName,
             PartNumber=PartNum,
             HosName=HosName,
             ItemLot = LotNum,
-            CotNumber1 = CotNum,
+            CotNumber1 = SelItem.Cot,
             Datee=ItemDate,
             InvoiceNumber1=QuotNumber,
-            Price=SelPrice.Price,
+            Price=SelItem.Price,
         )
     cartable3.save()
 
@@ -2907,6 +2966,37 @@ def GetVitros350(request):
         sumAllarray.clear()
 
         print(arrayOfItemName)
+    return JsonResponse(arrayOfItemName, safe=False)
+
+def GetItemR940(request):
+    namo = CompanyName.objects.get(companyName = "Diasys")
+    typo = WorkFlow.objects.get(nameOfWorkFlow="R940")
+
+    item = ItemInput.objects.filter(Q(Item_Model_compName_id=namo.id)&Q(Item_Model_workFlow=typo))
+    arrayOfItemName=[]
+    sumarray = []
+    sumAllarray = []
+
+    for name in list(item):
+        undertestItem = Undertest.objects.filter(partNumber=name.partNumber)
+        getimg = Imag3.objects.get(Inpu_id=name.id)
+        getlot = Lot.objects.filter(JNum=name.partNumber)
+        for n in list(getlot):
+            sumarray.append(n.LotQTY)
+            sumAllarray.append(n.AllLotQTY)
+        ans = sum(sumarray)
+        Allans = sum(sumAllarray)
+
+        arrayOfItemName.append(name.nameOfItem)
+        arrayOfItemName.append(getimg.images.url)
+        arrayOfItemName.append(ans)
+        sumarray.clear()
+        arrayOfItemName.append(name.partNumber)
+        arrayOfItemName.append(name.id)
+        arrayOfItemName.append(Allans)
+        arrayOfItemName.append(undertestItem.count())
+        sumAllarray.clear()
+        
     return JsonResponse(arrayOfItemName, safe=False)
 
 def GetItem(request):
@@ -3439,6 +3529,7 @@ def OpenHos(request):
     arrPic=[]
     allnames=[]
     arrInvo=[]
+    arrTDS=[]
 
     arr.append(selHos.HosNam.hospitalName)
     arr.append(selHos.WorFlo.nameOfWorkFlow)
@@ -3486,13 +3577,19 @@ def OpenHos(request):
         arrInvo.append(i.CotNumber1)
         arrInvo.append(i.Price)
         
-        
+    FilterTDS = TDS.objects.filter(HosNam=selHos)
+
+    for k in list(FilterTDS):
+        arrTDS.append(k.TDS)
+        arrTDS.append(k.Datao)
+
     response={
         'arr':arr,
         'arrpart':arrpart,
         'arrPrice':arrPrice,
         'arrPic':arrPic,
         'arrInvo':arrInvo,
+        'arrTDS':arrTDS,
     }
 
     return JsonResponse(response,safe=False)
@@ -3657,10 +3754,7 @@ def GetWorkFlow(request):
     UserId = request.GET.get('UserId')
     selUser = User.objects.get(id=UserId)
     er.append(selUser)
-    print(er)
-    print(er)
-    print(er)
-    print(er)
+
     BtnVal = request.GET.get('BtnVal')
     arr=[]
     i = 1
@@ -3799,7 +3893,7 @@ def SendSubmitForm(request):
     user = request.user
 
     Hospital_name = request.POST.get('HosName')
-    # Invoico = request.POST.get('Invoice')
+    tds = request.POST.get('tds')
     Dato_item = request.POST.get('BookDate')
     Note = request.POST.get('note')
     checkVal = request.POST.get('checkVal')
@@ -3810,7 +3904,7 @@ def SendSubmitForm(request):
     Softwar = request.POST.get('Software')
 
 
-
+    
    
 
     HosName = Hospitals.objects.get(hospitalName = Hospital_name)
@@ -3820,8 +3914,15 @@ def SendSubmitForm(request):
     SelHospital = Hospitals.objects.get(hospitalName = Hospital_name)
     SelSerial = HospitalsAnalyzers.objects.get(HosNam=SelHospital.id)
 
-    ## To Update Hospitals Analyzers
+    # to create TDS
+    if tds !="":
+        form = TDS.objects.create(
+            TDS = tds,
+            HosNam = SelSerial,
+            Datao = Dato_item,
+        )
 
+    ## To Update Hospitals Analyzers
     HospitalsAnalyzers.objects.filter(HosNam=SelHospital.id).update(Ups=checkValUps)
     HospitalsAnalyzers.objects.filter(HosNam=SelHospital.id).update(Stab=checkValStab)
     HospitalsAnalyzers.objects.filter(HosNam=SelHospital.id).update(Earth=checkValEarth)

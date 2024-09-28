@@ -1,5 +1,5 @@
 {% load static %}
-<html lang="en">
+
 
   <head>
 
@@ -15,287 +15,247 @@
     <!-- Bootstrap core CSS -->
     <link href="{%static 'secproject/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-
     <!-- Additional CSS Files -->
     <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>	
-
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
-    
     <link rel="stylesheet" href="{%static  'secproject/assets/css/fontawesome.css' %}">
     <link rel="stylesheet" href="{%static 'secproject/assets/css/templatemo-edu-meeting3.css' %}">
-    <link rel="stylesheet" href="{%static 'secproject/assets/css/owl.css' %}">
+    
     <link rel="stylesheet" href="{%static 'secproject/assets/css/lightbox.css' %}">
-    <link rel="stylesheet" href="{%static 'secpro39.css' %}">
-    <!-- <link href="{%static 'file116.css' %}" rel="stylesheet"> -->
-<!--
-
-TemplateMo 569 Edu Meeting
-
-https://templatemo.com/tm-569-edu-meeting
-
--->
+    <link rel="stylesheet" href="{%static 'secpro48.css' %}">
+    
   </head>
 
-<body>
-
-  <!-- Sub Header -->
-  <!-- <div class="sub-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-sm-8">
-          <div class="left-content">
-            <p>This is an educational <em>HTML CSS</em> template by TemplateMo website.</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-4">
-          <div class="right-icons">
-            <ul>
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-behance"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+<body class="body">
+<!-- Spinner Start -->
+<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
     </div>
-  </div> -->
+</div>
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="/importsystem" class="logo">
+                        LAB TOP
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li ><a href="/importsystem" >Home</a></li>
+                        <li><a href="/Import_Excel_pandas">Upload Excels Sheet</a></li>
+                        <li><a href="/signout"><i class="fa fa-power-off"></i> Logout</a></li>
+                    </ul>        
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ***** Header Area End ***** -->
 
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-      <div class="container">
+<!-- ***** Main Banner Area Start ***** -->
+<section class="section main-banner" id="top" data-section="section1">
+    <!-- <video autoplay muted loop id="bg-video">
+        <source src="{%static 'secproject/assets/images/course-video.mp4' %}" type="video/mp4" />
+    </video> -->
+    <img src="{%static 'secproject/assets/images/panner.png' %}" alt="">
+
+    <div class="video-overlay header-text">
+        <div class="container">
           <div class="row">
-              <div class="col-12">
-                  <nav class="main-nav">
-                      <!-- ***** Logo Start ***** -->
-                      <a href="/importsystem" class="logo">
-                          LAB TOP
-                      </a>
-                      <!-- ***** Logo End ***** -->
-                      <!-- ***** Menu Start ***** -->
-                      <ul class="nav">
-                          <li ><a href="/importsystem" >Home</a></li>
-                          <li class="has-sub">
-                            <a href="javascript:void(0)">Pages</a>
-                            <ul class="sub-menu">
-                                <li><a href="/Import_Excel_pandas">Upload Excels Sheet</a></li>
-                                <!-- <li><a href="meeting-details.html">Meeting Details</a></li> -->
-                            </ul>
-                        </li>
-                          
-                          <li class="scroll-to-section"><a href="#apply">Confirmations</a></li>
-                          
-                          <li class="scroll-to-section"><a href="#courses">Orders</a></li>
-                          <li class="scroll-to-section"><a href="#invoicesBtn2">Back Orders</a></li>
-                          <li class="scroll-to-section"><a href="#courses19">Shipping Orders</a></li>  
-                          <li class="scroll-to-section"><a href="#contact">Contact Us</a></li> 
-                          <li><a href="/signout"><i class="fa fa-power-off"></i> Logout</a></li>
-                      </ul>        
-                      <a class='menu-trigger'>
-                          <span>Menu</span>
-                      </a>
-                      <!-- ***** Menu End ***** -->
-                  </nav>
-              </div>
-          </div>
-      </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
-
-  <!-- ***** Main Banner Area Start ***** -->
-  <section class="section main-banner" id="top" data-section="section1">
-      <!-- <video autoplay muted loop id="bg-video">
-          <source src="{%static 'secproject/assets/images/course-video.mp4' %}" type="video/mp4" />
-      </video> -->
-      <img src="{%static 'secproject/assets/images/panner.png' %}" alt="">
-
-      <div class="video-overlay header-text">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="caption">
-              <h6>Hello</h6>
-              <h2>Welcome to The Import System</h2>
-              <p>Start Your Order Right Now</p>
-              <!-- <p>This is an edu meeting HTML CSS template provided by <a rel="nofollow" href="https://templatemo.com/page/1" target="_blank">TemplateMo website</a>. This is a Bootstrap v5.1.3 layout. The video background is taken from Pexels website, a group of young people by <a rel="nofollow" href="https://www.pexels.com/@pressmaster" target="_blank">Pressmaster</a>.</p> -->
-              <div class="main-button-red">
-                  <div class="down-content"><a id="ordinp" href="#VitrosV1"  data-toggle="tab">Create Your Order</a></div>
-              </div>
-          </div>
-              </div>
+            <div class="col-lg-12">
+              <div class="caption">
+            <h6>Hello</h6>
+            <h2>Welcome to The Import System</h2>
+            <p>Start Your Order Right Now</p>
+            <!-- <p>This is an edu meeting HTML CSS template provided by <a rel="nofollow" href="https://templatemo.com/page/1" target="_blank">TemplateMo website</a>. This is a Bootstrap v5.1.3 layout. The video background is taken from Pexels website, a group of young people by <a rel="nofollow" href="https://www.pexels.com/@pressmaster" target="_blank">Pressmaster</a>.</p> -->
+            <div class="main-button-red">
+                <div class="down-content"><a id="ordinp" href="#VitrosV1"  data-toggle="tab">Create Your Order</a></div>
             </div>
-          </div>
-      </div>
-  </section>
-  <!-- ***** Main Banner Area End ***** -->
-
-  <section class="services">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <!-- <div class="owl-service-item owl-carousel"> -->
-          <div class="allaction">
-            
-            
-            <div class="item ito">
-              <div class="icon">
-                <img src="{%static 'secproject/assets/images/service-icon-02.png' %}" alt="">
-              </div>
-              <div class="down-content">
-                <!-- <h4>Manual Item Input</h4> -->
-                <p>Add an Item  Manual </p>
-                <!-- <button type="button" id="eleinp" class="btn btn-success ">Manual Item Input</button> -->
-                <a  class="form-control btn btn-success bto" id="eleinp" href="#VitrosX1"  data-toggle="tab">Manual Item Input</a>
-              </div>
+        </div>
             </div>
-            
-            <div class="item ito">
-              <div class="icon">
-                <img src="{%static 'secproject/assets/images/service-icon-03.png' %}" alt="">
-              </div>
-              <div class="down-content">
-                <!-- <h4>Manual Invoice Input</h4> -->
-                <p>Add an Invoice  Manual </p>
-                <!-- <button type="button" id="invoiceinput" class="btn btn-success bto">Manual Invoice Input</button> -->
-                <a  class="form-control btn btn-success bto" id="invoiceinput" href="#Invoice1"  data-toggle="tab">Manual Invoice Input</a>
-              </div>
-            </div>
-            
-            <div class="item ito">
-              <div class="icon">
-                <img src="{%static 'secproject/assets/images/service-icon-02.png' %}" alt="">
-              </div>
-              <div class="down-content">
-                <!-- <h4>Manual Delete Confirmation</h4> -->
-                <p>Delete a Confirmation  Manual </p>
-                <button type="button" id="delconf" class="btn btn-success bto">Manual Delete Confirmation</button>
-              </div>
-            </div>
-            
-            <!-- <div class="item">
-              <div class="icon">
-                <img src="{%static 'secproject/assets/images/service-icon-03.png' %}" alt="">
-              </div>
-              <div class="down-content">
-                <h4>Best Networking</h4>
-                <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
-              </div>
-            </div> -->
-            
           </div>
         </div>
-      </div>
     </div>
+</section>
+<!-- ***** Main Banner Area End ***** -->
 
-    <div  id="allcontent">
-      <div class="row">
-          <div class="tab-content">
-  
-              <div id="VitrosV1" class="tab-pane">
-                  <div class="vitrodiv animate__animated animate__backInDown" >
-                      <form method="post" data-val-VIN-url="{%url 'getFiles'%}" enctype="multipart/form-data" name="basic__form" class="formo12">
-                          {% csrf_token %}
-                          <div class="form-group ico">
-                              <label class="prag2" for="Dato">Order Number</label>
-                              <input  class="form-control"  name="orderNumber_item" id="orderNumber1" readonly required />
-                          </div>
-                          <div class="form-group ico">
-                              <label class="prag2" for="analyzerName">Organize Name</label>
-                              <select class="form-control" id="OrganizeName" name="OrganizeName_Item" required >
-                                  <option id="analyzerNameOpt" >--Please choose an option--</option>
-                              </select>
-                          </div>	
-                          <div class="form-group ico">
-                              <label class="prag2" for="companyName">Company Name</label>
-                              <select class="form-control" id="companyName" name="companyName_Item" required >
-                                  <option id="companyNameOpt" >--Please choose an option--</option>
-                              </select>
-                          </div>
-                          <div class="form-group ico">
-                              <label class="prag2" for="typeOfAnalyzer">Type Of Analyzer</label>
-                              <select class="form-control" id="typeOfAnalyzer" name="typeOfAnalyzer_Item" required >
-                                  <option id="typeOfAnalyzerOpt" >--Please choose an option--</option>
-                              </select>
-                          </div>
-                          <div class="form-group ico">
-                              <label class="prag2" for="Dato">Date</label>
-                              <input  class="form-control"  name="Dato_item" id="Dato1" required type="date" readonly/>
-                          </div>
-                          <div class="form-group ico">
-                              <label class="prag2" for="Dato">Note</label>
-                              <input  class="form-control"  name="Note_item" id="Note" />
-                          </div>
-                          <div class="buttons1">
-                              <button id="Ordercancel" type="button" class="btn btn-danger vlc"  >Cancel</button>
-                              <button id="OrderInput" type="button" disabled class="btn btn-success vlc"  >Save</button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-              <div id="VitrosX1" class="tab-pane">
-                  <div class="vitrodiv animate__animated animate__backInDown">
-                          <div class="formo12">
-                              <div class="form-group ico">
-                                  <label class="prag2" for="Dato">Date</label>
-                                  <input  class="form-control"  name="Dato_item" id="Dato2" required readonly/>
-                              </div>
-                              <div class="form-group ico">
-                                  <label class="prag2" for="Dato">Order Number</label>
-                                  <input  class="form-control"  name="orderNumber_item" id="orderNumber12" required />
-                              </div>
-                              <div class="form-group ico">
-                                  <label class="prag2" for="companyName">Company Name</label>
-                                  <input  class="form-control"  name="companyName_Item" id="companyName1" readonly required />
-
-                                
-                              </div>
-                              <div class="form-group ico">
-                                  <label class="prag2" for="typeOfAnalyzer">Type Of Analyzer</label>
-                                  <input  class="form-control"  name="typeOfAnalyzer_Item" id="typeOfAnalyzer1"  required />
-                                  
-                              </div>
-                              <div class="form-group ico">
-                                  <label class="prag2" for="companyName">Item Name</label>
-                                  <select class="form-control" id="ElementName" name="ElementName_Item" required >
-                                      <option id="companyNameOpt" >--Please choose an option--</option>
-                                  </select>
-                              </div>
-                              <div class="form-group ico">
-                                  <label class="prag2" for="companyName">Cat. Number</label>
-                                  <select class="form-control" id="CatNumber" name="Cat_Item" required >
-                                      <option id="companyNameOpt" >--Please choose an option--</option>
-                                  </select>
-                              </div>
-                              <div class="form-group ico">
-                                  <label class="prag2" for="Dato">QTY</label>
-                                  <input  class="form-control"  name="QTY_item" id="QTY" required />
-                                  <div id="Avlq2"><h1 id="AVLQTY2"></h1></div>
-                              </div>
-                              <div class="form-group ico">
-                                  <label class="prag2" for="Dato">Note</label>
-                                  <input  class="form-control"  name="Note_item" id="Note1" />
-                              </div>
-                              <div class="buttons1">
-                                  <button id="Ordercancel1" type="button" class="btn btn-danger vlc"  >Cancel</button>
-                                  <button id="OrderInput1" type="button" class="btn btn-success vlc"  >Save</button>
-                              </div>
-                          </div>
-                  </div>
-              </div>
-
-              
-              
-  
+<section class="services">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- <div class="owl-service-item owl-carousel"> -->
+        <div class="allaction">
+          
+          
+          <div class="item ito">
+            <div class="icon">
+              <img src="{%static 'secproject/assets/images/service-icon-02.png' %}" alt="">
+            </div>
+            <div class="down-content">
+              <!-- <h4>Manual Item Input</h4> -->
+              <p>Add an Item  Manual </p>
+              <!-- <button type="button" id="eleinp" class="btn btn-success ">Manual Item Input</button> -->
+              <a  class="form-control btn btn-success bto" id="eleinp" href="#VitrosX1"  data-toggle="tab">Manual Item Input</a>
+            </div>
           </div>
           
+          <div class="item ito">
+            <div class="icon">
+              <img src="{%static 'secproject/assets/images/service-icon-03.png' %}" alt="">
+            </div>
+            <div class="down-content">
+              <!-- <h4>Manual Invoice Input</h4> -->
+              <p>Add an Invoice  Manual </p>
+              <!-- <button type="button" id="invoiceinput" class="btn btn-success bto">Manual Invoice Input</button> -->
+              <a  class="form-control btn btn-success bto" id="invoiceinput" href="#Invoice1"  data-toggle="tab">Manual Invoice Input</a>
+            </div>
+          </div>
+          
+          <div class="item ito">
+            <div class="icon">
+              <img src="{%static 'secproject/assets/images/service-icon-02.png' %}" alt="">
+            </div>
+            <div class="down-content">
+              <!-- <h4>Manual Delete Confirmation</h4> -->
+              <p>Delete a Confirmation  Manual </p>
+              <button type="button" id="delconf" class="btn btn-success bto">Manual Delete Confirmation</button>
+            </div>
+          </div>
+          
+          <!-- <div class="item">
+            <div class="icon">
+              <img src="{%static 'secproject/assets/images/service-icon-03.png' %}" alt="">
+            </div>
+            <div class="down-content">
+              <h4>Best Networking</h4>
+              <p>Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis massa non vestibulum.</p>
+            </div>
+          </div> -->
+          
+        </div>
       </div>
     </div>
-    <div class="contall"></div>
-  </section>
+  </div>
+
+  <div  id="allcontent">
+    <div class="row">
+        <div class="tab-content">
+
+            <div id="VitrosV1" class="tab-pane">
+                <div class="vitrodiv animate__animated animate__backInDown" >
+                    <form method="post" enctype="multipart/form-data" name="basic__form" class="formo12">
+                        {% csrf_token %}
+                        <div class="form-group ico">
+                            <label class="prag2" for="Dato">Order Number</label>
+                            <input  class="form-control"  name="orderNumber_item" id="orderNumber1" required />
+                        </div>
+                        <div class="form-group ico">
+                            <label class="prag2" for="analyzerName">Organize Name</label>
+                            <select class="form-control" id="OrganizeName" name="OrganizeName_Item" required >
+                                <option id="analyzerNameOpt" >--Please choose an option--</option>
+                            </select>
+                        </div>	
+                        <div class="form-group ico">
+                            <label class="prag2" for="companyName">Company Name</label>
+                            <select class="form-control" id="companyName" name="companyName_Item" required >
+                                <option id="companyNameOpt" >--Please choose an option--</option>
+                            </select>
+                        </div>
+                        <div class="form-group ico">
+                            <label class="prag2" for="typeOfAnalyzer">Type Of Analyzer</label>
+                            <select class="form-control" id="typeOfAnalyzer" name="typeOfAnalyzer_Item" required >
+                                <option id="typeOfAnalyzerOpt" >--Please choose an option--</option>
+                            </select>
+                        </div>
+                        <div class="form-group ico">
+                            <label class="prag2" for="Dato">Date</label>
+                            <input  class="form-control"  name="Dato_item" id="Dato1" required type="date" readonly/>
+                        </div>
+                        <div class="form-group ico">
+                            <label class="prag2" for="Dato">Note</label>
+                            <input  class="form-control"  name="Note_item" id="Note" />
+                        </div>
+                        <div class="buttons1">
+                            <button id="Ordercancel" type="button" class="btn btn-danger vlc"  >Cancel</button>
+                            <button id="OrderInput" type="button" disabled class="btn btn-success vlc"  >Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="VitrosX1" class="tab-pane">
+                <div class="vitrodiv animate__animated animate__backInDown">
+                        <div class="formo12">
+                            <div class="form-group ico">
+                                <label class="prag2" for="Dato">Date</label>
+                                <input  class="form-control"  name="Dato_item" id="Dato2" required readonly/>
+                            </div>
+                            <div class="form-group ico">
+                                <label class="prag2" for="Dato">Order Number</label>
+                                <input  class="form-control"  name="orderNumber_item" id="orderNumber12" required />
+                            </div>
+                            <div class="form-group ico">
+                                <label class="prag2" for="companyName">Company Name</label>
+                                <input  class="form-control"  name="companyName_Item" id="companyName1" readonly required />
+
+                              
+                            </div>
+                            <div class="form-group ico">
+                                <label class="prag2" for="typeOfAnalyzer">Type Of Analyzer</label>
+                                <input  class="form-control"  name="typeOfAnalyzer_Item" id="typeOfAnalyzer1"  required />
+                                
+                            </div>
+                            <div class="form-group ico">
+                                <label class="prag2" for="companyName">Item Name</label>
+                                <select class="form-control" id="ElementName" name="ElementName_Item" required >
+                                    <option id="companyNameOpt" >--Please choose an option--</option>
+                                </select>
+                            </div>
+                            <div class="form-group ico">
+                                <label class="prag2" for="companyName">Cat. Number</label>
+                                <select class="form-control" id="CatNumber" name="Cat_Item" required >
+                                    <option id="companyNameOpt" >--Please choose an option--</option>
+                                </select>
+                            </div>
+                            <div class="form-group ico">
+                                <label class="prag2" for="Dato">QTY</label>
+                                <input  class="form-control"  name="QTY_item" id="QTY" required />
+                                <div id="Avlq2"><h1 id="AVLQTY2"></h1></div>
+                            </div>
+                            <div class="form-group ico">
+                                <label class="prag2" for="Dato">Note</label>
+                                <input  class="form-control"  name="Note_item" id="Note1" />
+                            </div>
+                            <div class="buttons1">
+                                <button id="Ordercancel1" type="button" class="btn btn-danger vlc"  >Cancel</button>
+                                <button id="OrderInput1" type="button" class="btn btn-success vlc"  >Save</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            
+            
+
+        </div>
+        
+    </div>
+  </div>
+  <div class="contall"></div>
+</section>
 
   {% block cont %}
+  
   {% endblock %}
   
 
@@ -309,15 +269,14 @@ https://templatemo.com/tm-569-edu-meeting
   <!-- Bootstrap core JavaScript -->
   
     <script src="{%static  'secproject/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{%static 'secproject/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
     <script src="{%static 'secproject/assets/js/isotope.min.js' %}"></script>
     <script src="{%static 'secproject/assets/js/owl-carousel.js' %}"></script>
     <script src="{%static 'secproject/assets/js/lightbox.js' %}"></script>
     <script src="{%static 'secproject/assets/js/tabs.js' %}"></script>
     <script src="{%static 'secproject/assets/js/video.js' %}"></script>
     <script src="{%static 'secproject/assets/js/slick-slider.js' %}"></script>
-    <script src="{%static 'secproject/assets/js/custom.js' %}"></script>
+    
+
 
 
 <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -332,6 +291,30 @@ https://templatemo.com/tm-569-edu-meeting
 
 
 
+
+<!-- // Spinner -->
+<script>
+    
+    var spinner = function () {
+        setTimeout(function () {
+            if ($('#spinner').length > 0) {
+                $('#spinner').removeClass('show');
+            }
+        }, 1);
+    };
+    spinner();
+</script>
+
+
+
+<!-- pop Up -->
+<script>
+    // When the user clicks on <div>, open the popup
+    function myFunction() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+    }
+</script>
 
 
     <!-- manual delete confirmation  -->
@@ -671,7 +654,6 @@ https://templatemo.com/tm-569-edu-meeting
             }, 500,);
     }
     
-
     function delo(vala){
             $.ajax({
                 type: 'GET',
@@ -682,6 +664,7 @@ https://templatemo.com/tm-569-edu-meeting
                     'vala':vala,
                 },
                 success: function (arr) {
+                    $(".autocond").remove() 
                     setTimeout(function() { 
                         relo()
                                     }, 200,);
@@ -700,7 +683,7 @@ https://templatemo.com/tm-569-edu-meeting
                 dataType: 'json',
                 success: function (arr) {
                     
-                    console.log(arr);
+                    
                     j=0
                     for(i=0 ; i<arr.length/8;i++){
                         $(".autocond").append('<div class="autocondotr"><div class="autocondinr"><div class="OrderNumber all1"><h1 class="confh1">'+arr[j]+'</h1></div></div>     <div class="autocondinr"><div class="matrial all1"><h1 class="confh1">'+arr[j+1]+'</h1></div></div>    <div class="autocondinr"><div class="MatDesc all1"><h1 class="confh1">'+arr[j+2]+'</h1></div></div>    <div class="autocondinr"><div class="BatchNum all1"><h1 class="confh1">'+arr[j+3]+'</h1></div></div>    <div class="autocondinr"><div class="ExpiryDate all1"><h1 class="confh1">'+arr[j+4]+'</h1></div></div>    <div class="autocondinr"><div class="OrderQTY all1"><h1 class="confh1">'+arr[j+5]+'</h1></div></div>     <div class="autocondinr"><div class="CumConfQTY all1"><h1 class="confh1">'+arr[j+6]+'</h1></div> </div>    <div class="autocondinr"><div class="del all1"><button id="Orderdelete" value="'+arr[j+7]+'"  type="button" class="btn btn-primary delbtn"  >Delete</button></div> </div></div>')
@@ -726,11 +709,7 @@ https://templatemo.com/tm-569-edu-meeting
 </script>  <!-- ////////////////// functions save table data //////////////////////////////  -->
 
 
-
-
   <!-- ////////////////// Invoice //////////////////////////////  -->
-
-
 
 <script>
       $("#progress").click(function(){
@@ -765,43 +744,6 @@ https://templatemo.com/tm-569-edu-meeting
           
       })
 </script>  <!-- ////////////////// in progress  //////////////////////////////  -->
-  
-<script>
-          $.ajax({
-          url: '/parameters/', // <-- point to server-side PHP script
-          dataType:  'json',  // <-- what to expect back from the PHP script, if anything
-          success: function(arr){
-              console.log(arr)
-              arr.sort()
-              for(var i=0;i<arr.length;i++){
-                  $(".rightbox").append('<div class="items"><button class="items bb"  value="'+arr[i]+'" type="button">'+arr[i]+'</button></div>')
-              }
-              $(".bb").click(function(){
-                  $(".contall").append('<div class="alloutrdiv1" class=" animate__animated animate__fadeIn"><div class="clo"> <button type="button" id="closo2" >close</button></div>  <div id="optionsbtn"> <button class="items" id="ordbtnz" type="button">Orders</button>   <button class="items" id="confbtn" type="button">Confermations</button></div>   </div>')
-  
-                  $("#closo2").click(function(){
-                      $(".alloutrdiv1").addClass('animate__animated animate__fadeOut');
-                      setTimeout(function() { 
-                          $(".alloutrdiv1").remove()
-                      }, 500,);
-                  
-                  });
-                  
-                  itemName = this.getAttribute("value")
-                  console.log(itemName)
-                  $("#ordbtnz").click(function(){
-                      getdata(itemName)
-                  })
-                  $("#confbtn").click(function(){
-                      getconfdata(itemName)
-                  })
-                  
-              })
-              },
-          });
-</script>     <!-- ////////////////// items table  //////////////////////////////  -->
-  
-
   
 <script>
       $('#orderNumber').keyup("change",function(e){
@@ -1048,6 +990,7 @@ https://templatemo.com/tm-569-edu-meeting
         $("#VitrosV1").css("display", "block");
       })
     </script>   <!-- ////////////////// div diplay  //////////////////////////////  -->
+
     <script>
         $("#ordinp").click(function(){
             $("#Ordercancel").click(function(){
@@ -1060,6 +1003,57 @@ https://templatemo.com/tm-569-edu-meeting
           });
       })
     </script>
+
+    <script>
+        $("#ordinp").click(function(){
+            //// validate ///
+            $("#typeOfAnalyzer").change(function(){
+                orgNam = $("#OrganizeName").val()
+                compNam = $("#companyName").val()
+                typAna = $("#typeOfAnalyzer").val()
+                if((orgNam!="--Please choose an option--")&&(compNam!="--Please choose an option--")&&(typAna!="--Please choose an option--")){
+                    $("#OrderInput").attr("disabled", false)
+                }
+            })
+            /// end validate ///
+            $("#OrderInput").click(function(){
+                orgNam = $("#OrganizeName").val()
+                compNam = $("#companyName").val()
+                typAna = $("#typeOfAnalyzer").val()
+                ordNum = $("#orderNumber1").val()
+                ordDat = $("#Dato1").val()
+                ordNot = $("#Note").val()
+                
+                $.ajax({
+                url: '/SaveOrders/', // <-- point to server-side PHP script
+                dataType:  'json',  // <-- what to expect back from the PHP script, if anything
+                data:{
+                        'orgNam':orgNam,
+                        'compNam':compNam,
+                        'typAna':typAna,
+                        'ordNum':ordNum,
+                        'ordDat':ordDat,
+                        'ordNot':ordNot,
+                        
+                    },
+                success: function(ordNum){
+                    console.log(ordNum)
+                    if(ordNum)
+                
+                    $(".formo12").addClass('animate__animated animate__fadeOut');
+                    setTimeout(function() { 
+                        $(".formo12").load(" .formo12 > *");
+                        $("#allcontent").load(" #allcontent > *");
+                                        }, 500,);
+                        
+                    
+                    },
+                
+                });
+            });
+        });
+    </script>  <!-- ////////////////// save orders //////////////////////////////  -->
+
     <script>
       $("#ordinp").click(function(){
           var today = new Date();
@@ -1106,11 +1100,10 @@ https://templatemo.com/tm-569-edu-meeting
             url: '/getOrganize/', // <-- point to server-side PHP script
             dataType:  'json',  // <-- what to expect back from the PHP script, if anything
             success: function(arrayOfNames){
-                var j=0;
+                
                 for(i=0 ; i<arrayOfNames.length ; i++){
-                    y = arrayOfNames[j]
+                    y = arrayOfNames[i]
                     $("#OrganizeName").append('<option id="companyNameOpt" >'+y+'</option>')
-                    j++
                 }
                 },
             

@@ -3,10 +3,10 @@ from django.contrib import admin
 # Register your models here.
 from boards.models import Shipper, Profile, Role, ShipperList, VendorList, FollowerList,QuotationStatus,OrganizeName,ParameterName,OraderCreation, \
       ExcelFileOrderCrea,ExcelFileInvoice,AutoElementCreation,ExcelFile,AutoOrderInvoice,Autoconfdata,Calibrator,Shipping,OrderInvoice,ReagentQTY,Undertest,ElementConfermation,Price,ItemInput, Engineer, TeamLeader, Imag3, BookStore ,CompanyUnits,WorkFlow,CompanyName,Hospitals,AssembledStore,InvoiceStatus,InvoiceNumbero,OutInvoice,HospitalsAnalyzers,Lot,CotNumber,ElementCreation,\
-      JobSheet , JobSheetImg ,WorkFlowLine,Governorate
+      JobSheet , JobSheetImg ,WorkFlowLine,Governorate,TDS
 
 
-
+admin.site.register(TDS)
 admin.site.register(Governorate)
 admin.site.register(WorkFlowLine)
 admin.site.register(JobSheetImg)

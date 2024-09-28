@@ -29,7 +29,7 @@
 
     <!-- Template Stylesheet -->
     <!-- <link href="{%static 'loadingbars.css' %}" rel="stylesheet"> -->
-    <link href="{%static 'thirdPro/css/style66.css' %}" rel="stylesheet">
+    <link href="{%static 'thirdPro/css/style68.css' %}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
 
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -232,6 +232,7 @@
                             xc =  new Date(now.getFullYear(), now.getMonth()+1, 0 ).getDate()
                             
                             j=0
+                            console.log(arr[0])
                             for(i=1;i<=xc ; i++){
                                 if (i == arr[j].slice(8,)){
                                     $(".innerCont").append('<div class="bigWorkDiv"><p class="info">'+arr[j]+'</p>         <p class="info Hos">'+arr[j+1]+' </p>    </div>')
